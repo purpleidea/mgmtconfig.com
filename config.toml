@@ -13,6 +13,8 @@ theme = "hugo-serif-theme"
 
 	# Used by purpleidea to display a url string visually.
 	shortURL = "mgmtconfig.com"
+	# Site title
+	title = "Mgmt Config - Fast, Real-time, Closed-Loop Automation"
 
 	publickeyfile = "static/james@shubin.ca.asc"
 

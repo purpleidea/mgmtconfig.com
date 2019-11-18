@@ -1,0 +1,17 @@
+[
+	{
+		"title": "Fast Automation",
+		"description": "Possibly the fastest automation tool available, as it runs in real-time.",
+		"image": "images/features/noun_branding_1885335.svg"
+	},
+	{
+		"title": "Open Source",
+		"description": "100% Open Source means you get community love too!",
+		"image": "images/features/noun_The Process_1885341.svg"
+	},
+	{
+		"title": "Reactive Modelling",
+		"description": "Our reactive language (called mcl) lets you easily model your infrastructure.",
+		"image": "images/features/noun_3d modeling_1885342.svg"
+	}
+]

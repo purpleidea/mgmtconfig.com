@@ -19,7 +19,7 @@ theme = "hugo-serif-theme"
 	publickeyfile = "static/james@shubin.ca.asc"
 
 [params.logo]
-	#mobile = "images/logo-mobile.svg"	# TODO: do we need to optimize here?
+	mobile = "images/mgmt_logo_default_symbol.svg"	# TODO: do we need to optimize here?
 	standard  = "images/mgmt_logo_default_symbol.svg"
 	#standard  = "images/mgmt_logo_default_wide.svg"
 	alt = "Mgmt Config - Fast, Real-time, Closed-Loop Automation."

@@ -26,7 +26,8 @@ rm -rf public/*
 echo "Generating site"
 #hugo
 #~/code/gopath/bin/hugo
-hugo-extended
+#hugo-extended
+/usr/bin/hugo
 
 echo "mgmtconfig.com" > public/CNAME
 

@@ -1,0 +1,61 @@
+{{ define "header_css" }}{{ end }}
+{{ define "body_classes" }}page-default-list{{ end }}
+{{ define "header_classes" }}{{ end }}
+
+{{- define "main" -}}
+	<h1 class="header">Functions</h1>
+	<div class="flex-container">
+
+	<!-- Load the functions and version from /data/docs.json -->
+	{{- $functions := .Site.Data.docs.functions -}}
+	{{- $version := .Site.Data.docs.version -}}
+
+		<!-- Index column -->
+		<div class="container-left">
+			<ul>
+{{- range $functionName, $functionData := $functions }}
+				<li><a href="#{{ $functionName | urlize }}"> <span style="color: rgb(8, 8, 168);">{{ $functionName }}</span></a></li>
+{{- end }}
+			</ul>
+		</div>
+		<!-- Function description -->
+		<div class="container-right">
+{{ if .Content }}
+	{{ .Content }}
+{{ end }}
+			<ul>
+{{- range $functionName, $functionData := $functions }}
+				<li>
+					<h2 id="{{ $functionName | urlize }}"> <span style="color: rgb(8, 8, 168);">{{ $functionName }}</span> ({{ $functionData.name }})
+					<!-- Create hyperlink to the source code -->
+					{{- with $functionData.file -}}
+						{{- if hasPrefix . "https://" -}}
+							<a href="{{ $functionData.file }}" style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+						{{- else -}}
+							<a href="https://github.com/purpleidea/mgmt/blob/{{ $version }}/lang/core/{{ $functionData.file }}"
+							style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+						{{- end -}}
+					{{- end -}}
+
+					</h2>
+					<hr class="header-line">
+					{{- $formattedDesc := replace $functionData.description "\n" "<br>" -}}
+					{{- $formattedDesc | safeHTML -}}
+					<div class="box">
+						<p>Signature:</p>
+						{{- with $functionData.signature }}
+							{{ $functionData.signature }}
+						{{- else }}
+							&lt; polymorphic &gt;
+						{{- end }}
+					</div>
+					<br>
+				</li>
+{{- end }}
+			</ul>
+		</div>
+	</div>
+
+{{ partial "style.html" . -}}
+
+{{- end -}}

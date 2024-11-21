@@ -1,0 +1,12 @@
+{{ define "header_css" }}{{ end }}
+{{ define "body_classes" }}page-default-single{{ end }}
+{{ define "header_classes" }}{{ end }}
+
+{{ define "main" }}
+    <div class="container pt-6">
+        <h1><strong>{{ .Title }}</strong></h1><br />
+{{ if .Content }}
+    {{ .Content }}
+{{ end }}
+    </div>
+{{ end }}

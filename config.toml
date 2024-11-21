@@ -43,6 +43,11 @@ theme = "hugo-serif-theme"
 		url = "/services/"
 		weight = 1
 
+        [[menu.main]]
+                name = "Docs"
+                url = "/docs/"
+                weight = 1
+
 	#[[menu.main]]
 	#	name = "Team"
 	#	url = "/team/"

@@ -1,0 +1,105 @@
+{{ define "header_css" }}{{ end }}
+{{ define "body_classes" }}page-default-list{{ end }}
+{{ define "header_classes" }}{{ end }}
+
+{{ define "main" }} 
+<h1 class="header">Resources</h1>
+<div class="flex-container">
+<div class="container-left">
+  <ul>
+  {{ $resources := .Site.Data.foo.resources }}
+  {{ range $resourceName, $resourceData := $resources}}
+    <li><a href="#{{ $resourceData.kind | urlize }}"> <span style="color: rgb(8, 8, 168);">{{ $resourceData.kind}}</span></a></li>
+  {{ end }}
+  </ul>
+</div>
+  
+<div class="container-right">
+
+  <ul>
+    {{ $resources := .Site.Data.foo.resources}}
+    {{ range $resourceName, $resourceData := $resources}}
+    <li>
+      <h2 id="{{ $resourceData.kind | urlize }}"> <span style="color: rgb(8, 8, 168);">{{ $resourceData.kind }}</span> ({{ $resourceData.name }})
+        <a href="/docs/sources" style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+      </h2>
+      <hr class="header-line">
+
+      <p class="description"> <span style="color: black;">{{ $resourceData.description }} </span></p>
+      <div class="box">
+      <ul> 
+        <!-- Iterate over the fields within each resource -->
+        {{ range $fieldName, $fieldData := $resourceData.fields }}
+       
+          <li style="margin-bottom: 5px;">
+             &#8226; <span style="color: blue;">  {{ $fieldName }} </span> ({{$fieldData.name}}) <span style="font-style: italic;">{{ $fieldData.type }}</span>
+             <br> 
+             {{ $fieldData.description }}
+             
+          </li>
+        {{ end }}
+      </ul>
+      </div>
+      <br>
+    </li>
+    {{ end }}
+  </ul>
+</div>
+
+</div>
+
+
+<style>
+  .header {
+    margin-left: 20px;
+    color: black;
+  }
+
+  .flex-container {
+    display: flex; /* Enables Flexbox layout */
+    gap: 30px;
+  }
+
+
+  .container-left {
+    flex: 1;
+    max-width: fit-content; 
+    margin-left: 3%;
+  }
+
+  .container-right {
+    flex: 4;
+    margin-right: 15%;
+  }
+
+    /* Media Query for Mobile Devices */
+    @media (max-width: 768px) {
+    .flex-container {
+      flex-direction: column; /* Stack the containers vertically on smaller screens */
+      gap: 10px; /* Optional: adjust the space between the stacked containers */
+    }
+
+    .container-right {
+      width: 92%; /* Make containers take up the full width on mobile */
+      margin-left: 4%;
+    }
+  }
+
+  .description {
+    margin-top: 0; /* Remove top margin */
+    margin-bottom: 0; /* Remove bottom margin */
+  }
+
+  .box {
+    border: 2px solid #000;  /* Adds a solid black border */
+    padding: 20px;            /* Adds space inside the box */
+    background-color: #f9f9f9; /* Light grey background color */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds shadow around the box */
+    border-radius: 8px;      /* Optional: rounds the corners */
+         /* Optional: limits the box width */
+    margin: 20px auto;       /* Optional: centers the box on the page */
+  }
+</style>
+
+{{ end }}
+

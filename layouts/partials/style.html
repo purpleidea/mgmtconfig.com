@@ -1,0 +1,50 @@
+<style>
+    .header {
+        margin-left: 20px;
+        color: black;
+    }
+    
+    .flex-container {
+        display: flex;
+        gap: 30px;
+    }
+    
+    /* Index column */
+    .container-left {
+        flex: 1;
+        max-width: fit-content;
+        margin-left: 3%;
+    }
+    
+    .container-right {
+        flex: 4;
+        margin-right: 15%;
+    }
+    
+    /* Media Query for Mobile Devices */
+    @media (max-width: 768px) {
+        .flex-container {
+            flex-direction: column; /* Stack the containers vertically on smaller screens */
+            gap: 10px; /* Adjust the space between the stacked containers */
+        }
+    
+        .container-right {
+            width: 92%; /* Make containers take up almost the full width on mobile */
+            margin-left: 4%;
+        }
+    }
+    
+    .description {
+        margin-top: 0; /* Remove top margin */
+        margin-bottom: 0; /* Remove bottom margin */
+    }
+    
+    .box {
+        border: 2px solid #000;  /* Adds a solid black border */
+        padding: 20px;            /* Adds space inside the box */
+        background-color: #f9f9f9; /* Light grey background color */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adds shadow around the box */
+        border-radius: 8px;      /* Rounds the corners */
+        margin: 20px auto;       /* Centers the box on the page */
+    }
+</style>

@@ -20,8 +20,8 @@ theme = "hugo-serif-theme"
 
 [params.logo]
 	mobile = "images/mgmt_logo_default_symbol.svg"	# TODO: do we need to optimize here?
-	standard  = "images/mgmt_logo_default_symbol.svg"
-	#standard  = "images/mgmt_logo_default_wide.svg"
+	standard = "images/mgmt_logo_default_symbol.svg"
+	#standard = "images/mgmt_logo_default_wide.svg"
 	alt = "Mgmt Config - Fast, Real-time, Closed-Loop Automation."
 
 [params.homepage_meta_tags]

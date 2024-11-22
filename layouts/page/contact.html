@@ -24,7 +24,7 @@
   width: 100%;
 }
 </style>
-<form id="contact-form" class="post-new-comment" method="POST" action="https://formspree.io/mgmtconfig-com@mgmtconfig.com">
+<form id="contact-form" class="post-new-comment" method="POST" action="https://formspree.io/f/mgmtconfig-com@mgmtconfig.com">
 	<input type="hidden" name="_next" value="{{ .Permalink }}" />
 	<input type="hidden" name="_subject" value="Email from {{ .Site.BaseURL }}" />
 	<input type="hidden" name="_format" value="plain" />
@@ -62,7 +62,10 @@
 <script src="/js/jquery-1.11.3.min.js"></script>
 
 <!-- from: https://keybase.io/kbpgp_public/releases/kbpgp-2.0.8-signed-release.zip -->
-<script src="/js/kbpgp/kbpgp-2.0.8-min.js"></script>
+<!-- from: https://github.com/keybase/kbpgp/blob/master/rel/kbpgp-2.1.0-min.js -->
+<!--<script src="/js/kbpgp/kbpgp-2.1.0-min.js"></script>-->
+<!--<script src="/js/kbpgp/kbpgp-2.1.0.js"></script>-->
+<script src="/js/kbpgp/kbpgp-2.1.0-modified.js"></script>
 <!-- from: https://raw.githubusercontent.com/caolan/async/master/dist/async.min.js -->
 <script src="/js/async.min.js"></script>
 <script>
@@ -76,6 +79,7 @@ $('#contact-button').click(function() {
 		function(err, user) {
 			if (err) {
 				console.log("could not load public key, message not sent");
+				console.log("error: ", err);
 				window.alert("could not load public key, message not sent");
 				return
 			}

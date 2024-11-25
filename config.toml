@@ -40,12 +40,12 @@ theme = "hugo-serif-theme"
 	# Main Menu
 	[[menu.main]]
 		name = "Services"
-		url = "/services/"
+		pageRef = "/services/"
 		weight = 1
 
 	[[menu.main]]
 		name = "Docs"
-		url = "/docs/"
+		pageRef = "/docs/"
 		weight = 1
 
 	#[[menu.main]]

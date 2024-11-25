@@ -1,0 +1,11 @@
+{{/* This overrides the theme file in themes/layouts/partials/main-menu.html */}}
+<div id="main-menu" class="main-menu">
+	<ul>
+		{{- $currentPage := . }}
+		{{- range .Site.Menus.main }}
+		<li class="menu-item-{{ .Name | lower }}{{ if or ($currentPage.IsMenuCurrent "main" . ) ($currentPage.HasMenuCurrent "main" . ) }} active{{ end }}">
+			<a href="{{.URL}}">{{ .Pre }}<span>{{ .Name }}</span></a>
+		</li>
+		{{end}}
+	</ul>
+</div>

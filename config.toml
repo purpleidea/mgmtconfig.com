@@ -48,6 +48,18 @@ theme = "hugo-serif-theme"
 		pageRef = "/docs/"
 		weight = 1
 
+	[[menu.main]]
+		name = "Resources"
+		pageRef = "/docs/resources/"
+		parent = "Docs"
+		weight = 2
+
+	[[menu.main]]
+		name = "Functions"
+		pageRef = "/docs/functions/"
+		parent = "Docs"
+		weight = 2
+
 	#[[menu.main]]
 	#	name = "Team"
 	#	url = "/team/"

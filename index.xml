@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on Mgmt Config</title>
+    <link>https://mgmtconfig.com/</link>
+    <description>Recent content in Home on Mgmt Config</description>
+    <generator>Hugo</generator>
+    <language>en-ca</language>
+    <atom:link href="https://mgmtconfig.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Real-time modelling</title>
+      <link>https://mgmtconfig.com/features/real-time/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/features/real-time/</guid>
+      <description>???&#xA;Mgmt runs in real-time, by using our clever domain specific language called mcl. Mcl efficiently compiles once, and then runs continuously, only making changes when it detects that a state change has occured.</description>
+    </item>
+    <item>
+      <title>Supported Installs</title>
+      <link>https://mgmtconfig.com/services/supported-installs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/services/supported-installs/</guid>
+      <description>It&amp;rsquo;s always nice to have someone to call when you&amp;rsquo;re running Mgmt in production. We offer tailored support packages to meet your needs and SLA. Support packages can provide:&#xA;Fast access to technical support Security and bug fixes Debugging help Fast access to technical support Connect with one of our technical support representatives to help get your issue solved as quickly as possible.&#xA;Security and bug fixes If any security or bug fixes are required, you&amp;rsquo;ll get notified with a special build for you to deploy safely in your environment.</description>
+    </item>
+    <item>
+      <title>Consulting</title>
+      <link>https://mgmtconfig.com/services/consulting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/services/consulting/</guid>
+      <description>Hire a specialized Mgmt consultant to work with you on-site. Our consultants can:&#xA;Help you understand the best way to use Mgmt Write modules specific to your company Send patches upstream to get a special feature merged And more&amp;hellip;&#xA;Please contact us for specifics and to book a consultant today! </description>
+    </item>
+    <item>
+      <title>Fast</title>
+      <link>https://mgmtconfig.com/features/fast/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/features/fast/</guid>
+      <description>Mgmt is so incredibly fast, because it&amp;rsquo;s well-written in Golang and algorithmically more clever than traditional tools.&#xA;Written in Golang for speed! XXX Faster than python, ruby, etc&#xA;Algorithmically clever XXX Tracks state etc</description>
+    </item>
+    <item>
+      <title>James Shubin</title>
+      <link>https://mgmtconfig.com/team/james-shubin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/team/james-shubin/</guid>
+      <description>James is cool.</description>
+    </item>
+    <item>
+      <title>Event-driven</title>
+      <link>https://mgmtconfig.com/features/event-driven/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/features/event-driven/</guid>
+      <description>XXX</description>
+    </item>
+    <item>
+      <title>Training</title>
+      <link>https://mgmtconfig.com/services/training/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/services/training/</guid>
+      <description>We&amp;rsquo;ll train your team to use new tools that will make your business more efficient and fun for your developers and sysadmins!&#xA;Advantages Training environments are hands-on Training happens in your offices or at a nearby convenient location Trainers are experienced sysadmins and developers who can inspire you Please contact us for specifics and to book a trainer today! </description>
+    </item>
+    <item>
+      <title>Bespoke Code</title>
+      <link>https://mgmtconfig.com/services/bespoke-code/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/services/bespoke-code/</guid>
+      <description>We can build custom modules, resources and functions for either your in-house needs or for your consumer facing product. Make it a pleasure for your own team to automate, and get customers up and running with your product in seconds.&#xA;Custom Modules Custom modules are ideal for building a set of intelligent functionality and automation that glues together the operation of one of more services. They are written in our mcl language.</description>
+    </item>
+    <item>
+      <title>Reactive</title>
+      <link>https://mgmtconfig.com/features/reactive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/features/reactive/</guid>
+      <description>Mgmt&amp;rsquo;s resources efficiently monitor their desired state, to ensure you&amp;rsquo;re constantly converged, and so that we can avoid unnecessary, resource-wasting polling.</description>
+    </item>
+    <item>
+      <title>Distributed</title>
+      <link>https://mgmtconfig.com/features/distributed-system/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/features/distributed-system/</guid>
+      <description>Mgmt can run as a distributed system, so there&amp;rsquo;s no single-point-of-failure, and you can avoid the hassle of managing a central automation server.</description>
+    </item>
+    <item>
+      <title>Contact</title>
+      <link>https://mgmtconfig.com/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/contact/</guid>
+      <description>Please contact us by email, or by using the form below!</description>
+    </item>
+    <item>
+      <title>Functions</title>
+      <link>https://mgmtconfig.com/docs/functions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/docs/functions/</guid>
+      <description>This is the standard library of functions available to mgmt users when writing mcl.</description>
+    </item>
+    <item>
+      <title>Resources</title>
+      <link>https://mgmtconfig.com/docs/resources/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/docs/resources/</guid>
+      <description>This is the standard library of resources available to mgmt users when writing mcl.</description>
+    </item>
+  </channel>
+</rss>

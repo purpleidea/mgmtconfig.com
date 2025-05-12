@@ -1,4 +1,15 @@
 {{/* This overrides the theme file in themes/layouts/partials/main-menu.html */}}
+<style>
+li.active {
+	border-radius: 3px;
+	color: #ffffff;
+	background-color: {{ .Site.Params.colors.primary }};
+	font-weight: bold;
+}
+li.active span {
+	color: #ffffff;
+}
+</style>
 <div id="main-menu" class="main-menu">
 	<ul>
 		{{- $currentPage := . }}

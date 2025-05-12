@@ -18,11 +18,46 @@ theme = "hugo-serif-theme"
 
 	publickeyfile = "static/james@shubin.ca.asc"
 
+	# I added these for now
+	footer_background_colour = "#2f2f41"
+	subfooter_text_colour = "#8484a2"
+	subfooter_background_colour = "#1a1a23"
+
+[params.footer]
+	#copyright_text = 'Copyright <a class="zerostatic" href="https://purpleidea.com/">https://purpleidea.com/</a>'
+
+[params.fonts]
+	# sets the google font link in layouts/partials/google-fonts.html
+	#google_fonts = 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Source+Sans+Pro:wght@400;700&display=swap'
+	#heading = "Playfair Display"
+	#heading = "Noto Serif"
+	#base = "Source Sans Pro"
+	heading = "DM Serif Display"
+	base = "Nimbus Sans"
+
+[params.colors]
+	#primary = "#2f2f41"
+	primary = "#106be0"
+
+	black = "#000000"
+	white = "#ffffff"
+	#white_offset = "#106be0"
+	white_offset = "#f4f5fb"
+	grey = "#605e5e"
+
+
 [params.logo]
 	mobile = "images/mgmt_logo_default_symbol.svg"	# TODO: do we need to optimize here?
-	standard = "images/mgmt_logo_default_symbol.svg"
-	#standard = "images/mgmt_logo_default_wide.svg"
+	mobile_height = "50px"
+	desktop = "images/mgmt_logo_default_symbol.svg"
+	desktop_height = "107px"
+	#desktop = "images/mgmt_logo_default_wide.svg"
 	alt = "Mgmt Config - Fast, Real-time, Closed-Loop Automation."
+
+[params.homepage]
+	sticky_header = false
+	show_contact_box = true      # show / hide the contaxt box on the homepage
+	show_services_button = true # show / hide the "view all services" button
 
 [params.homepage_meta_tags]
 	meta_description = "Mgmt Config - Fast, Real-time, Closed-Loop Automation."

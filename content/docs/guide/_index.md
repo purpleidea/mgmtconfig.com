@@ -2,8 +2,8 @@
 title: "User Guide"
 ---
 
-Table of Contents
+## Table of Contents
 
-* [Getting Started](getting-started/)
+* ### [Getting Started](getting-started/)
 
-* [Design and Theory](design-and-theory/)
+* ### [Design and Theory](design-and-theory/)

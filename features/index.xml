@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Features on Mgmt Config</title>
+    <link>https://mgmtconfig.com/features/</link>
+    <description>Recent content in Features on Mgmt Config</description>
+    <generator>Hugo</generator>
+    <language>en-ca</language>
+    <atom:link href="https://mgmtconfig.com/features/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Real-time modelling</title>
+      <link>https://mgmtconfig.com/features/real-time/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/features/real-time/</guid>
+      <description>Mgmt runs in real-time, by using our clever domain specific language called mcl. The mcl language efficiently compiles once, and then runs continuously, only making changes when it detects that a state change has occured.</description>
+    </item>
+    <item>
+      <title>Fast</title>
+      <link>https://mgmtconfig.com/features/fast/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/features/fast/</guid>
+      <description>Mgmt is so incredibly fast, because it&amp;rsquo;s well-written in golang and algorithmically more clever than traditional tools.&#xA;Written in golang for speed! Faster runtime than python, ruby, and other interpreted languages.&#xA;Algorithmically clever We track state to avoid ever needing to re-check the resource graph until an event suggest that we need to!</description>
+    </item>
+    <item>
+      <title>Event-driven</title>
+      <link>https://mgmtconfig.com/features/event-driven/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/features/event-driven/</guid>
+      <description>Our resources and functions are all event-driven. The efficiently compute and re-compute only when necessary, while also giving users the opportunity to model the changing of time succinctly.</description>
+    </item>
+    <item>
+      <title>Reactive</title>
+      <link>https://mgmtconfig.com/features/reactive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/features/reactive/</guid>
+      <description>Mgmt&amp;rsquo;s resources efficiently monitor their desired state, to ensure you&amp;rsquo;re constantly converged, and so that we can avoid unnecessary, resource-wasting polling.</description>
+    </item>
+    <item>
+      <title>Distributed</title>
+      <link>https://mgmtconfig.com/features/distributed-system/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/features/distributed-system/</guid>
+      <description>Mgmt can run as a distributed system, so there&amp;rsquo;s no single-point-of-failure, and you can avoid the hassle of managing a central automation server.</description>
+    </item>
+  </channel>
+</rss>

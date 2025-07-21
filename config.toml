@@ -56,7 +56,7 @@ theme = "hugo-serif-theme"
 
 [params.homepage]
 	sticky_header = false
-	show_contact_box = true      # show / hide the contaxt box on the homepage
+	show_contact_box = true      # show / hide the contact box on the homepage
 	show_services_button = true # show / hide the "view all services" button
 
 [params.homepage_meta_tags]

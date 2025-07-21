@@ -47,11 +47,11 @@ theme = "hugo-serif-theme"
 
 
 [params.logo]
-	mobile = "images/mgmt_logo_default_symbol.svg"	# TODO: do we need to optimize here?
+	mobile = "images/logo_default_symbol.svg"	# TODO: do we need to optimize here?
 	mobile_height = "50px"
-	desktop = "images/mgmt_logo_default_symbol.svg"
+	desktop = "images/logo_default_symbol.svg"
 	desktop_height = "107px"
-	#desktop = "images/mgmt_logo_default_wide.svg"
+	#desktop = "images/logo_default_wide.svg"
 	alt = "Mgmt Config - Fast, Real-time, Closed-Loop Automation."
 
 [params.homepage]

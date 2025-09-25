@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Design and Theory - Mgmt Config</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="/">
+
+  
+
+
+  
+  
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.min.dc9a4fe1a2bfff142f2063aea53eaadd9da318cfa397e552bacd03d177ca6855.css">
+
+  
+
+  
+    
+    <meta property="og:title" content="Design and Theory"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://mgmtconfig.com/docs/guide/design-and-theory/"/>
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    
+    
+  
+
+</head>
+
+<body class='page page-default-single'>
+  <div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    
+    
+    <li class="menu-item-products ">
+      <a href="https://m9rx.com/products/">
+        <span>Products</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-services ">
+      <a href="https://m9rx.com/services/">
+        <span>Services</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-docs active">
+      <a href="/docs/">
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-about ">
+      <a href="/about/">
+        <span>About</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-contact ">
+      <a href="/contact/">
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+  <div class="wrapper">
+    
+<div class='header' >
+
+  <div class="container">
+    <div class="logo">
+      <a href="/"><img height=107px alt="Mgmt Config - Fast, Real-time, Closed-Loop Automation." src="/images/logo_default_symbol.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="/"><img height=50px alt="Mgmt Config - Fast, Real-time, Closed-Loop Automation." src="/images/logo_default_symbol.svg" /></a>
+    </div>
+    
+<style>
+li.active {
+	border-radius: 3px;
+	color: #ffffff;
+	background-color: #106be0;
+	font-weight: bold;
+}
+li.active span {
+	color: #ffffff;
+}
+</style>
+<div id="main-menu" class="main-menu">
+	<ul>
+		<li class="menu-item-products">
+			<a href="https://m9rx.com/products/"><span>Products</span></a>
+		</li>
+		
+		<li class="menu-item-services">
+			<a href="https://m9rx.com/services/"><span>Services</span></a>
+		</li>
+		
+		<li class="menu-item-docs active">
+			<a href="/docs/"><span>Docs</span></a>
+		</li>
+		
+		<li class="menu-item-about">
+			<a href="/about/"><span>About</span></a>
+		</li>
+		
+		<li class="menu-item-contact">
+			<a href="/contact/"><span>Contact</span></a>
+		</li>
+		
+	</ul>
+</div>
+
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button" aria-label="Mobile Menu">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+
+    
+<div class="container pb-6 pt-6 pt-md-14 pb-md-14">
+  <div class="row justify-content-start">
+    <div class="col-12 col-md-8">
+      <h1 class="title">Design and Theory</h1>
+
+      <div class="content"><h2 id="core-components">Core components</h2>
+<p>Primarily, <code>mgmt</code> consists of two main parts: the <code>engine</code> and the <code>language</code>.
+The engine runs a <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">graph</a>
+of <a href="https://mgmtconfig.com/docs/resources/">resources</a>. This declarative graph
+is lets the user describe the desired state of the system that they wish to
+build.</p>
+<p>The language sits on top of the engine (and as part of the same code base and
+binary) which can be used to generate the <code>resource graph</code>. The language itself
+forms a <code>function graph</code> which describes the execution data flow of the values
+in the language.</p>
+<p>The output of the running language <code>function graph</code> is a stream of
+<code>resource graphs</code>. <code>Mgmt</code> is very efficient at switching from one resource graph
+to the next.</p>
+<h2 id="whats-unique-about-the-engine">What&rsquo;s unique about the engine?</h2>
+<h3 id="parallel-graph-execution">Parallel graph execution:</h3>
+<p>Resources run simultaneously instead of waiting for non-dependent resources. The
+programs you build are much more akin to real &ldquo;software&rdquo;, rather than
+&ldquo;application of configuration&rdquo;.</p>
+<h3 id="event-driven-execution">Event-driven execution:</h3>
+<p>In addition to being able to check state and apply changes to a running system,
+<code>mgmt</code> has an event mechanism to watch (without polling) for changes per
+resource. This leverages inotify, dbus, and other types of user and kernel space
+events to detect drift, and avoid the need for the redundant, constant
+re-checking that is the norm with the currently available legacy tooling.</p>
+<h3 id="distributed-topology">Distributed topology:</h3>
+<p>The <code>mgmt</code> tool differs significantly from traditional client-server or
+orchestrator topologies. We instead, built it to work as a more general
+distributed system, which offers many compelling benefits.</p>
+<p>The most common implementation is one in which you first run an <code>etcd</code> cluster,
+and then run an <code>mgmt</code> agent on each machine which you&rsquo;d like to manage
+resources from. Each agent connects to one or more of the <code>etcd</code> peers.</p>
+<p>There are also facilties available for running <code>mgmt</code> in an agentless mode, over
+<code>SSH</code>, and even in standalone mode. No central control server is ever used for
+coordinating operations. This does not mean that you can&rsquo;t model centralized
+control over your desired states.</p>
+<h2 id="whats-unique-about-the-language">What&rsquo;s unique about the language?</h2>
+<h3 id="safe">Safe:</h3>
+<p>The language (<a href="https://en.wikipedia.org/wiki/Domain-specific_language">DSL</a>) is
+designed to be incredibly safe. This is because you don&rsquo;t want something like an
+off-by-one error in an imperative language to destroy an entire data centre.</p>
+<p>To that end, the language is <code>immutable</code>, <code>strongly typed</code>, and <code>functional</code>.</p>
+<p>The language itself is implemented in the memory-safe language <code>golang</code>.</p>
+<h3 id="powerful">Powerful:</h3>
+<p>Traditionally, DSL&rsquo;s lack power. This makes it difficult to build complex
+systems simply. Our DSL is quite powerful because it is <code>reactive</code>, and has
+special primitives for features such as <code>exported resources</code>, <code>send-&gt;recv</code>, and
+more!</p>
+<h3 id="easy-to-reason-about">Easy to reason about:</h3>
+<p>Understanding your code, particularly when you&rsquo;re building distributed systems,
+is an important goal for a successful language. As a result, we&rsquo;ve built a
+domain-specific-language, which can compress a large amount of functionality
+into a small number of lines of code. It&rsquo;s very easy to express logic for state
+machines and complex distributed systems.</p>
+</div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <div class="footer" style="background: #2f2f41;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-inner">
+          
+          <img style="height: 2em;" src="/images/logo_reversed_wide.svg" class="footer-title" />
+          <ul>
+            
+            
+            <li class="menu-item-home">
+              <a href="/">
+                Home
+              </a>
+            </li>
+            
+            <li class="menu-item-contact">
+              <a href="/contact/">
+                Contact
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="sub-footer" style="background: #1a1a23;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          <ul style="list-style-type: none;">
+
+            <li><strong>Email: </strong><a style="color: #8484a2;" href="mailto:contact@mgmtconfig.com">
+                contact@mgmtconfig.com</a></li>
+          </ul>
+	  <a style="color: #8484a2;" class="zerostatic" href="https://mgmtconfig.com/">mgmtconfig.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  
+  
+
+  
+    
+  
+  <script type="text/javascript" src="/js/scripts.min.433bb64e87f8e5d8e9530181ae5ab6f8b35109ed174269388dc30e101ef4182a.js"></script>
+
+  
+
+
+  
+
+
+</body>
+
+</html>

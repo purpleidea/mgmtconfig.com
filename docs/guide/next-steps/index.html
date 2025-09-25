@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Next Steps - Mgmt Config</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="/">
+
+  
+
+
+  
+  
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.min.dc9a4fe1a2bfff142f2063aea53eaadd9da318cfa397e552bacd03d177ca6855.css">
+
+  
+
+  
+    
+    <meta property="og:title" content="Next Steps"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://mgmtconfig.com/docs/guide/next-steps/"/>
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    
+    
+  
+
+</head>
+
+<body class='page page-default-single'>
+  <div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    
+    
+    <li class="menu-item-products ">
+      <a href="https://m9rx.com/products/">
+        <span>Products</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-services ">
+      <a href="https://m9rx.com/services/">
+        <span>Services</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-docs active">
+      <a href="/docs/">
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-about ">
+      <a href="/about/">
+        <span>About</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-contact ">
+      <a href="/contact/">
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+  <div class="wrapper">
+    
+<div class='header' >
+
+  <div class="container">
+    <div class="logo">
+      <a href="/"><img height=107px alt="Mgmt Config - Fast, Real-time, Closed-Loop Automation." src="/images/logo_default_symbol.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="/"><img height=50px alt="Mgmt Config - Fast, Real-time, Closed-Loop Automation." src="/images/logo_default_symbol.svg" /></a>
+    </div>
+    
+<style>
+li.active {
+	border-radius: 3px;
+	color: #ffffff;
+	background-color: #106be0;
+	font-weight: bold;
+}
+li.active span {
+	color: #ffffff;
+}
+</style>
+<div id="main-menu" class="main-menu">
+	<ul>
+		<li class="menu-item-products">
+			<a href="https://m9rx.com/products/"><span>Products</span></a>
+		</li>
+		
+		<li class="menu-item-services">
+			<a href="https://m9rx.com/services/"><span>Services</span></a>
+		</li>
+		
+		<li class="menu-item-docs active">
+			<a href="/docs/"><span>Docs</span></a>
+		</li>
+		
+		<li class="menu-item-about">
+			<a href="/about/"><span>About</span></a>
+		</li>
+		
+		<li class="menu-item-contact">
+			<a href="/contact/"><span>Contact</span></a>
+		</li>
+		
+	</ul>
+</div>
+
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button" aria-label="Mobile Menu">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+
+    
+<div class="container pb-6 pt-6 pt-md-14 pb-md-14">
+  <div class="row justify-content-start">
+    <div class="col-12 col-md-8">
+      <h1 class="title">Next Steps</h1>
+
+      <div class="content"><h1 id="medium-example">Medium Example</h1>
+<p>Let&rsquo;s next write something less abstract, and more concretely useful.</p>
+<h2 id="more-resources-and-functions">More resources and functions:</h2>
+<p>Here we&rsquo;ll introduce the <code>pkg</code> resource which manages the installation of system
+packages (think <code>.rpm</code> and <code>.deb</code> via your package manager) and the <code>svc</code>
+resource which starts and stops <code>systemd</code> services. We&rsquo;ll also see a templating
+function in the <code>golang</code> package, which runs the standard <code>golang</code> templating
+engine for us to produce a string. This function makes use of the built-in magic
+<code>$hostname</code> variable, which should generally be a unique property of every
+running <code>mgmt</code> instance in your cluster. Finally we see <code>Depend</code> and <code>Before</code>
+relationships between resources. These &ldquo;edges&rdquo; let you specify the order in
+which the <code>mgmt</code> engine will change the desired state. By default, every
+resource will run in parallel with each other, which may cause errors if that
+sequence is not logical.</p>
+<h3 id="example">Example:</h3>
+<p>Put the following into a <code>nginx0.mcl</code> file:</p>
+<pre tabindex="0"><code>import &#34;golang&#34;
+
+pkg &#34;nginx&#34; {
+	state =&gt; &#34;installed&#34;,
+}
+
+file &#34;/usr/share/nginx/html/index.html&#34; {
+	content =&gt; golang.template(&#34;This is nginx on {{ . }} managed by mgmt!\n&#34;, $hostname),
+	state =&gt; &#34;exists&#34;,
+
+	Depend =&gt; Pkg[&#34;nginx&#34;],
+	Before =&gt; Svc[&#34;nginx&#34;],
+}
+
+file &#34;/etc/nginx/nginx.conf&#34; {
+	content =&gt; &#34;# this is nginx.conf
+events {}
+
+http {
+	server {
+		listen 80;
+		location / {
+			root /usr/share/nginx/html;
+			index index.html;
+		}
+	}
+}\n&#34;,
+	state =&gt; &#34;exists&#34;,
+
+	Depend =&gt; Pkg[&#34;nginx&#34;],
+}
+
+svc &#34;nginx&#34; {
+	state =&gt; &#34;running&#34;,
+	startup =&gt; &#34;enabled&#34;,
+
+	Depend =&gt; File[&#34;/etc/nginx/nginx.conf&#34;],
+}
+</code></pre><p>Run: <code>sudo mgmt run --tmp-prefix lang nginx0.mcl</code> to try out this medium
+example! You&rsquo;ll need root permissions since most systems require special
+permissions to install packages, edit files in <code>/etc/</code> and to start system
+services. Amidst the output generated by the engine, you should see some lines
+that resemble:</p>
+<pre tabindex="0"><code>19:48:06 engine: pkg[nginx]: Check: pkg[nginx]
+19:48:06 engine: pkg[nginx]: Apply: pkg[nginx]
+19:48:06 engine: pkg[nginx]: Set(installed): pkg[nginx]...
+19:48:14 engine: pkg[nginx]: Set(installed) success: pkg[nginx]
+19:48:14 engine: file[/etc/nginx/nginx.conf]: copy 141 bytes
+19:48:14 engine: file[/usr/share/nginx/html/index.html]: copy 40 bytes
+19:48:15 engine: svc[nginx]: event: started
+</code></pre><p>These lines represent the installation of the package, the setup of the two
+files, and finally the starting of the service. You may need to edit the above
+example slightly if your GNU+Linux distribution packages the <code>nginx</code> software
+differently.</p>
+<p>You can now browse to <a href="http://localhost:80">http://localhost:80</a> to see the test
+page!</p>
+<h3 id="more-details">More details:</h3>
+<p>You have just specified the <code>state</code> parameter inside the <code>pkg</code> resource to
+declare that you want the package to be installed. If you instead specified the
+&ldquo;newest&rdquo; value, then it would ensure the package is at the latest available
+version. You can also specify the precise version string that you want, or even
+&ldquo;uninstalled&rdquo;. For the <code>svc</code> resource, you declared that you want the unit to be
+in the &ldquo;running&rdquo; <code>state</code>. Within the same resource, you also specified the
+<code>startup</code> field to be &ldquo;enable&rdquo;, so that the will run automatically via <code>systemd</code>
+when the machine turns on.</p>
+<p>Note that the <code>Depend</code> and <code>Before</code> fields are capitalized. Regular resource
+parameters are not capitalized, but these are special keywords that can be used
+with any resource. You can list any number of them per resource. They refer to a
+unique resource <code>kind</code> and <code>name</code> as shown. If the reference is not available,
+or if they form a loop, then the engine will error.</p>
+<p>You&rsquo;ll note that it&rsquo;s a bit messy to include the contents of the <code>nginx.conf</code>
+file inline. Stay tuned, you&rsquo;ll soon learn how to pull in data from other files.</p>
+<p>Congratulations on writing some more <code>mcl</code> code!</p>
+</div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <div class="footer" style="background: #2f2f41;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-inner">
+          
+          <img style="height: 2em;" src="/images/logo_reversed_wide.svg" class="footer-title" />
+          <ul>
+            
+            
+            <li class="menu-item-home">
+              <a href="/">
+                Home
+              </a>
+            </li>
+            
+            <li class="menu-item-contact">
+              <a href="/contact/">
+                Contact
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="sub-footer" style="background: #1a1a23;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          <ul style="list-style-type: none;">
+
+            <li><strong>Email: </strong><a style="color: #8484a2;" href="mailto:contact@mgmtconfig.com">
+                contact@mgmtconfig.com</a></li>
+          </ul>
+	  <a style="color: #8484a2;" class="zerostatic" href="https://mgmtconfig.com/">mgmtconfig.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  
+  
+
+  
+    
+  
+  <script type="text/javascript" src="/js/scripts.min.433bb64e87f8e5d8e9530181ae5ab6f8b35109ed174269388dc30e101ef4182a.js"></script>
+
+  
+
+
+  
+
+
+</body>
+
+</html>

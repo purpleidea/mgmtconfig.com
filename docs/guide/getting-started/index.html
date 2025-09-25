@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Getting Started - Mgmt Config</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="/">
+
+  
+
+
+  
+  
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.min.dc9a4fe1a2bfff142f2063aea53eaadd9da318cfa397e552bacd03d177ca6855.css">
+
+  
+
+  
+    
+    <meta property="og:title" content="Getting Started"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://mgmtconfig.com/docs/guide/getting-started/"/>
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    
+    
+  
+
+</head>
+
+<body class='page page-default-single'>
+  <div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    
+    
+    <li class="menu-item-products ">
+      <a href="https://m9rx.com/products/">
+        <span>Products</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-services ">
+      <a href="https://m9rx.com/services/">
+        <span>Services</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-docs active">
+      <a href="/docs/">
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-about ">
+      <a href="/about/">
+        <span>About</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-contact ">
+      <a href="/contact/">
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+  <div class="wrapper">
+    
+<div class='header' >
+
+  <div class="container">
+    <div class="logo">
+      <a href="/"><img height=107px alt="Mgmt Config - Fast, Real-time, Closed-Loop Automation." src="/images/logo_default_symbol.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="/"><img height=50px alt="Mgmt Config - Fast, Real-time, Closed-Loop Automation." src="/images/logo_default_symbol.svg" /></a>
+    </div>
+    
+<style>
+li.active {
+	border-radius: 3px;
+	color: #ffffff;
+	background-color: #106be0;
+	font-weight: bold;
+}
+li.active span {
+	color: #ffffff;
+}
+</style>
+<div id="main-menu" class="main-menu">
+	<ul>
+		<li class="menu-item-products">
+			<a href="https://m9rx.com/products/"><span>Products</span></a>
+		</li>
+		
+		<li class="menu-item-services">
+			<a href="https://m9rx.com/services/"><span>Services</span></a>
+		</li>
+		
+		<li class="menu-item-docs active">
+			<a href="/docs/"><span>Docs</span></a>
+		</li>
+		
+		<li class="menu-item-about">
+			<a href="/about/"><span>About</span></a>
+		</li>
+		
+		<li class="menu-item-contact">
+			<a href="/contact/"><span>Contact</span></a>
+		</li>
+		
+	</ul>
+</div>
+
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button" aria-label="Mobile Menu">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+
+    
+<div class="container pb-6 pt-6 pt-md-14 pb-md-14">
+  <div class="row justify-content-start">
+    <div class="col-12 col-md-8">
+      <h1 class="title">Getting Started</h1>
+
+      <div class="content"><h1 id="download-and-installation">Download and installation</h1>
+<ul>
+<li>Download the latest version from: <a href="https://github.com/purpleidea/mgmt/releases/">https://github.com/purpleidea/mgmt/releases/</a></li>
+<li>Installation requires a modern x86_64 (amd64) Linux distro. Aarch64 (arm64) is available but unsupported at this time.</li>
+<li>After downloading the binary, give it executable permissions (<code>chmod +x</code>) and either run it from there or move it to a directory contained in your $PATH and execute as with any other software.</li>
+</ul>
+<h1 id="running-mgmt">Running <code>mgmt</code></h1>
+<p>Put the following into a <code>hello0.mcl</code> file:</p>
+<pre tabindex="0"><code>file &#34;/tmp/mgmt-hello-world&#34; {
+	content =&gt; &#34;hello world from @purpleidea\n&#34;,
+	state =&gt; $const.res.file.state.exists,
+}
+</code></pre><p>Run: <code>mgmt run --tmp-prefix lang hello0.mcl</code> to try out this simple example!</p>
+<h1 id="playing-with-mgmt">Playing with <code>mgmt</code></h1>
+<p>While <code>mgmt</code> is running, you can test out one of its cool side effects: Run
+<code>rm /tmp/mgmt-hello-world</code> in a second terminal, and watch the file come back!
+You can type <code>^C</code> to shutdown <code>mgmt</code>.</p>
+</div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <div class="footer" style="background: #2f2f41;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-inner">
+          
+          <img style="height: 2em;" src="/images/logo_reversed_wide.svg" class="footer-title" />
+          <ul>
+            
+            
+            <li class="menu-item-home">
+              <a href="/">
+                Home
+              </a>
+            </li>
+            
+            <li class="menu-item-contact">
+              <a href="/contact/">
+                Contact
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="sub-footer" style="background: #1a1a23;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          <ul style="list-style-type: none;">
+
+            <li><strong>Email: </strong><a style="color: #8484a2;" href="mailto:contact@mgmtconfig.com">
+                contact@mgmtconfig.com</a></li>
+          </ul>
+	  <a style="color: #8484a2;" class="zerostatic" href="https://mgmtconfig.com/">mgmtconfig.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  
+  
+
+  
+    
+  
+  <script type="text/javascript" src="/js/scripts.min.433bb64e87f8e5d8e9530181ae5ab6f8b35109ed174269388dc30e101ef4182a.js"></script>
+
+  
+
+
+  
+
+
+</body>
+
+</html>

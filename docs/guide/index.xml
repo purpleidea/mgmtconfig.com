@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>User Guide on Mgmt Config</title>
+    <link>https://mgmtconfig.com/docs/guide/</link>
+    <description>Recent content in User Guide on Mgmt Config</description>
+    <generator>Hugo</generator>
+    <language>en-ca</language>
+    <atom:link href="https://mgmtconfig.com/docs/guide/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Classes</title>
+      <link>https://mgmtconfig.com/docs/guide/classes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/docs/guide/classes/</guid>
+      <description>Coming Soon&amp;hellip; </description>
+    </item>
+    <item>
+      <title>Design and Theory</title>
+      <link>https://mgmtconfig.com/docs/guide/design-and-theory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/docs/guide/design-and-theory/</guid>
+      <description>Core components Primarily, mgmt consists of two main parts: the engine and the language. The engine runs a graph of resources. This declarative graph is lets the user describe the desired state of the system that they wish to build.&#xA;The language sits on top of the engine (and as part of the same code base and binary) which can be used to generate the resource graph. The language itself forms a function graph which describes the execution data flow of the values in the language.</description>
+    </item>
+    <item>
+      <title>First Steps</title>
+      <link>https://mgmtconfig.com/docs/guide/first-steps/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/docs/guide/first-steps/</guid>
+      <description>Simple Example Let&amp;rsquo;s begin by writing and running some mcl, mgmt&amp;rsquo;s unique language, to witness the software in action and to learn the key concepts behind it.&#xA;Resources: A resource is an element which makes changes to the world. It can modify the local system or remote network resources. Instead of working imperatively the way many common programming languages do, it lets you express the &amp;ldquo;desired state&amp;rdquo; of what you&amp;rsquo;d like that world element to look like, and the resource works out internally what it needs to do to get you there.</description>
+    </item>
+    <item>
+      <title>Getting Started</title>
+      <link>https://mgmtconfig.com/docs/guide/getting-started/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/docs/guide/getting-started/</guid>
+      <description>Download and installation Download the latest version from: https://github.com/purpleidea/mgmt/releases/ Installation requires a modern x86_64 (amd64) Linux distro. Aarch64 (arm64) is available but unsupported at this time. After downloading the binary, give it executable permissions (chmod +x) and either run it from there or move it to a directory contained in your $PATH and execute as with any other software. Running mgmt Put the following into a hello0.mcl file:&#xA;file &amp;#34;/tmp/mgmt-hello-world&amp;#34; { content =&amp;gt; &amp;#34;hello world from @purpleidea\n&amp;#34;, state =&amp;gt; $const.</description>
+    </item>
+    <item>
+      <title>Language Features</title>
+      <link>https://mgmtconfig.com/docs/guide/language-features/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/docs/guide/language-features/</guid>
+      <description>At this point you should have a rough understanding of how the language works. Let&amp;rsquo;s dive into a few unique features which we should elaborate on.&#xA;Structure Every top-level mgmt program is a list of statements.&#xA;Statements The available statements are bind, func, res, edge, if, class, include, import, comment, for, forkv, collect, and panic. We&amp;rsquo;ll cover these in detail later. Most of these take one or more expressions, which produces a value.</description>
+    </item>
+    <item>
+      <title>Next Steps</title>
+      <link>https://mgmtconfig.com/docs/guide/next-steps/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/docs/guide/next-steps/</guid>
+      <description>Medium Example Let&amp;rsquo;s next write something less abstract, and more concretely useful.&#xA;More resources and functions: Here we&amp;rsquo;ll introduce the pkg resource which manages the installation of system packages (think .rpm and .deb via your package manager) and the svc resource which starts and stops systemd services. We&amp;rsquo;ll also see a templating function in the golang package, which runs the standard golang templating engine for us to produce a string. This function makes use of the built-in magic $hostname variable, which should generally be a unique property of every running mgmt instance in your cluster.</description>
+    </item>
+    <item>
+      <title>Values and Types</title>
+      <link>https://mgmtconfig.com/docs/guide/values-and-types/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mgmtconfig.com/docs/guide/values-and-types/</guid>
+      <description>All of the expressions in mgmt must have a specific, concrete type. These are determined at compile time. This is an important design principle of safe code. There is no nil, null, or undefined value. This helps prevent another billion dollar mistake.&#xA;The basic types are: bool, str, int, and float. The composite types are list, map and struct. Finally we also have a func type.&#xA;For example, a composite type, such as a list of strings ([]str), differs from a list of integers ([]int).</description>
+    </item>
+  </channel>
+</rss>

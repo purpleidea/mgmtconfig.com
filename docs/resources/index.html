@@ -1,0 +1,3149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Resources - Mgmt Config</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="/">
+
+  
+
+
+  
+  
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.min.dc9a4fe1a2bfff142f2063aea53eaadd9da318cfa397e552bacd03d177ca6855.css">
+
+  
+
+  
+    
+    <meta property="og:title" content="Resources"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://mgmtconfig.com/docs/resources/"/>
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    
+    
+  
+
+</head>
+
+<body class='page page-default-list'>
+  <div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    
+    
+    <li class="menu-item-products ">
+      <a href="https://m9rx.com/products/">
+        <span>Products</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-services ">
+      <a href="https://m9rx.com/services/">
+        <span>Services</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-docs active">
+      <a href="/docs/">
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-about ">
+      <a href="/about/">
+        <span>About</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-contact ">
+      <a href="/contact/">
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+  <div class="wrapper">
+    
+<div class='header' >
+
+  <div class="container">
+    <div class="logo">
+      <a href="/"><img height=107px alt="Mgmt Config - Fast, Real-time, Closed-Loop Automation." src="/images/logo_default_symbol.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="/"><img height=50px alt="Mgmt Config - Fast, Real-time, Closed-Loop Automation." src="/images/logo_default_symbol.svg" /></a>
+    </div>
+    
+<style>
+li.active {
+	border-radius: 3px;
+	color: #ffffff;
+	background-color: #106be0;
+	font-weight: bold;
+}
+li.active span {
+	color: #ffffff;
+}
+</style>
+<div id="main-menu" class="main-menu">
+	<ul>
+		<li class="menu-item-products">
+			<a href="https://m9rx.com/products/"><span>Products</span></a>
+		</li>
+		
+		<li class="menu-item-services">
+			<a href="https://m9rx.com/services/"><span>Services</span></a>
+		</li>
+		
+		<li class="menu-item-docs active">
+			<a href="/docs/"><span>Docs</span></a>
+		</li>
+		
+		<li class="menu-item-about">
+			<a href="/about/"><span>About</span></a>
+		</li>
+		
+		<li class="menu-item-contact">
+			<a href="/contact/"><span>Contact</span></a>
+		</li>
+		
+	</ul>
+</div>
+
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button" aria-label="Mobile Menu">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+
+    
+	<h1 class="header">Resources</h1>
+	<div class="flex-container">
+
+
+
+
+
+		
+		<div class="container-left">
+			<ul>
+
+				<li><a href="#augeas"> <span style="color: rgb(8, 8, 168);">augeas</span></a></li>
+
+				<li><a href="#awsec2"> <span style="color: rgb(8, 8, 168);">aws:ec2</span></a></li>
+
+				<li><a href="#bmcpower"> <span style="color: rgb(8, 8, 168);">bmc:power</span></a></li>
+
+				<li><a href="#configetcd"> <span style="color: rgb(8, 8, 168);">config:etcd</span></a></li>
+
+				<li><a href="#consulkv"> <span style="color: rgb(8, 8, 168);">consul:kv</span></a></li>
+
+				<li><a href="#cron"> <span style="color: rgb(8, 8, 168);">cron</span></a></li>
+
+				<li><a href="#deploytar"> <span style="color: rgb(8, 8, 168);">deploy:tar</span></a></li>
+
+				<li><a href="#dhcphost"> <span style="color: rgb(8, 8, 168);">dhcp:host</span></a></li>
+
+				<li><a href="#dhcprange"> <span style="color: rgb(8, 8, 168);">dhcp:range</span></a></li>
+
+				<li><a href="#dhcpserver"> <span style="color: rgb(8, 8, 168);">dhcp:server</span></a></li>
+
+				<li><a href="#dockercontainer"> <span style="color: rgb(8, 8, 168);">docker:container</span></a></li>
+
+				<li><a href="#dockerimage"> <span style="color: rgb(8, 8, 168);">docker:image</span></a></li>
+
+				<li><a href="#exec"> <span style="color: rgb(8, 8, 168);">exec</span></a></li>
+
+				<li><a href="#file"> <span style="color: rgb(8, 8, 168);">file</span></a></li>
+
+				<li><a href="#firewalld"> <span style="color: rgb(8, 8, 168);">firewalld</span></a></li>
+
+				<li><a href="#group"> <span style="color: rgb(8, 8, 168);">group</span></a></li>
+
+				<li><a href="#gzip"> <span style="color: rgb(8, 8, 168);">gzip</span></a></li>
+
+				<li><a href="#hetznervm"> <span style="color: rgb(8, 8, 168);">hetzner:vm</span></a></li>
+
+				<li><a href="#hostname"> <span style="color: rgb(8, 8, 168);">hostname</span></a></li>
+
+				<li><a href="#httpserver"> <span style="color: rgb(8, 8, 168);">http:server</span></a></li>
+
+				<li><a href="#httpserverfile"> <span style="color: rgb(8, 8, 168);">http:server:file</span></a></li>
+
+				<li><a href="#httpserverflag"> <span style="color: rgb(8, 8, 168);">http:server:flag</span></a></li>
+
+				<li><a href="#httpserverproxy"> <span style="color: rgb(8, 8, 168);">http:server:proxy</span></a></li>
+
+				<li><a href="#httpserverui"> <span style="color: rgb(8, 8, 168);">http:server:ui</span></a></li>
+
+				<li><a href="#httpserveruiinput"> <span style="color: rgb(8, 8, 168);">http:server:ui:input</span></a></li>
+
+				<li><a href="#kv"> <span style="color: rgb(8, 8, 168);">kv</span></a></li>
+
+				<li><a href="#line"> <span style="color: rgb(8, 8, 168);">line</span></a></li>
+
+				<li><a href="#mount"> <span style="color: rgb(8, 8, 168);">mount</span></a></li>
+
+				<li><a href="#msg"> <span style="color: rgb(8, 8, 168);">msg</span></a></li>
+
+				<li><a href="#net"> <span style="color: rgb(8, 8, 168);">net</span></a></li>
+
+				<li><a href="#noop"> <span style="color: rgb(8, 8, 168);">noop</span></a></li>
+
+				<li><a href="#nspawn"> <span style="color: rgb(8, 8, 168);">nspawn</span></a></li>
+
+				<li><a href="#password"> <span style="color: rgb(8, 8, 168);">password</span></a></li>
+
+				<li><a href="#pippet"> <span style="color: rgb(8, 8, 168);">pippet</span></a></li>
+
+				<li><a href="#pkg"> <span style="color: rgb(8, 8, 168);">pkg</span></a></li>
+
+				<li><a href="#print"> <span style="color: rgb(8, 8, 168);">print</span></a></li>
+
+				<li><a href="#schedule"> <span style="color: rgb(8, 8, 168);">schedule</span></a></li>
+
+				<li><a href="#svc"> <span style="color: rgb(8, 8, 168);">svc</span></a></li>
+
+				<li><a href="#sysctl"> <span style="color: rgb(8, 8, 168);">sysctl</span></a></li>
+
+				<li><a href="#tar"> <span style="color: rgb(8, 8, 168);">tar</span></a></li>
+
+				<li><a href="#test"> <span style="color: rgb(8, 8, 168);">test</span></a></li>
+
+				<li><a href="#tftpfile"> <span style="color: rgb(8, 8, 168);">tftp:file</span></a></li>
+
+				<li><a href="#tftpserver"> <span style="color: rgb(8, 8, 168);">tftp:server</span></a></li>
+
+				<li><a href="#timer"> <span style="color: rgb(8, 8, 168);">timer</span></a></li>
+
+				<li><a href="#user"> <span style="color: rgb(8, 8, 168);">user</span></a></li>
+
+				<li><a href="#value"> <span style="color: rgb(8, 8, 168);">value</span></a></li>
+
+				<li><a href="#virt"> <span style="color: rgb(8, 8, 168);">virt</span></a></li>
+
+				<li><a href="#virtbuilder"> <span style="color: rgb(8, 8, 168);">virt:builder</span></a></li>
+
+				<li><a href="#virtnetwork"> <span style="color: rgb(8, 8, 168);">virt:network</span></a></li>
+
+				<li><a href="#virtnetworkhost"> <span style="color: rgb(8, 8, 168);">virt:network:host</span></a></li>
+
+			</ul>
+		</div>
+		
+		<div class="container-right">
+
+	<p>This is the standard library of resources available to mgmt users when writing <code>mcl</code>.</p>
+
+
+			<ul>
+
+				<li>
+					<h2 id="augeas"> <span style="color: rgb(8, 8, 168);">augeas</span> (AugeasRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/augeas.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">AugeasRes is a resource that enables you to use the augeas resource. Currently only allows you to change simple files (e.g sshd_config). </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">file</span> (File) <span style="font-style: italic;">str</span>
+								<br>
+								File is the path to the file targeted by this resource.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">lens</span> (Lens) <span style="font-style: italic;">str</span>
+								<br>
+								Lens is the lens used by this resource. If specified, mgmt will lower the augeas overhead by only loading that lens.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">sets</span> (Sets) <span style="font-style: italic;">[]struct{path str; value str}</span>
+								<br>
+								Sets is a list of changes that will be applied to the file, in the form of [&#34;path&#34;, &#34;value&#34;]. mgmt will run augeas.Get() before augeas.Set(), to prevent changing the file when it is not needed.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="awsec2"> <span style="color: rgb(8, 8, 168);">aws:ec2</span> (AwsEc2Res)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/aws_ec2.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">AwsEc2Res is an AWS EC2 resource. In order to create a client session, your AWS credentials must be present in ~/.aws - For detailed instructions see http://docs.aws.amazon.com/cli/latest/userguide/cli-config-files.html </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">erroronmalformedpost</span> (ErrorOnMalformedPost) <span style="font-style: italic;">bool</span>
+								<br>
+								ErrorOnMalformedPost controls whether or not malformed HTTP post requests, that cause JSON decoder errors, will also make the engine shut down. If ErrorOnMalformedPost set to true and an error occurs, Watch() will return the error and the engine will shut down.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">imageid</span> (ImageID) <span style="font-style: italic;">str</span>
+								<br>
+								ImageID to use, and note that it must be available on the chosen region.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">region</span> (Region) <span style="font-style: italic;">str</span>
+								<br>
+								Region must match one of the AwsRegions. This list is static at the moment.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">state</span> (State) <span style="font-style: italic;">str</span>
+								<br>
+								State must be running, stopped, or terminated.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">type</span> (Type) <span style="font-style: italic;">str</span>
+								<br>
+								Type of ec2 instance, eg: t2.micro for example.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">userdata</span> (UserData) <span style="font-style: italic;">str</span>
+								<br>
+								UserData is used to run bash and cloud-init commands on first launch. See http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html for documentation and examples.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">watchendpoint</span> (WatchEndpoint) <span style="font-style: italic;">str</span>
+								<br>
+								WatchEndpoint is the public url of the sns endpoint, eg: http://server:12345/ for example.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">watchlistenaddr</span> (WatchListenAddr) <span style="font-style: italic;">str</span>
+								<br>
+								WatchListenAddr is the local address or port that the sns listens on, eg: 10.0.0.0:23456 or 23456.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="bmcpower"> <span style="color: rgb(8, 8, 168);">bmc:power</span> (BmcPowerRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/bmc_power.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">BmcPowerRes is a resource that manages power state of a BMC. This is usually used for turning computers on and off. The name value can be a big URL string in the form: `driver://user:pass@hostname:port` for example you may see: gofishs://ADMIN:hunter2@127.0.0.1:8800 to use the &#34;https&#34; variant of the gofish driver.
+NOTE: New drivers should either not end in &#34;s&#34; or at least not be identical to the name of another driver an &#34;s&#34; is added or removed to the end. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">driver</span> (Driver) <span style="font-style: italic;">str</span>
+								<br>
+								Driver to use, such as: &#34;gofish&#34; or &#34;rpc&#34;. This is a different concept than the &#34;bmclib&#34; driver vs provider distinction. Here we just statically pick what we&#39;re using without any magic. If not specified, we parse this from the Name scheme. If this ends with an extra &#34;s&#34; then we use https instead of http.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">hostname</span> (Hostname) <span style="font-style: italic;">str</span>
+								<br>
+								Hostname to connect to. If not specified, we parse this from the Name.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">insecure_password</span> (InsecurePassword) <span style="font-style: italic;">bool</span>
+								<br>
+								InsecurePassword can be set to true to allow a password in the Name.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">password</span> (Password) <span style="font-style: italic;">str</span>
+								<br>
+								Password to use to connect. We do NOT parse this from the Name unless you set InsecurePassword to true.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">port</span> (Port) <span style="font-style: italic;">int</span>
+								<br>
+								Port to connect to. If not specified, we parse this from the Name.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">state</span> (State) <span style="font-style: italic;">str</span>
+								<br>
+								State of machine power. Can be &#34;on&#34; or &#34;off&#34;.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">username</span> (Username) <span style="font-style: italic;">str</span>
+								<br>
+								Username to use to connect. If not specified, we parse this from the Name. Name? It&#39;s not really part of the BMC unique identifier so maybe we shouldn&#39;t use that.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="configetcd"> <span style="color: rgb(8, 8, 168);">config:etcd</span> (ConfigEtcdRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/config_etcd.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">ConfigEtcdRes is a resource that sets mgmt&#39;s etcd configuration. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">allow_size_shutdown</span> (AllowSizeShutdown) <span style="font-style: italic;">bool</span>
+								<br>
+								AllowSizeShutdown is a required safety flag that you must set to true if you want to allow causing a cluster shutdown by setting IdealClusterSize to zero.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">idealclustersize</span> (IdealClusterSize) <span style="font-style: italic;">int</span>
+								<br>
+								IdealClusterSize is the requested minimum size of the cluster. If you set this to zero, it will cause a cluster wide shutdown if AllowSizeShutdown is true. If it&#39;s not true, then it will cause a validation error.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="consulkv"> <span style="color: rgb(8, 8, 168);">consul:kv</span> (ConsulKVRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/consul_kv.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">ConsulKVRes is a resource that writes a value into a Consul datastore. The name of the resource can either be the key name, or the concatenation of the server address and the key name: http://127.0.0.1:8500/my-key. If the param keys are specified, then those are used. If the Name cannot be properly parsed by url.Parse, then it will be considered as the Key&#39;s value. If the Key is specified explicitly, then we won&#39;t use anything from the Name. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">address</span> (Address) <span style="font-style: italic;">str</span>
+								<br>
+								Address is the address of the Consul server. Default: 127.0.0.1:8500.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">key</span> (Key) <span style="font-style: italic;">str</span>
+								<br>
+								Key is the name of the key. Defaults to the name of the resource.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">scheme</span> (Scheme) <span style="font-style: italic;">str</span>
+								<br>
+								Scheme is the URI scheme for the Consul server. Default: http.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">token</span> (Token) <span style="font-style: italic;">str</span>
+								<br>
+								Token is used to provide an ACL token to use for this resource.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">value</span> (Value) <span style="font-style: italic;">str</span>
+								<br>
+								Value is the value for the key.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="cron"> <span style="color: rgb(8, 8, 168);">cron</span> (CronRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/cron.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">CronRes is a systemd-timer cron resource. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">accuracysec</span> (AccuracySec) <span style="font-style: italic;">str</span>
+								<br>
+								AccuracySec is the accuracy of the timer in systemd-time time span format. It defaults to one minute.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">persistent</span> (Persistent) <span style="font-style: italic;">bool</span>
+								<br>
+								Persistent, if true, means the time when the service unit was last triggered is stored on disk. When the timer is activated, the service unit is triggered immediately if it would have been triggered at least once during the time when the timer was inactive. It defaults to false.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">randomizeddelaysec</span> (RandomizedDelaySec) <span style="font-style: italic;">str</span>
+								<br>
+								RandomizedDelaySec delays the timer by a randomly selected, evenly distributed amount of time between 0 and the specified time value. The value must be a valid systemd-time time span.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">remainafterelapse</span> (RemainAfterElapse) <span style="font-style: italic;">bool</span>
+								<br>
+								RemainAfterElapse, if true, means an elapsed timer will stay loaded, and its state remains queryable. If false, an elapsed timer unit that cannot elapse anymore is unloaded. It defaults to true.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">session</span> (Session) <span style="font-style: italic;">bool</span>
+								<br>
+								Session, if true, creates the timer as the current user, rather than root. The service it points to must also be a user unit. It defaults to false.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">startup</span> (Startup) <span style="font-style: italic;">str</span>
+								<br>
+								Startup specifies what should happen on startup. Values can be: enabled, disabled, and undefined (empty string). We default to enabled.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">state</span> (State) <span style="font-style: italic;">str</span>
+								<br>
+								State must be &#39;exists&#39; or &#39;absent&#39;.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">time</span> (Time) <span style="font-style: italic;">str</span>
+								<br>
+								Time must be used with all triggers. For &#39;OnCalendar&#39;, it must be in the format defined in &#39;man systemd-time&#39; under the heading &#39;Calendar Events&#39;. For all other triggers, time should be a valid time span as defined in &#39;man systemd-time&#39;
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">trigger</span> (Trigger) <span style="font-style: italic;">str</span>
+								<br>
+								Trigger is the type of timer. Valid types are &#39;OnCalendar&#39;, &#39;OnActiveSec&#39;. &#39;OnBootSec&#39;. &#39;OnStartupSec&#39;. &#39;OnUnitActiveSec&#39;, and &#39;OnUnitInactiveSec&#39;. For more information see &#39;man systemd.timer&#39;.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">unit</span> (Unit) <span style="font-style: italic;">str</span>
+								<br>
+								Unit is the name of the systemd service unit. It is only necessary to set if you want to specify a service with a different name than the resource.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">wakesystem</span> (WakeSystem) <span style="font-style: italic;">bool</span>
+								<br>
+								WakeSystem, if true, will cause the system to resume from suspend, should it be suspended and if the system supports this. It defaults to false.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="deploytar"> <span style="color: rgb(8, 8, 168);">deploy:tar</span> (DeployTar)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/deploy_tar.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">DeployTar is a resource that archives a deploy filesystem using tar, thus combining them into a single file. The name of the resource is the path to the resultant archive file. The input comes from the current deploy. This uses hashes to determine if something was changed, so as a result, this may not be suitable if you can create a sha256 hash collision. this changes, or consider porting this to use that as a composite resource. file resource to store those contents on disk with whatever mode we want... </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">format</span> (Format) <span style="font-style: italic;">int</span>
+								<br>
+								Format is the header format to use. If you change this, then the file will get rearchived. The strange thing is that it seems the header format is stored for each individual file. The available values are: const.res.tar.format.unknown, const.res.tar.format.ustar, const.res.tar.format.pax, and const.res.tar.format.gnu which have values of 0, 2, 4, and 8 respectively.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">path</span> (Path) <span style="font-style: italic;">str</span>
+								<br>
+								Path, which defaults to the name if not specified, represents the destination path for the compressed file being created. It must be an absolute path, and as a result must start with a slash. Since it is a file, it must not end with a slash.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="dhcphost"> <span style="color: rgb(8, 8, 168);">dhcp:host</span> (DHCPHostRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/dhcp.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">DHCPHostRes is a representation of a static host assignment in DHCP. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">ip</span> (IP) <span style="font-style: italic;">str</span>
+								<br>
+								IP is the IPv4 address with the CIDR suffix. The suffix is required because it specifies the netmask to be used in the DHCPv4 protocol. For example, you might specify 192.0.2.42/24 which represents a mask of 255.255.255.0 that will be sent.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">mac</span> (Mac) <span style="font-style: italic;">str</span>
+								<br>
+								Mac is the mac address of the host in lower case and separated with colons.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">nbp</span> (NBP) <span style="font-style: italic;">str</span>
+								<br>
+								NBP is the network boot program URL. This is used for the tftp server name and the boot file name. For example, you might use: tftp://192.0.2.13/pxelinux.0 for a common bios, pxe boot setup. Note that the &#34;scheme&#34; prefix is required, and that it&#39;s impossible to specify a file that doesn&#39;t begin with a leading slash. If you wish to specify a &#34;root less&#34; file (common for legacy tftp setups) then you can use this feature in conjunction with the NBPPath parameter. For DHCPv4, the scheme must be &#34;tftp&#34;.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">nbp_path</span> (NBPPath) <span style="font-style: italic;">str</span>
+								<br>
+								NBPPath overrides the path that is sent for the nbp protocols. By default it is taken from parsing a URL in NBP, but this can override that. This is useful if you require a path that doesn&#39;t start with a slash. This is sometimes desirable for legacy tftp setups.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">server</span> (Server) <span style="font-style: italic;">str</span>
+								<br>
+								Server is the name of the dhcp server resource to group this into. If it is omitted, and there is only a single dhcp resource, then it will be grouped into it automatically. If there is more than one main dhcp resource being used, then the grouping behaviour is *undefined* when this is not specified, and it is not recommended to leave this blank!
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="dhcprange"> <span style="color: rgb(8, 8, 168);">dhcp:range</span> (DHCPRangeRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/dhcp.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">DHCPRangeRes is a representation of a range allocator in DHCP. To declare a range you must specify either the `network` field or the `from` and `to` fields as ip with cidr&#39;s, or `from` and `to` fields without cidr&#39;s but with the `mask` field as either a dotted netmask or a `/number` field. If you specify none of these, then the resource name will be interpreted the same way that the `network` field os. The last ip in the range (which is often used as a broadcast address) is never allocated. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">from</span> (From) <span style="font-style: italic;">str</span>
+								<br>
+								From is the start address in the range inclusive. If it is specified in cidr notation, then the `mask` field must not be used. Otherwise it must be used. In both situations the cidr or mask must be consistent with the `to` field. If this field is used, you must not use the `network` field.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">mask</span> (Mask) <span style="font-style: italic;">str</span>
+								<br>
+								Mask is the cidr or netmask of ip addresses in the specified range. This field must only be used if both `from` and `to` are specified, and if neither of them specify a cidr suffix. If neither do, then the mask here can be in either dotted format or, preferably, in cidr format by starting with a slash.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">nbp</span> (NBP) <span style="font-style: italic;">str</span>
+								<br>
+								NBP is the network boot program URL. This is used for the tftp server name and the boot file name. For example, you might use: tftp://192.0.2.13/pxelinux.0 for a common bios, pxe boot setup. Note that the &#34;scheme&#34; prefix is required, and that it&#39;s impossible to specify a file that doesn&#39;t begin with a leading slash. If you wish to specify a &#34;root less&#34; file (common for legacy tftp setups) then you can use this feature in conjunction with the NBPPath parameter. For DHCPv4, the scheme must be &#34;tftp&#34;.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">nbp_path</span> (NBPPath) <span style="font-style: italic;">str</span>
+								<br>
+								NBPPath overrides the path that is sent for the nbp protocols. By default it is taken from parsing a URL in NBP, but this can override that. This is useful if you require a path that doesn&#39;t start with a slash. This is sometimes desirable for legacy tftp setups.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">network</span> (Network) <span style="font-style: italic;">str</span>
+								<br>
+								Network is the network number and cidr to determine the range. For example, the common network range of 192.168.42.1 to 192.168.42.255 should have a network field here of 192.168.42.0/24. You can either specify this field or `from` and `to`, but not a different combination. If you don&#39;t specify any of these fields, then the resource name will be parsed as if it was used here.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">persist</span> (Persist) <span style="font-style: italic;">bool</span>
+								<br>
+								Persist should be true if you want to persist the lease information to disk so that a new (or changed) invocation of this resource with the same name, will regain that existing initial state at startup. that we could have redundant dhcp servers which share the same state. This would require having a distributed allocator through etcd too! database if any field param changes, as opposed to just looking at the name field alone.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">server</span> (Server) <span style="font-style: italic;">str</span>
+								<br>
+								Server is the name of the dhcp server resource to group this into. If it is omitted, and there is only a single dhcp resource, then it will be grouped into it automatically. If there is more than one main dhcp resource being used, then the grouping behaviour is *undefined* when this is not specified, and it is not recommended to leave this blank!
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">skip</span> (Skip) <span style="font-style: italic;">[]str</span>
+								<br>
+								Skip is a list ip&#39;s in either cidr or standalone representation which will be skipped and not allocated.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">to</span> (To) <span style="font-style: italic;">str</span>
+								<br>
+								To is the end address in the range inclusive. If it is specified in cidr notation, then the `mask` field must not be used. Otherwise it must be used. In both situations the cidr or mask must be consistent with the `from` field. If this field is used, you must not use the `network` field.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="dhcpserver"> <span style="color: rgb(8, 8, 168);">dhcp:server</span> (DHCPServerRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/dhcp.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">DHCPServerRes is a simple dhcp server resource. It responds to dhcp client requests, but does not actually apply any state. The name is used as the address to listen on, unless the Address field is specified, and in that case it is used instead. The resource can offer up dhcp client leases from any number of dhcp:host resources which will get autogrouped into this resource at runtime.
+This server is not meant as a featureful replacement for the venerable dhcpd, but rather as a simple, dynamic, integrated alternative for bootstrapping new machines and clusters in an elegant way.
+ </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">address</span> (Address) <span style="font-style: italic;">str</span>
+								<br>
+								Address is the listen address to use for the dhcp server. It is common to use `:67` (the standard) to listen on UDP port 67 on all addresses.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">dns</span> (DNS) <span style="font-style: italic;">[]str</span>
+								<br>
+								DNS represents a list of DNS servers to offer to the DHCP client.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">interface</span> (Interface) <span style="font-style: italic;">str</span>
+								<br>
+								Interface is interface to bind to. For example `eth0` for the common case. You may leave this field blank to not run any specific binding. BUG: https://github.com/insomniacslk/dhcp/issues/372
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">leasetime</span> (LeaseTime) <span style="font-style: italic;">str</span>
+								<br>
+								LeaseTime is the default lease duration in a format that is parseable by the golang time.ParseDuration function, for example &#34;60s&#34; or &#34;10m&#34; or &#34;1h42m13s&#34;. If it is unspecified, then a default will be used. If the empty string is specified, then no lease time will be set in the DHCP protocol, and your DHCP server might not work as you intend.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">nbp</span> (NBP) <span style="font-style: italic;">str</span>
+								<br>
+								NBP is the network boot program URL. This is used for the tftp server name and the boot file name. For example, you might use: tftp://192.0.2.13/pxelinux.0 for a common bios, pxe boot setup. Note that the &#34;scheme&#34; prefix is required, and that it&#39;s impossible to specify a file that doesn&#39;t begin with a leading slash. If you wish to specify a &#34;root less&#34; file (common for legacy tftp setups) then you can use this feature in conjunction with the NBPPath parameter. For DHCPv4, the scheme must be &#34;tftp&#34;. This values is used as the default for all dhcp:host resources. You can specify this here, and the NBPPath per-resource and they will successfully combine.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">routers</span> (Routers) <span style="font-style: italic;">[]str</span>
+								<br>
+								Routers represents a list of routers to offer to the DHCP client. It is most common to only specify one unless you know what you&#39;re doing.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">serverid</span> (ServerID) <span style="font-style: italic;">str</span>
+								<br>
+								ServerID is a unique IPv4 identifier for this server as specified in the DHCPv4 protocol. It is almost always the IP address of the DHCP server. If you don&#39;t specify this, then we will attempt to determine it from the specified interface. If it is set to the empty string, then this won&#39;t be set in the DHCP protocol, and your DHCP server might not work as you intend. Otherwise, if a valid value is specified, then this will be used as long as it validates correctly. Please note that if you attempt to automatically determine this from the specified interface, then this only happens at runtime when the first DHCP request needs this or during CheckApply, either of which could fail if for some reason it is not available.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="dockercontainer"> <span style="color: rgb(8, 8, 168);">docker:container</span> (DockerContainerRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/docker_container.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">DockerContainerRes is a docker container resource. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">apiversion</span> (APIVersion) <span style="font-style: italic;">str</span>
+								<br>
+								APIVersion allows you to override the host&#39;s default client API version.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">cmd</span> (Cmd) <span style="font-style: italic;">[]str</span>
+								<br>
+								Cmd is a command, or list of commands to run on the container.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">env</span> (Env) <span style="font-style: italic;">[]str</span>
+								<br>
+								Env is a list of environment variables. E.g. [&#34;VAR=val&#34;,].
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">force</span> (Force) <span style="font-style: italic;">bool</span>
+								<br>
+								Force, if true, this will destroy and redeploy the container if the image is incorrect.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">image</span> (Image) <span style="font-style: italic;">str</span>
+								<br>
+								Image is a docker image, or image:tag.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">ports</span> (Ports) <span style="font-style: italic;">map{str: map{int: int}}</span>
+								<br>
+								Ports is a map of port bindings. E.g. {&#34;tcp&#34; =&gt; {8080 =&gt; 80},}. The key is the host port, and the val is the inner service port to forward to.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">state</span> (State) <span style="font-style: italic;">str</span>
+								<br>
+								State of the container must be running, stopped, or removed.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="dockerimage"> <span style="color: rgb(8, 8, 168);">docker:image</span> (DockerImageRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/docker_image.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">DockerImageRes is a docker image resource. The resource&#39;s name must be a docker image in any supported format (url, image, or image:tag). </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">apiversion</span> (APIVersion) <span style="font-style: italic;">str</span>
+								<br>
+								APIVersion allows you to override the host&#39;s default client API version.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">state</span> (State) <span style="font-style: italic;">str</span>
+								<br>
+								State of the image must be exists or absent.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="exec"> <span style="color: rgb(8, 8, 168);">exec</span> (ExecRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/exec.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">ExecRes is an exec resource for running commands.
+This resource attempts to minimise the effects of the execution environment, and, in particular, will start the new process with an empty environment (as would `execve` with an empty `envp` array). If you want the environment to inherit the mgmt process&#39; environment, you can import it from &#34;sys&#34; and use it with `env =&gt; sys.env()` in your exec resource. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">args</span> (Args) <span style="font-style: italic;">[]str</span>
+								<br>
+								Args is a list of args to pass to Cmd. This can be used *instead* of passing the full command and args as a single string to Cmd. It can only be used when a Shell is *not* specified. The advantage of this is that you don&#39;t have to worry about escape characters.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">cmd</span> (Cmd) <span style="font-style: italic;">str</span>
+								<br>
+								Cmd is the command to run. If this is not specified, we use the name. Remember that if you&#39;re not using `Shell` (the default) then adding single quotes around args make them part of the actual values. IOW, if your command is: &#34;touch &#39;/tmp/foo&#39;&#34;, then (1) it probably won&#39;t be able to find the &#34;touch&#34; command (use /usr/bin/touch instead) and (2) the file won&#39;t be in the /tmp/ directory, it will be an oddly named file that contains two single quotes, and it will likely error since the dir path doesn&#39;t exist. In general, it&#39;s best to use the `Args` field instead of including them here.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">creates</span> (Creates) <span style="font-style: italic;">str</span>
+								<br>
+								Creates is the absolute file path to check for before running the main cmd. If this path exists, then the cmd will not run. More precisely we attempt to `stat` the file, so it must succeed for a skip. This also adds a watch on this path which re-checks things when it changes.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">cwd</span> (Cwd) <span style="font-style: italic;">str</span>
+								<br>
+								Cwd is the dir to run the command in. If empty, then this will use the working directory of the calling process. (This process is mgmt, not the process being run here.) Keep in mind that if you&#39;re running this command as a user that does not have perms to the current directory, you may wish to set this to `/` to avoid hitting an error such as: `could not change directory to &#34;/root&#34;: Permission denied`.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">donecmd</span> (DoneCmd) <span style="font-style: italic;">str</span>
+								<br>
+								DoneCmd is the command that runs after the regular Cmd runs successfully. This is a useful pattern to avoid the shelling out to bash simply to do `$cmd &amp;&amp; echo done &gt; /tmp/donefile`. If this command errors, it behaves as if the normal Cmd had errored.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">donecwd</span> (DoneCwd) <span style="font-style: italic;">str</span>
+								<br>
+								DoneCwd is the Cwd for the DoneCmd. See the docs for Cwd.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">doneshell</span> (DoneShell) <span style="font-style: italic;">str</span>
+								<br>
+								DoneShell is the Shell for the DoneCmd. See the docs for Shell.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">env</span> (Env) <span style="font-style: italic;">map{str: str}</span>
+								<br>
+								Env allows the user to specify environment variables for script execution. These are taken using a map of format of VAR_KEY -&gt; value. Omitting this value or setting it to an empty array will cause the program to be run with an empty environment.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">group</span> (Group) <span style="font-style: italic;">str</span>
+								<br>
+								Group is the (optional) group to use to execute the command. It is used for any command being run.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">ifcmd</span> (IfCmd) <span style="font-style: italic;">str</span>
+								<br>
+								IfCmd is the command that runs to guard against running the Cmd. If this command succeeds, then Cmd *will* be run. If this command returns a non-zero result, then the Cmd will not be run. Any error scenario or timeout will cause the resource to error.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">ifcwd</span> (IfCwd) <span style="font-style: italic;">str</span>
+								<br>
+								IfCwd is the Cwd for the IfCmd. See the docs for Cwd.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">ifshell</span> (IfShell) <span style="font-style: italic;">str</span>
+								<br>
+								IfShell is the Shell for the IfCmd. See the docs for Shell.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">send_output</span> (SendOutput) <span style="font-style: italic;">str</span>
+								<br>
+								SendOutput is a value which can be sent for the Send/Recv Output field if no value is available in the cache. This is used in very specialized scenarios (particularly prototyping and unclean environments) and should not be used routinely. It should be used only in situations where we didn&#39;t produce our own sending values, and there are none in the cache, and instead are relying on a runtime mechanism to help us out. This can commonly occur if you wish to make incremental progress when locally testing some code using Send/Recv, but you are combining it with --tmp-prefix for other reasons.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">send_stderr</span> (SendStderr) <span style="font-style: italic;">str</span>
+								<br>
+								SendStderr is like SendOutput but for stderr alone. See those docs.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">send_stdout</span> (SendStdout) <span style="font-style: italic;">str</span>
+								<br>
+								SendStdout is like SendOutput but for stdout alone. See those docs.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">shell</span> (Shell) <span style="font-style: italic;">str</span>
+								<br>
+								Shell is the (optional) shell to use to run the cmd. If you specify this, then you can&#39;t use the Args parameter. Note that unless you use absolute paths, or set the PATH variable, the shell might not be able to find the program you&#39;re trying to run.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">timeout</span> (Timeout) <span style="font-style: italic;">int</span>
+								<br>
+								Timeout is the number of seconds to wait before sending a Kill to the running command. If the Kill is received before the process exits, then this be treated as an error.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">user</span> (User) <span style="font-style: italic;">str</span>
+								<br>
+								User is the (optional) user to use to execute the command. It is used for any command being run.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">watchcmd</span> (WatchCmd) <span style="font-style: italic;">str</span>
+								<br>
+								WatchCmd is the command to run to detect event changes. Each line of output from this command is treated as an event.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">watchcwd</span> (WatchCwd) <span style="font-style: italic;">str</span>
+								<br>
+								WatchCwd is the Cwd for the WatchCmd. See the docs for Cwd.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">watchfiles</span> (WatchFiles) <span style="font-style: italic;">[]str</span>
+								<br>
+								WatchFiles is a list of files that will be kept track of.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">watchshell</span> (WatchShell) <span style="font-style: italic;">str</span>
+								<br>
+								WatchShell is the Shell for the WatchCmd. See the docs for Shell.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="file"> <span style="color: rgb(8, 8, 168);">file</span> (FileRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/file.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">FileRes is a file and directory resource. Dirs are defined by names ending in a slash. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">basename</span> (Basename) <span style="font-style: italic;">str</span>
+								<br>
+								Basename is used to override the path basename. (The file portion.)
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">content</span> (Content) <span style="font-style: italic;">str</span>
+								<br>
+								Content specifies the file contents to use. If this is nil, they are left undefined. It cannot be combined with the Source or Fragments parameters.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">dirname</span> (Dirname) <span style="font-style: italic;">str</span>
+								<br>
+								Dirname is used to override the path dirname. (The directory portion.)
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">force</span> (Force) <span style="font-style: italic;">bool</span>
+								<br>
+								Force must be set if we want to perform an unusual operation, such as changing a file into a directory or vice-versa. This is also required when changing a file or directory into a symlink or vice-versa.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">fragments</span> (Fragments) <span style="font-style: italic;">[]str</span>
+								<br>
+								Fragments specifies that the file is built from a list of individual files. If one of the files is a directory, then the list of files in that directory are the fragments to combine. Multiple of these can be used together, although most simple cases will probably only either involve a single directory path or a fixed list of individual files. All paths are absolute and as a result must start with a slash. The directories (if any) must end with a slash as well. This cannot be combined with the Content or Source parameters. If a file with param is reversed, the reversed file is one that has `Content` set instead. Automatic edges will be added from these fragments. This currently isn&#39;t recursive in that if a fragment is a directory, this only searches one level deep at the moment.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">group</span> (Group) <span style="font-style: italic;">str</span>
+								<br>
+								Group specifies the file group. You can specify either the string name, or a string representation of the group integer gid.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">mode</span> (Mode) <span style="font-style: italic;">str</span>
+								<br>
+								Mode is the mode of the file as a string representation of the octal form or symbolic form.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">owner</span> (Owner) <span style="font-style: italic;">str</span>
+								<br>
+								Owner specifies the file owner. You can specify either the string name, or a string representation of the owner integer uid.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">path</span> (Path) <span style="font-style: italic;">str</span>
+								<br>
+								Path, which defaults to the name if not specified, represents the destination path for the file or directory being managed. It must be an absolute path, and as a result must start with a slash.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">purge</span> (Purge) <span style="font-style: italic;">bool</span>
+								<br>
+								Purge specifies that when true, any unmanaged file in this file directory will be removed. As a result, this file resource must be a directory. This isn&#39;t particularly meaningful if you don&#39;t also set Recurse to true. This doesn&#39;t work with Content or Fragments.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">recurse</span> (Recurse) <span style="font-style: italic;">bool</span>
+								<br>
+								Recurse specifies if you want to work recursively on the resource. It is used when copying a source directory, or to determine if a watch should be recursive or not. When making a directory, this is required if you&#39;d need the parent directories to be made as well. (Analogous to the `mkdir -p` option.)
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">source</span> (Source) <span style="font-style: italic;">str</span>
+								<br>
+								Source specifies the source contents for the file resource. It cannot be combined with the Content or Fragments parameters. It must be an absolute path, and it can point to a file or a directory. If it points to a file, then that will will be copied through directly. If it points to a directory, then it will copy the directory &#34;rsync style&#34; onto the file destination. As a result, if this is a file, then the main file res must be a file, and if it is a directory, then this must be a directory. To meaningfully copy a full directory, you also need to specify the Recurse parameter, which is currently required. If you want an existing dir to be turned into a file (or vice-versa) instead of erroring, then you&#39;ll also need to specify the Force parameter. If source is undefined and the file path is a directory, then a directory will be created. If left undefined, and combined with the Purge option too, then any unmanaged file in this dir will be removed. Lastly, if the Symlink parameter is true, then this specifies the source that the symbolic symlink points to.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">state</span> (State) <span style="font-style: italic;">str</span>
+								<br>
+								State specifies the desired state of the file. It can be either `exists` or `absent`. If you do not specify this, we will not be able to create or remove a file if it might be logical for another param to require that. Instead it will error. This means that this field is not implied by specifying some content or a mode. This is also used when determining how we manage a symlink.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">symlink</span> (Symlink) <span style="font-style: italic;">bool</span>
+								<br>
+								Symlink specifies that the file should be a symbolic link to the source contents. Those do not have to point to an actual file or directory. The source in that case can be either an absolute or relative path.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="firewalld"> <span style="color: rgb(8, 8, 168);">firewalld</span> (FirewalldRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/firewalld.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">FirewalldRes is a simple resource to interact with the firewalld service. It is not a replacement for a modern, robust tool like `shorewall`, but it has its uses such as for small, desktop use cases. The API of this resource might change to either add new features, split this into multiple resources, or to optimize the execution if it turns out to be too expensive to run large amounts of these as-is. The name variable currently has no useful purpose. Keep in mind that this resource requires root permissions to be able change the firewall settings and to monitor for changes. The change detection uses the nftables monitor facility. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">ports</span> (Ports) <span style="font-style: italic;">[]str</span>
+								<br>
+								Ports are the list of port/protocol combinations to manage to the desired state. These are strings of port number (slash) protocol like `4280/tcp` and `38/udp`.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">services</span> (Services) <span style="font-style: italic;">[]str</span>
+								<br>
+								Services are the list of services to manage to the desired state. These are single lower case strings like `dhcp`, and `tftp`.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">state</span> (State) <span style="font-style: italic;">str</span>
+								<br>
+								State is the desired state.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">zone</span> (Zone) <span style="font-style: italic;">str</span>
+								<br>
+								Zone is the name of the zone to manage. If unspecified, we will attempt to get the default zone automatically. In this situation, it is possible that this default changes over time if it is acted upon by external tools that use firewalld.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="group"> <span style="color: rgb(8, 8, 168);">group</span> (GroupRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/group.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">GroupRes is a user group resource. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">gid</span> (GID) <span style="font-style: italic;">int</span>
+								<br>
+								GID is the group&#39;s gid.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">state</span> (State) <span style="font-style: italic;">str</span>
+								<br>
+								State is `exists` or `absent`.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="gzip"> <span style="color: rgb(8, 8, 168);">gzip</span> (GzipRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/gzip.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">GzipRes is a resource that compresses a path or some raw data using gzip. The name of the resource is the path to the resultant compressed file. The input can either come from a file path if specified with Input or it looks at the Content field for raw data. It uses hashes to determine if something was changed, so as a result, this may not be suitable if you can create a sha256 hash collision. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">content</span> (Content) <span style="font-style: italic;">str</span>
+								<br>
+								Content is the raw data to compress. If Input is not specified, then we use this parameter. If you forget to specify both of these, then you will compress zero-length data!
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">input</span> (Input) <span style="font-style: italic;">str</span>
+								<br>
+								Input represents the input file to be compressed. It must be an absolute path, and as a result must start with a slash. Since it is a file, it must not end with a slash. If this is specified, we use it, otherwise we use the Content parameter.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">level</span> (Level) <span style="font-style: italic;">int</span>
+								<br>
+								Level is the compression level to use. If you change this, then the file will get recompressed. The available values are: const.res.gzip.level.no_compression, const.res.gzip.level.best_speed, const.res.gzip.level.best_compression, const.res.gzip.level.default_compression, and const.res.gzip.level.huffman_only.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">path</span> (Path) <span style="font-style: italic;">str</span>
+								<br>
+								Path, which defaults to the name if not specified, represents the destination path for the compressed file being created. It must be an absolute path, and as a result must start with a slash. Since it is a file, it must not end with a slash.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="hetznervm"> <span style="color: rgb(8, 8, 168);">hetzner:vm</span> (HetznerVMRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/hetzner_vm.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">HetznerVMRes is a Hetzner cloud resource (1). It connects with the cloud API using the hcloud-go package provided by Hetzner. The API token for a new project must be generated manually, via the cloud console (2), before this resource can establish a connection with the API. One Hetzner resource represents one server instance, and multiple instances can be registered under the same project. A resource in the &#34;absent&#34; state only exists as a local mcl struct, and does not exist as server instance on Hetzner&#39;s side. NOTE: the Hetzner cloud console must be used to create a new project, generate the corresponding API token, and initialize the desired SSH keys. All registered SSH keys are used when creating a server, and a subset of those can be enabled for rescue mode via the &#34;serverrescuekeys&#34; param. NOTE: complete and up-to-date serverconfig options must be requested from the Hetzner API, but hcloud-go-getopts (3) provides a static reference. NOTE: this resources requires polling, via the &#34;Meta:poll&#34; param. The Hetzner API imposes a maximum rate of 3600 requests per hour that must be taken into account for intensive and/or long term operations. When running N hetzner:vm resources under the same Hetzner project, it is recommended to use a polling interval of at least N seconds. High rates of change to other params will require additional API requests at CheckApply. When frequent param updates are expected for long term operations, it is reommended to increase the polling interval again to prevent rate limit errors. NOTE: running multiple concurrent mcl scripts on the same resource might cause unexpected behavior in the API or the resource state. Use with care. 1) https://docs.hetzner.cloud/ 2) https://console.hetzner.cloud/ 3) https://github.com/jefmasereel/hcloud-go-getopts </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">allowrebuild</span> (AllowRebuild) <span style="font-style: italic;">str</span>
+								<br>
+								AllowRebuild provides flexible protection against unexpected server rebuilds. Any changes to the &#34;servertype&#34;, &#34;datacenter&#34; or &#34;image&#34; params require a destructive rebuild, which deletes all data on that server. The user must explicitly allow these operations with AllowRebuild. Choose from three options: &#34;ifneeded&#34; allows all rebuilds that are needed by CheckApply to meet the specified params. &#34;ignore&#34; disables these rebuilds, but continues without error. The default option (&#34;&#34;) disables always returns an error when CheckApply requests a rebuild. NOTE: Soft updates related to power and rescue mode are always allowed, because they are only required for explicit changes to resource fields.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">apitoken</span> (APIToken) <span style="font-style: italic;">str</span>
+								<br>
+								APIToken specifies the unique API token corresponding to a Hetzner project. Keep this token private! It provides full access to this project, so a leaked token will be vulnerable to abuse. Read it from a local file or the mgmt deploy, or provide it directly as a string. NOTE: It must be generated manually via https://console.hetzner.cloud/. NOTE: This token is usually a 64 character alphanumeric string.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">datacenter</span> (Datacenter) <span style="font-style: italic;">str</span>
+								<br>
+								Datacenter determines where the resource is hosted.  A complete and up-to-date list of options must be requested from the Hetzner API, but hcloud-go-getopts (url) provides a static reference. The datacenter options include &#34;nbg1-dc3&#34;, &#34;fsn1-dc14&#34;, &#34;hel1-dc2&#34; etc. https://github.com/JefMasereel/hcloud-go-getopts/
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">image</span> (Image) <span style="font-style: italic;">str</span>
+								<br>
+								Image determines the operating system to be installed. A complete and up-to-date list of options must be requested from the Hetzner API, but hcloud-go-getopts (url) provides a static reference. The image type options include &#34;centos-7&#34;, &#34;ubuntu-18.04&#34;, &#34;debian-10&#34; etc. https://github.com/JefMasereel/hcloud-go-getopts/
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">serverrescuekeys</span> (ServerRescueSSHKeys) <span style="font-style: italic;">[]str</span>
+								<br>
+								ServerRescueSSHKeys can be used to select a subset of keys that should be enabled for rescue mode operations over SSH. From all SSH keys known to the project client, choose a subset of keys by name, as an array of strings. New keys must first be added manually via the cloud console. An error is thrown if a given keyname is not recognized by the client. NOTE: live changes to this keylist while rescue mode is already enabled are not (yet) detected or applied by CheckApply.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">serverrescuemode</span> (ServerRescueMode) <span style="font-style: italic;">str</span>
+								<br>
+								ServerRescueMode specifies the image type used when enabling rescue mode. The supported image types are &#34;linux32&#34;, &#34;linux64&#34; and &#34;freebsd64&#34;. Alternatively, leave this string empty to disable rescue mode (default). Other input values will not pass Validate and result in an error. NOTE: rescue mode can not be enabled if the server is absent. NOTE: Rescue mode can be used to log into the server over SSH and access the disks when the normal OS has trouble booting on its own.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">servertype</span> (ServerType) <span style="font-style: italic;">str</span>
+								<br>
+								ServerType determines the machine type as defined by Hetzner. A complete and up-to-date list of options must be requested from the Hetzner API, but hcloud-go-getopts (url) provides a static reference. Basic servertype options include &#34;cx11&#34;, &#34;cx21&#34;, &#34;cx31&#34; etc. NOTE: make sure to check the price of the selected servertype! The listed examples are usually very cheap, but never free. Price and availability can also be dependent on the selected datacenter. https://github.com/JefMasereel/hcloud-go-getopts/
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">state</span> (State) <span style="font-style: italic;">str</span>
+								<br>
+								State specifies the desired state of the server instance. The supported options are &#34;&#34; (undefined), &#34;absent&#34;, &#34;exists&#34;, &#34;off&#34; and &#34;running&#34;. HetznerStateUndefined (&#34;&#34;) leaves the state undefined by default. HetznerStateExists (&#34;exists&#34;) indicates that the server must exist. HetznerStateAbsent (&#34;absent&#34;) indicates that the server must not exist. HetznerStateRunning (&#34;running&#34;) tells the server it must be powered on. HetznerStateOff (&#34;off&#34;) tells the server it must be powered off. NOTE: any other inputs will not pass Validate and result in an error. NOTE: setting the state of a live server to &#34;absent&#34; will delete all data and services that are located on that instance! Use with caution.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">userdata</span> (UserData) <span style="font-style: italic;">str</span>
+								<br>
+								UserData can be used to run commands on the server instance at creation. https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">waitinterval</span> (WaitInterval) <span style="font-style: italic;">int</span>
+								<br>
+								WaitInterval is the interval in seconds that is used when waiting for transient states to converge between intermediate operations. A zero value causes the waiter to run without delays (burst requests). Although such burst requests are allowed, it is recommended to use a wait interval that keeps the total request rate under 3600 requests per hour. Take these factors into account: polling rate &#34;Meta:poll&#34;, number of active resources under the same Hetzner project, and the expected rate of param updates. This will help to prevent rate limit errors.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">waittimeout</span> (WaitTimeout) <span style="font-style: italic;">int</span>
+								<br>
+								WaitTimeout will cancel wait loops if they do not exit cleanly before the expected time in seconds, in order to detect defective loops and avoid unnecessary consumption of computational resources.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="hostname"> <span style="color: rgb(8, 8, 168);">hostname</span> (HostnameRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/hostname.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">HostnameRes is a resource that allows setting and watching the hostname. If you don&#39;t specify any parameters, the Name is used. The Hostname field is used if none of the other parameters are used. If the parameters are set to the empty string, then those variants are not managed by the resource. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">hostname</span> (Hostname) <span style="font-style: italic;">str</span>
+								<br>
+								Hostname specifies the hostname we want to set in all of the places that it&#39;s possible. This is the fallback value for all the three fields below. If only this Hostname field is specified, this will set all tree fields (PrettyHostname, StaticHostname, TransientHostname) to this value.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">pretty_hostname</span> (PrettyHostname) <span style="font-style: italic;">str</span>
+								<br>
+								PrettyHostname is a free-form UTF8 host name for presentation to the user.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">static_hostname</span> (StaticHostname) <span style="font-style: italic;">str</span>
+								<br>
+								StaticHostname is the one configured in /etc/hostname or a similar file. It is chosen by the local user. It is not always in sync with the current host name as returned by the gethostname() system call.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">transient_hostname</span> (TransientHostname) <span style="font-style: italic;">str</span>
+								<br>
+								TransientHostname is the one configured via the kernel&#39;s sethostbyname(). It can be different from the static hostname in case DHCP or mDNS have been configured to change the name based on network information.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="httpserver"> <span style="color: rgb(8, 8, 168);">http:server</span> (HTTPServerRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/http_server.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">HTTPServerRes is an http server resource. It serves files, but does not actually apply any state. The name is used as the address to listen on, unless the Address field is specified, and in that case it is used instead. This resource can offer up files for serving that are specified either inline in this resource by specifying an http root, or as http:server:file resources which will get autogrouped into this resource at runtime. The two methods can be combined as well.
+This server also supports autogrouping some more magical resources into it. For example, the http:server:flag and http:server:ui resources add in magic endpoints.
+This server is not meant as a featureful replacement for the venerable and modern httpd servers out there, but rather as a simple, dynamic, integrated alternative for bootstrapping new machines and clusters in an elegant way.
+ </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">address</span> (Address) <span style="font-style: italic;">str</span>
+								<br>
+								Address is the listen address to use for the http server. It is common to use `:80` (the standard) to listen on TCP port 80 on all addresses.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">read_timeout</span> (ReadTimeout) <span style="font-style: italic;">int</span>
+								<br>
+								ReadTimeout is the maximum duration in seconds for reading during the http request. If it is zero, then there is no timeout. If this is unspecified, then the value of Timeout is used instead if it is set. For more information, see the golang net/http Server documentation.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">root</span> (Root) <span style="font-style: italic;">str</span>
+								<br>
+								Root is the root directory that we should serve files from. If it is not specified, then it is not used. Any http file resources will have precedence over anything in here, in case the same path exists twice.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">shutdown_timeout</span> (ShutdownTimeout) <span style="font-style: italic;">int</span>
+								<br>
+								ShutdownTimeout is the maximum duration in seconds to wait for the server to shutdown gracefully before calling Close. By default it is nice to let client connections terminate gracefully, however it might take longer than we are willing to wait, particularly if one is long polling or running a very long download. As a result, you can set a timeout here. The default is zero which means it will wait indefinitely. The shutdown process can also be cancelled by the interrupt handler which this resource supports. If this is unspecified, then the value of Timeout is used instead if it is set.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">timeout</span> (Timeout) <span style="font-style: italic;">int</span>
+								<br>
+								Timeout is the maximum duration in seconds to use for unspecified timeouts. In other words, when this value is specified, it is used as the value for the other *Timeout values when they aren&#39;t used. Put another way, this makes it easy to set all the different timeouts with a single parameter.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">write_timeout</span> (WriteTimeout) <span style="font-style: italic;">int</span>
+								<br>
+								WriteTimeout is the maximum duration in seconds for writing during the http request. If it is zero, then there is no timeout. If this is unspecified, then the value of Timeout is used instead if it is set. For more information, see the golang net/http Server documentation.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="httpserverfile"> <span style="color: rgb(8, 8, 168);">http:server:file</span> (HTTPServerFileRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/http_server_file.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">HTTPServerFileRes is a file that exists within an http server. The name is used as the public path of the file, unless the filename field is specified, and in that case it is used instead. The way this works is that it autogroups at runtime with an existing http resource, and in doing so makes the file associated with this resource available for serving from that http server. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">data</span> (Data) <span style="font-style: italic;">str</span>
+								<br>
+								Data is the file content that should be used as the source for this file resource. It must not be combined with the path field.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">filename</span> (Filename) <span style="font-style: italic;">str</span>
+								<br>
+								Filename is the name of the file this data should appear as on the http server.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">path</span> (Path) <span style="font-style: italic;">str</span>
+								<br>
+								Path is the absolute path to a file that should be used as the source for this file resource. It must not be combined with the data field. If this corresponds to a directory, then it will used as a root dir that will be served as long as the resource name or Filename are also a directory ending with a slash.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">server</span> (Server) <span style="font-style: italic;">str</span>
+								<br>
+								Server is the name of the http server resource to group this into. If it is omitted, and there is only a single http resource, then it will be grouped into it automatically. If there is more than one main http resource being used, then the grouping behaviour is *undefined* when this is not specified, and it is not recommended to leave this blank!
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="httpserverflag"> <span style="color: rgb(8, 8, 168);">http:server:flag</span> (HTTPServerFlagRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/http_server_flag.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">HTTPServerFlagRes is a special path that exists within an http server. The name is used as the public path of the flag, unless the path field is specified, and in that case it is used instead. The way this works is that it autogroups at runtime with an existing http resource, and in doing so makes the flag associated with this resource available to cause actions when it receives a request on that http server. If you create a flag which responds to the same type of request as an http:server:file resource or any other kind of resource, it is undefined behaviour which will answer the request. The most common clash will happen if both are present at the same path. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">key</span> (Key) <span style="font-style: italic;">str</span>
+								<br>
+								Key is the querystring name that is used to capture a value as.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">path</span> (Path) <span style="font-style: italic;">str</span>
+								<br>
+								Path is the path that this will present as on the http server.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">server</span> (Server) <span style="font-style: italic;">str</span>
+								<br>
+								Server is the name of the http server resource to group this into. If it is omitted, and there is only a single http resource, then it will be grouped into it automatically. If there is more than one main http resource being used, then the grouping behaviour is *undefined* when this is not specified, and it is not recommended to leave this blank!
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="httpserverproxy"> <span style="color: rgb(8, 8, 168);">http:server:proxy</span> (HTTPServerProxyRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/http_server_proxy.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">HTTPServerProxyRes is a resource representing a special path that exists within an http server. The name is used as the public path of the endpoint, unless the path field is specified, and in that case it is used instead. The way this works is that it autogroups at runtime with an existing http server resource, and in doing so makes the path associated with this resource available when serving files. When something under the path is accessed, this is pulled from the backing http server, which makes an http client connection if needed to pull the authoritative file down, saves it locally for future use, and then returns it to the original http client caller. On a subsequent call, if the cache was not invalidated, the file doesn&#39;t need to be fetched from the network. In effect, this works as a caching http proxy. If you create this as a resource which responds to the same type of request as an http:server:file resource or any other kind of resource, it is undefined behaviour which will answer the request. The most common clash will happen if both are present at the same path. This particular implementation stores some file data in memory as a convenience instead of streaming directly to clients. This makes locking much easier, but is wasteful. If you plan on using this for huge files and on systems with low amounts of memory, you might want to optimize this. The resultant proxy path is determined by subtracting the `Sub` field from the `Path` (and request path) and then appending the result to the `Head` field. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">cache</span> (Cache) <span style="font-style: italic;">str</span>
+								<br>
+								Cache is an absolute path to a location on disk where cached files can be stored. If this is empty then we will not cache any files.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">head</span> (Head) <span style="font-style: italic;">str</span>
+								<br>
+								Head is the string to add on as a prefix to the new URL we are building for the proxy. If this is empty, the proxy can&#39;t work, and we can only rely on what is available in our local cache. This is typically the protocol and hostname for the backing server.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">path</span> (Path) <span style="font-style: italic;">str</span>
+								<br>
+								Path is the path that this presents as on the grouped http server. It overrides the Name var if specified.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">server</span> (Server) <span style="font-style: italic;">str</span>
+								<br>
+								Server is the name of the http server resource to group this into. If it is omitted, and there is only a single http resource, then it will be grouped into it automatically. If there is more than one main http resource being used, then the grouping behaviour is *undefined* when this is not specified, and it is not recommended to leave this blank!
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">sub</span> (Sub) <span style="font-style: italic;">str</span>
+								<br>
+								Sub is the string to remove from the start of the request, the path of which is looking at the Name/Path field to see if it matches. If it matches, it then translates to the destination server by removing this `Sub` string from the start of the path request, and then prepending on the `Head` field to get to the resultant proxy URL. If this is empty, then nothing is subtracted.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="httpserverui"> <span style="color: rgb(8, 8, 168);">http:server:ui</span> (HTTPServerUIRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/http_server_ui.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">HTTPServerUIRes is a web UI resource that exists within an http server. The name is used as the public path of the ui, unless the path field is specified, and in that case it is used instead. The way this works is that it autogroups at runtime with an existing http server resource, and in doing so makes the form associated with this resource available for serving from that http server. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">data</span> (Data) <span style="font-style: italic;">struct{title str; head str}</span>
+								<br>
+								Data represents some additional data to attach to the resource.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">path</span> (Path) <span style="font-style: italic;">str</span>
+								<br>
+								Path is the name of the path that this should be exposed under. For example, you might want to name this &#34;/ui/&#34; to expose it as &#34;ui&#34; under the server root. This overrides the name variable that is set.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">server</span> (Server) <span style="font-style: italic;">str</span>
+								<br>
+								Server is the name of the http server resource to group this into. If it is omitted, and there is only a single http resource, then it will be grouped into it automatically. If there is more than one main http resource being used, then the grouping behaviour is *undefined* when this is not specified, and it is not recommended to leave this blank!
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="httpserveruiinput"> <span style="color: rgb(8, 8, 168);">http:server:ui:input</span> (HTTPServerUIInputRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/http_server_ui_input.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">HTTPServerUIInputRes is a form element that exists within a http:server:ui resource, which exists within an http server. The name is used as the unique id of the field, unless the id field is specified, and in that case it is used instead. The way this works is that it autogroups at runtime with an existing http:server:ui resource, and in doing so makes the form field associated with this resource available as part of that ui which is itself grouped and served from the http server resource. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">id</span> (ID) <span style="font-style: italic;">str</span>
+								<br>
+								ID is the unique id for this element. It is used in form fields and should not be a private identifier. It must be unique within a given http ui.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">path</span> (Path) <span style="font-style: italic;">str</span>
+								<br>
+								Path is the name of the http ui resource to group this into. If it is omitted, and there is only a single http ui resource, then it will be grouped into it automatically. If there is more than one main http ui resource being used, then the grouping behaviour is *undefined* when this is not specified, and it is not recommended to leave this blank!
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">sort</span> (Sort) <span style="font-style: italic;">str</span>
+								<br>
+								Sort is a string that you can use to determine the global sorted display order of all the elements in a ui.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">store</span> (Store) <span style="font-style: italic;">str</span>
+								<br>
+								Store the data in this source. It will also read in a default value from there if one is present. It will watch it for changes as well, and update the displayed value if it&#39;s changed from another source. This cannot be used at the same time as the Value field.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">type</span> (Type) <span style="font-style: italic;">str</span>
+								<br>
+								Type specifies the type of input field this is, and some information about it.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">value</span> (Value) <span style="font-style: italic;">str</span>
+								<br>
+								Value is the default value to use for the form field. If you change it, then the resource graph will change and we&#39;ll rebuild and have the new value visible. You can use either this or the Store field. swap to a new resource graph, and maybe Store is not needed?
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="kv"> <span style="color: rgb(8, 8, 168);">kv</span> (KVRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/kv.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">KVRes is a resource which writes a key/value pair into cluster wide storage. It will ensure that the key is set to the requested value. The one exception is that if you use the SkipLessThan parameter, then it will only replace the stored value with the requested value if it is greater than that stored one. This allows the KV resource to be used in fast acting, finite state machines which have monotonically increasing state values that represent progression. The one exception is that when this resource receives a refresh signal, then it will set the value to be the exact one if they are not identical already. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">key</span> (Key) <span style="font-style: italic;">str</span>
+								<br>
+								Key represents the key to set. If it is not specified, the Name value is used instead.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">mapped</span> (Mapped) <span style="font-style: italic;">bool</span>
+								<br>
+								Mapped specifies that we will store the value in a map with each hostname as part of the key. This is very useful for exchanging values when running this resource on multiple nodes simultaneously. To read/write/watch a single, global key, this value should be false. Note that resources may fight if more than one uses this. The `world` functions like `exchange`, require this to be true, since they&#39;re pulling values out of a pool that each node sets. The `world` functions like `getval`, require this to be false, since they&#39;re pulling values directly out of the same namespace that is shared by all nodes.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">skipcmpstyle</span> (SkipCmpStyle) <span style="font-style: italic;">int</span>
+								<br>
+								SkipCmpStyle is the type of compare function used when determining if the value is greater when using the SkipLessThan parameter.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">skiplessthan</span> (SkipLessThan) <span style="font-style: italic;">bool</span>
+								<br>
+								SkipLessThan causes the value to be updated as long as it is greater.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">value</span> (Value) <span style="font-style: italic;">str</span>
+								<br>
+								Value represents the string value to set. If this value is nil or, undefined, then this will delete that key.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="line"> <span style="color: rgb(8, 8, 168);">line</span> (LineRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/line.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">LineRes is a simple resource that adds or removes a line of text from a file. For more complicated control over the file, use the regular File resource. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">content</span> (Content) <span style="font-style: italic;">str</span>
+								<br>
+								Content specifies the line contents to add or remove. If this is empty, then it does nothing.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">file</span> (File) <span style="font-style: italic;">str</span>
+								<br>
+								File is the absolute path to the file that we are managing.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">state</span> (State) <span style="font-style: italic;">str</span>
+								<br>
+								State specifies the desired state of the line. It can be either `exists` or `absent`. If you do not specify this, we will not be able to create or remove a line.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">trim</span> (Trim) <span style="font-style: italic;">bool</span>
+								<br>
+								Trim specifies that we will trim any whitespace from the beginning and end of the content. This makes it easier to pass in data from a file that ends with a newline, and avoid adding an unnecessary blank.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="mount"> <span style="color: rgb(8, 8, 168);">mount</span> (MountRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/mount.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">MountRes is a systemd mount resource that adds/removes entries from /etc/fstab, and makes sure the defined device is mounted or unmounted accordingly. The mount point is set according to the resource&#39;s name. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">device</span> (Device) <span style="font-style: italic;">str</span>
+								<br>
+								Device is the location of the device or image.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">freq</span> (Freq) <span style="font-style: italic;">int</span>
+								<br>
+								Freq is the dump frequency.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">options</span> (Options) <span style="font-style: italic;">map{str: str}</span>
+								<br>
+								Options are mount options.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">passno</span> (PassNo) <span style="font-style: italic;">int</span>
+								<br>
+								PassNo is the verification order.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">state</span> (State) <span style="font-style: italic;">str</span>
+								<br>
+								State must be exists or absent. If absent, remaining fields are ignored.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">type</span> (Type) <span style="font-style: italic;">str</span>
+								<br>
+								Type of the filesystem.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="msg"> <span style="color: rgb(8, 8, 168);">msg</span> (MsgRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/msg.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">MsgRes is a resource that writes messages to logs. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">body</span> (Body) <span style="font-style: italic;">str</span>
+								<br>
+								Body is the body of the message to send.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">fields</span> (Fields) <span style="font-style: italic;">map{str: str}</span>
+								<br>
+								Fields are the key/value pairs set in the journal if we are using it.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">journal</span> (Journal) <span style="font-style: italic;">bool</span>
+								<br>
+								Journal should be true to enable systemd journaled (journald) output.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">priority</span> (Priority) <span style="font-style: italic;">str</span>
+								<br>
+								Priority is the priority of the message. Currently this is one of: Emerg, Alert, Crit, Err, Warning, Notice, Info, Debug.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">syslog</span> (Syslog) <span style="font-style: italic;">bool</span>
+								<br>
+								Syslog should be true to enable traditional syslog output. This is probably going to somewhere in `/var/log/` on your filesystem.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="net"> <span style="color: rgb(8, 8, 168);">net</span> (NetRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/net.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">NetRes is a network interface resource based on netlink. It manages the state of a network link. Configuration is also stored in a networkd configuration file, so the network is available upon reboot. The name of the resource is the string representing the network interface name. This could be &#34;eth0&#34; for example. It supports flipping the state if you ask for it to be reversible. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">addrs</span> (Addrs) <span style="font-style: italic;">[]str</span>
+								<br>
+								Addrs is the list of addresses to set on the interface. They must each be in CIDR notation such as: 192.0.2.42/24 for example.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">gateway</span> (Gateway) <span style="font-style: italic;">str</span>
+								<br>
+								Gateway represents the default route to set for the interface.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">ip_forward</span> (IPForward) <span style="font-style: italic;">bool</span>
+								<br>
+								IPForward is a boolean that sets whether we should forward incoming packets onward when this is set. It default to unspecified, which downstream (in the systemd-networkd configuration) defaults to false.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">state</span> (State) <span style="font-style: italic;">str</span>
+								<br>
+								State is the desired state of the interface. It can be &#34;up&#34;, &#34;down&#34;, or the empty string to leave that unspecified.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="noop"> <span style="color: rgb(8, 8, 168);">noop</span> (NoopRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/noop.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">NoopRes is a no-op resource that does nothing. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">comment</span> (Comment) <span style="font-style: italic;">str</span>
+								<br>
+								Comment is a useless comment field that you can use however you like.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="nspawn"> <span style="color: rgb(8, 8, 168);">nspawn</span> (NspawnRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/nspawn.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">NspawnRes is an nspawn container resource. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">state</span> (State) <span style="font-style: italic;">str</span>
+								<br>
+								State specifies the desired state for this resource. This must be either `running` or `stopped`.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="password"> <span style="color: rgb(8, 8, 168);">password</span> (PasswordRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/password.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">PasswordRes is a no-op resource that returns a random password string. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">check_recovery</span> (CheckRecovery) <span style="font-style: italic;">bool</span>
+								<br>
+								CheckRecovery specifies that we should recover from, regenerate, and carry on casually without erroring the resource if the &#34;check&#34; facility fails. This can happen when loading a saved password from disk which is not of the expected length. In this case, we&#39;d discard the old saved password and create a new one without erroring.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">length</span> (Length) <span style="font-style: italic;">int</span>
+								<br>
+								Length is the number of characters to return.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">saved</span> (Saved) <span style="font-style: italic;">bool</span>
+								<br>
+								Saved caches the password in the clear locally.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="pippet"> <span style="color: rgb(8, 8, 168);">pippet</span> (PippetRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/pippet.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">PippetRes is a wrapper resource for puppet. It implements the functional equivalent of an exec resource that calls &#34;puppet resource &lt;type&gt; &lt;title&gt; &lt;params&gt;&#34;, but offers superior performance through a long-running Puppet process that receives resources through a pipe (hence the name). </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">params</span> (Params) <span style="font-style: italic;">str</span>
+								<br>
+								Params is expected to be a hash in YAML format, pairing resource parameter names with their respective values, e.g. { ensure: present }
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">title</span> (Title) <span style="font-style: italic;">str</span>
+								<br>
+								Title is used by Puppet as the resource title. Puppet will often assign special meaning to the title, e.g. use it as the path for a file resource, or the name of a package.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">type</span> (Type) <span style="font-style: italic;">str</span>
+								<br>
+								Type is the exact name of the wrapped Puppet resource type, e.g. &#34;file&#34;, &#34;mount&#34;. This needs not be a core type. It can be a type from a module. The Puppet installation local to the mgmt agent machine must be able recognize it. It has to be a native type though, as opposed to defined types from your Puppet manifest code.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="pkg"> <span style="color: rgb(8, 8, 168);">pkg</span> (PkgRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/pkg.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">PkgRes is a package resource for packagekit. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">allownonfree</span> (AllowNonFree) <span style="font-style: italic;">bool</span>
+								<br>
+								AllowNonFree specifies if we want to allow nonfree packages to be found? Please see the PackageKit documentation for more information.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">allowunsupported</span> (AllowUnsupported) <span style="font-style: italic;">bool</span>
+								<br>
+								AllowUnsupported specifies if we want to unsupported packages to be found? Please see the PackageKit documentation for more information.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">allowuntrusted</span> (AllowUntrusted) <span style="font-style: italic;">bool</span>
+								<br>
+								AllowUntrusted specifies if we want to allow untrusted packages to be installed. Please see the PackageKit documentation for more information.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">state</span> (State) <span style="font-style: italic;">str</span>
+								<br>
+								State determines if we want to install or uninstall the package, and what version we want to pin if any. Valid values include: installed, uninstalled, newest, and `version`, where you just put the raw version string desired.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="print"> <span style="color: rgb(8, 8, 168);">print</span> (PrintRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/print.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">PrintRes is a resource that is useful for printing a message to the screen. It will also display a message when it receives a notification. It supports automatic grouping. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">msg</span> (Msg) <span style="font-style: italic;">str</span>
+								<br>
+								Msg is the message to display.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">refresh_only</span> (RefreshOnly) <span style="font-style: italic;">bool</span>
+								<br>
+								RefreshOnly is an option that causes the message to be printed only when notified by another resource. When set to true, this resource cannot be autogrouped.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="schedule"> <span style="color: rgb(8, 8, 168);">schedule</span> (ScheduleRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/schedule.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">ScheduleRes is a resource which starts up a &#34;distributed scheduler&#34;. All nodes of the same namespace will be part of the same scheduling pool. The scheduling result can be determined by using the &#34;schedule&#34; function. If the options specified are different among peers in the same namespace, then it is undefined which options if any will get chosen. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">max</span> (Max) <span style="font-style: italic;">int</span>
+								<br>
+								Max is the max number of hosts to elect. If this is unspecified, then a default of 1 is used.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">namespace</span> (Namespace) <span style="font-style: italic;">str</span>
+								<br>
+								Namespace represents the namespace key to use. If it is not specified, the Name value is used instead.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">reuse</span> (Reuse) <span style="font-style: italic;">bool</span>
+								<br>
+								Reuse specifies that we reuse the client lease on reconnect. If reuse is false, then on host disconnect, that hosts entry will immediately expire, and the scheduler will react instantly and remove that host entry from the list. If this is true, or if the host closes without a clean shutdown, it will take the TTL number of seconds to remove the entry.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">strategy</span> (Strategy) <span style="font-style: italic;">str</span>
+								<br>
+								Strategy is the scheduling strategy to use. If this value is nil or, undefined, then a default will be chosen automatically.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">ttl</span> (TTL) <span style="font-style: italic;">int</span>
+								<br>
+								TTL is the time to live for added scheduling &#34;votes&#34;. If this value is nil or, undefined, then a default value is used. See the `Reuse` entry for more information.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="svc"> <span style="color: rgb(8, 8, 168);">svc</span> (SvcRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/svc.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">SvcRes is a service resource for systemd units. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">session</span> (Session) <span style="font-style: italic;">bool</span>
+								<br>
+								Session specifies if this is for a system service (false) or a user session specific service (true).
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">startup</span> (Startup) <span style="font-style: italic;">str</span>
+								<br>
+								Startup specifies what should happen on startup. Values can be: enabled, disabled, and undefined (empty string).
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">state</span> (State) <span style="font-style: italic;">str</span>
+								<br>
+								State is the desired state for this resource. Valid values include: running, stopped, and undefined (empty string).
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="sysctl"> <span style="color: rgb(8, 8, 168);">sysctl</span> (SysctlRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/sysctl.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">SysctlRes is a resource for setting kernel parameters. /etc/sysctl.d/ and optionally blanks out the stock /etc/sysctl.conf file too. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">path</span> (Filename) <span style="font-style: italic;">str</span>
+								<br>
+								Filename is the full path for the persistence file which is usually read on boot. We usually use entries in the /etc/sysctl.d/ directory. By convention, they end in .conf and start with a numeric prefix and a dash. For example: /etc/sysctl.d/10-dmesg.conf for example. If this is omitted, the filename will be chosen automatically.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">persist</span> (Persist) <span style="font-style: italic;">bool</span>
+								<br>
+								Persist specifies whether this value should be stored on disk where it will persist across reboots. It defaults to true. Keep in mind, that if this is not used, but `Runtime` is true, then the value will be restored anyways if `mgmt` runs on boot, which may be what you want anyways.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">runtime</span> (Runtime) <span style="font-style: italic;">bool</span>
+								<br>
+								Runtime specifies whether this value should be set immediately. It defaults to true. If this is not set, then the value must be set in a file and the machine will have to reboot for the setting to take effect.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">value</span> (Value) <span style="font-style: italic;">str</span>
+								<br>
+								Value is the string value to set. Make sure you specify it in the same format that the kernel parses it as to avoid automation &#34;flapping&#34;. You can test this by writing a value to the correct /proc/sys/ path entry with `echo foo &gt;` and then reading it back out and seeing what the &#34;parsed&#34; correct format is. You must not include the trailing newline which is present in the readback for all values.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="tar"> <span style="color: rgb(8, 8, 168);">tar</span> (TarRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/tar.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">TarRes is a resource that archives a number of paths using tar, thus combining them into a single file. The name of the resource is the path to the resultant archive file. The input comes from a list of paths which can be either files or directories or both. Directories are added recursively of course. This uses hashes to determine if something was changed, so as a result, this may not be suitable if you can create a sha256 hash collision. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">format</span> (Format) <span style="font-style: italic;">int</span>
+								<br>
+								Format is the header format to use. If you change this, then the file will get rearchived. The strange thing is that it seems the header format is stored for each individual file. The available values are: const.res.tar.format.unknown, const.res.tar.format.ustar, const.res.tar.format.pax, and const.res.tar.format.gnu which have values of 0, 2, 4, and 8 respectively.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">inputs</span> (Inputs) <span style="font-style: italic;">[]str</span>
+								<br>
+								Inputs represents the list of files to be compressed. They must each be absolute paths of either single files or directories, and as a result, each must start with a slash. Directories must end with a slash and files must not for standard behaviour. As a special exception, if you omit the trailing slash on a directory path, then this will include that directory name as a prefix. This is similar to how rsync chooses if it copies in the base directory or not.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">path</span> (Path) <span style="font-style: italic;">str</span>
+								<br>
+								Path, which defaults to the name if not specified, represents the destination path for the compressed file being created. It must be an absolute path, and as a result must start with a slash. Since it is a file, it must not end with a slash.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="test"> <span style="color: rgb(8, 8, 168);">test</span> (TestRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/test.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">TestRes is a resource that is mostly harmless and is used for internal tests. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">alwaysgroup</span> (AlwaysGroup) <span style="font-style: italic;">bool</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">anotherstr</span> (AnotherStr) <span style="font-style: italic;">str</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">bool</span> (Bool) <span style="font-style: italic;">bool</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">boolptr</span> (BoolPtr) <span style="font-style: italic;">bool</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">byte</span> (Byte) <span style="font-style: italic;">int</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">comment</span> (Comment) <span style="font-style: italic;">str</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">comparefail</span> (CompareFail) <span style="font-style: italic;">bool</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">expectrecv</span> (ExpectRecv) <span style="font-style: italic;">[]str</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">float32</span> (Float32) <span style="font-style: italic;">float</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">float64</span> (Float64) <span style="font-style: italic;">float</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">func1</span> (Func1) <span style="font-style: italic;">func(0 int) str</span>
+								<br>
+								Func1 passes the value 42 to the input and returns a string.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">int</span> (Int) <span style="font-style: italic;">int</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">int16</span> (Int16) <span style="font-style: italic;">int</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">int32</span> (Int32) <span style="font-style: italic;">int</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">int64</span> (Int64) <span style="font-style: italic;">int</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">int64ptr</span> (Int64Ptr) <span style="font-style: italic;">int</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">int8</span> (Int8) <span style="font-style: italic;">int</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">int8ptr</span> (Int8Ptr) <span style="font-style: italic;">int</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">int8ptrptrptr</span> (Int8PtrPtrPtr) <span style="font-style: italic;">int</span>
+								<br>
+								Int8PtrPtrPtr probably makes no sense, but is legal.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">interface</span> (Interface) <span style="font-style: italic;">variant</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">mapintfloat</span> (MapIntFloat) <span style="font-style: italic;">map{int: float}</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">mixedstruct</span> (MixedStruct) <span style="font-style: italic;">struct{somebool bool; somestr str; someint int; somefloat float}</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">onlyshow</span> (OnlyShow) <span style="font-style: italic;">[]str</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">rune</span> (Rune) <span style="font-style: italic;">int</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">sendvalue</span> (SendValue) <span style="font-style: italic;">str</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">slicestring</span> (SliceString) <span style="font-style: italic;">[]str</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">str</span> (Str) <span style="font-style: italic;">str</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">stringptr</span> (StringPtr) <span style="font-style: italic;">str</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">uint</span> (Uint) <span style="font-style: italic;">int</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">uint16</span> (Uint16) <span style="font-style: italic;">int</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">uint32</span> (Uint32) <span style="font-style: italic;">int</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">uint64</span> (Uint64) <span style="font-style: italic;">int</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">uint8</span> (Uint8) <span style="font-style: italic;">int</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">uint8ptr</span> (Uint8Ptr) <span style="font-style: italic;">int</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">validatebool</span> (ValidateBool) <span style="font-style: italic;">bool</span>
+								<br>
+								
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">validateerror</span> (ValidateError) <span style="font-style: italic;">str</span>
+								<br>
+								
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="tftpfile"> <span style="color: rgb(8, 8, 168);">tftp:file</span> (TFTPFileRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/tftp.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">TFTPFileRes is a file that exists within a tftp server. The name is used as the public path of the file, unless the filename field is specified, and in that case it is used instead. The way this works is that it autogroups at runtime with an existing tftp resource, and in doing so makes the file associated with this resource available for serving from that tftp server. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">data</span> (Data) <span style="font-style: italic;">str</span>
+								<br>
+								Data is the file content that should be used as the source for this file resource. It must not be combined with the path field.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">filename</span> (Filename) <span style="font-style: italic;">str</span>
+								<br>
+								Filename is the name of the file this data should appear as on the tftp server.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">path</span> (Path) <span style="font-style: italic;">str</span>
+								<br>
+								Path is the absolute path to a file that should be used as the source for this file resource. It must not be combined with the data field.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">server</span> (Server) <span style="font-style: italic;">str</span>
+								<br>
+								Server is the name of the tftp server resource to group this into. If it is omitted, and there is only a single tftp resource, then it will be grouped into it automatically. If there is more than one main tftp resource being used, then the grouping behaviour is *undefined* when this is not specified, and it is not recommended to leave this blank!
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="tftpserver"> <span style="color: rgb(8, 8, 168);">tftp:server</span> (TFTPServerRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/tftp.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">TFTPServerRes is a tftp server resource. It serves files, but does not actually apply any state. The name is used as the address to listen on, unless the Address field is specified, and in that case it is used instead. This resource can offer up files for serving that are specified either inline in this resource by specifying a tftp root, or as tftp:file resources which will get autogrouped into this resource at runtime. The two methods can be combined as well. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">address</span> (Address) <span style="font-style: italic;">str</span>
+								<br>
+								Address is the listen address to use for the tftp server. It is common to use `:69` (the standard) to listen on UDP port 69 on all addresses.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">root</span> (Root) <span style="font-style: italic;">str</span>
+								<br>
+								Root is the root directory that we should serve files from. If it is not specified, then it is not used. Any tftp file resources will have precedence over anything in here, in case the same path exists twice.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">timeout</span> (Timeout) <span style="font-style: italic;">int</span>
+								<br>
+								Timeout is the timeout in seconds to use for server connections.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="timer"> <span style="color: rgb(8, 8, 168);">timer</span> (TimerRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/timer.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">TimerRes is a timer resource for time based events. It outputs an event every interval seconds. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">interval</span> (Interval) <span style="font-style: italic;">int</span>
+								<br>
+								Interval between runs in seconds.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="user"> <span style="color: rgb(8, 8, 168);">user</span> (UserRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/user.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">UserRes is a user account resource. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">allowduplicateuid</span> (AllowDuplicateUID) <span style="font-style: italic;">bool</span>
+								<br>
+								AllowDuplicateUID is needed for a UID to be non-unique. This is rare but happens if you want more than one username to access the resources of the same UID. See the --non-unique flag in `useradd`.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">gid</span> (GID) <span style="font-style: italic;">int</span>
+								<br>
+								GID of the user&#39;s primary group.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">group</span> (Group) <span style="font-style: italic;">str</span>
+								<br>
+								Group is the name of the user&#39;s primary group.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">groups</span> (Groups) <span style="font-style: italic;">[]str</span>
+								<br>
+								Groups are a list of supplemental groups.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">homedir</span> (HomeDir) <span style="font-style: italic;">str</span>
+								<br>
+								HomeDir is the path to the user&#39;s home directory.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">shell</span> (Shell) <span style="font-style: italic;">str</span>
+								<br>
+								Shell is the users login shell. Many options may exist in the `/etc/shells` file. If you set this, you most likely want to pick `/bin/bash` or `/usr/sbin/nologin`.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">state</span> (State) <span style="font-style: italic;">str</span>
+								<br>
+								State is either exists or absent.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">uid</span> (UID) <span style="font-style: italic;">int</span>
+								<br>
+								UID specifies the usually unique user ID. It must be unique unless AllowDuplicateUID is true.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="value"> <span style="color: rgb(8, 8, 168);">value</span> (ValueRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/value.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">ValueRes is a no-op resource that accepts a value normally or via send/recv and it sends it via send/recv as well.
+temporary placeholder value set or we&#39;ll get an invalid value error. This can be fixed eventually when we expand the resource API. See the Default method of this resource for more information. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">any</span> (Any) <span style="font-style: italic;">variant</span>
+								<br>
+								Any is an arbitrary value to store in this resource. It can also be sent via send/recv and received by the same mechanism as well. The received value overwrites this value for the lifetime of the resource. It is interface{} because it can hold any type. It has pointer because it is only set if an actual value exists.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="virt"> <span style="color: rgb(8, 8, 168);">virt</span> (VirtRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/virt.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">VirtRes is a libvirt resource. A transient virt resource, which has its state set to `shutoff` is one which does not exist. The parallel equivalent is a file resource which removes a particular path. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">auth</span> (Auth) <span style="font-style: italic;">struct{username str; password str}</span>
+								<br>
+								Auth points to the libvirt credentials to use if any are necessary.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">boot</span> (Boot) <span style="font-style: italic;">[]str</span>
+								<br>
+								Boot is the boot order. Values are `fd`, `hd`, `cdrom` and `network`.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">cdrom</span> (CDRom) <span style="font-style: italic;">[]struct{source str; type str}</span>
+								<br>
+								CdRom is the list of cdrom devices to include.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">cpus</span> (CPUs) <span style="font-style: italic;">int</span>
+								<br>
+								CPUs is the desired cpu count of the machine.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">disk</span> (Disk) <span style="font-style: italic;">[]struct{source str; type str}</span>
+								<br>
+								Disk is the list of disk devices to include.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">filesystem</span> (Filesystem) <span style="font-style: italic;">[]struct{access str; source str; target str; read_only bool}</span>
+								<br>
+								Filesystem is the list of file system devices to include.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">hotcpus</span> (HotCPUs) <span style="font-style: italic;">bool</span>
+								<br>
+								HotCPUs specifies whether we can hot plug and unplug cpus.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">maxcpus</span> (MaxCPUs) <span style="font-style: italic;">int</span>
+								<br>
+								MaxCPUs is the maximum number of cpus allowed in the machine. You need to set this so that on boot the `hardware` knows how many cpu `slots` it might need to make room for.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">memory</span> (Memory) <span style="font-style: italic;">int</span>
+								<br>
+								Memory is the size in KBytes of memory to include in the machine.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">network</span> (Network) <span style="font-style: italic;">[]struct{name str; mac str}</span>
+								<br>
+								Network is the list of network devices to include.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">osinit</span> (OSInit) <span style="font-style: italic;">str</span>
+								<br>
+								OSInit is the init used by lxc.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">restartondiverge</span> (RestartOnDiverge) <span style="font-style: italic;">str</span>
+								<br>
+								RestartOnDiverge is the restart policy, and can be: `ignore`, `ifneeded` or `error`.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">restartonrefresh</span> (RestartOnRefresh) <span style="font-style: italic;">bool</span>
+								<br>
+								RestartOnRefresh specifies if we restart on refresh signal.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">state</span> (State) <span style="font-style: italic;">str</span>
+								<br>
+								State is the desired vm state. Possible values include: `running`, `paused` and `shutoff`.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">transient</span> (Transient) <span style="font-style: italic;">bool</span>
+								<br>
+								Transient is whether the vm is defined (false) or undefined (true).
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">uri</span> (URI) <span style="font-style: italic;">str</span>
+								<br>
+								URI is the libvirt connection URI, eg: `qemu:///session`.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="virtbuilder"> <span style="color: rgb(8, 8, 168);">virt:builder</span> (VirtBuilderRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/virt_builder.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">VirtBuilderRes is a resource for building virtual machine images. It is based on the amazing virt-builder tool which is part of the guestfs suite of tools. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">arch</span> (Arch) <span style="font-style: italic;">str</span>
+								<br>
+								Arch specifies the CPU architecture to use for this machine. You will need to pick from the output of `virt-builder --list`. Note that not all OSVersion&#43;Arch combinations may exist.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">bootstrap</span> (Bootstrap) <span style="font-style: italic;">bool</span>
+								<br>
+								Bootstrap can be set to false to disable any automatic bootstrapping of running the mgmt binary on first boot. If this is set, we will attempt to copy the mgmt binary in, and then run it. This also adds additional packages to install which are needed to bootstrap mgmt. This defaults to true.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">copy_in</span> (CopyIn) <span style="font-style: italic;">[]struct{path str; dest str}</span>
+								<br>
+								CopyIn is a list of local paths to copy into the machine dest. The dest directory must exist for this to work. Use Mkdir if you need to make a directory, since that step happens earlier. All paths must be absolute, and directories must end with a slash. This happens before the RunCmd stage in case you want to create something to be used there.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">firstboot_cmd</span> (FirstbootCmd) <span style="font-style: italic;">[]str</span>
+								<br>
+								FirstbootCmd is a sequence of commands &#43; args (one set per list item) to run once on first boot. consistency between this platform and other platforms that might not support the excellent libguestfs version of those scripts. (Make the logs look more homogeneous.)
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">format</span> (Format) <span style="font-style: italic;">str</span>
+								<br>
+								Format is the disk image format. You likely want &#34;raw&#34; or &#34;qcow2&#34;.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">hostname</span> (Hostname) <span style="font-style: italic;">str</span>
+								<br>
+								Hostname for the new machine.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">log_output</span> (LogOutput) <span style="font-style: italic;">bool</span>
+								<br>
+								LogOutput logs the output of running this command to a file in the special $vardir directory. It defaults to true. Keep in mind that if you let virt-builder choose the password randomly, it will be output in these logs in cleartext!
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">mkdir</span> (Mkdir) <span style="font-style: italic;">[]str</span>
+								<br>
+								Mkdir creates these directories in the guests. This happens before CopyIn runs. Directories must be absolute and end with a slash. Any intermediate directories are created, similar to how `mkdir -p` works.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">no_setup</span> (NoSetup) <span style="font-style: italic;">bool</span>
+								<br>
+								NoSetup can be set to true to disable trying to install the package for the virt-builder binary.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">os_version</span> (OSVersion) <span style="font-style: italic;">str</span>
+								<br>
+								OSVersion specifies which distro and version to use for installation. You will need to pick from the output of `virt-builder --list`.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">output</span> (Output) <span style="font-style: italic;">str</span>
+								<br>
+								Output is the full absolute file path where the image will be created. If this file exists, then no action will be performed. when we can find a safe way to do so.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">packages</span> (Packages) <span style="font-style: italic;">[]str</span>
+								<br>
+								Packages is the list of packages to install. If Bootstrap is true, then it will add additional packages that we install if needed.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">root_password_selector</span> (RootPasswordSelector) <span style="font-style: italic;">str</span>
+								<br>
+								RootPasswordSelector is a string in the virt-builder format. See the manual page &#34;USERS AND PASSWORDS&#34; section for more information.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">root_ssh_inject</span> (RootSSHInject) <span style="font-style: italic;">bool</span>
+								<br>
+								RootSSHInject disables installing the root ssh key into the new vm. If one is not present, then nothing is done.	This defaults to true.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">run_cmd</span> (RunCmd) <span style="font-style: italic;">[]str</span>
+								<br>
+								RunCmd is a sequence of commands &#43; args (one set per list item) to run in the build environment. These happen after the CopyIn stage.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">seeds</span> (Seeds) <span style="font-style: italic;">[]str</span>
+								<br>
+								Seeds is a list of default etcd client endpoints to connect to. If you specify this, you must also set Bootstrap to true. These should likely be http URL&#39;s like: http://127.0.0.1:2379 or similar.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">selinux_relabel</span> (SelinuxRelabel) <span style="font-style: italic;">bool</span>
+								<br>
+								SelinuxRelabel specifies that we should do an selinux relabel on the final image. This defaults to true.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">size</span> (Size) <span style="font-style: italic;">int</span>
+								<br>
+								Size is the disk size of the new virtual machine in bytes.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">ssh_keys</span> (SSHKeys) <span style="font-style: italic;">[]struct{user str; type str; key str; comment str}</span>
+								<br>
+								SSHKeys is a list of additional keys to add to the machine. This is not a map because you may wish to add more than one to that user account.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">tweaks</span> (Tweaks) <span style="font-style: italic;">bool</span>
+								<br>
+								Tweaks adds some random tweaks to work around common bugs. This defaults to true. It also does some useful things that most may find desirable.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">update</span> (Update) <span style="font-style: italic;">bool</span>
+								<br>
+								Update specifies that we should update the installed packages during image build. This defaults to true.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="virtnetwork"> <span style="color: rgb(8, 8, 168);">virt:network</span> (VirtNetworkRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/virt_network.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">VirtNetworkRes is libvirt network resource. The name is used as the network name. This autogroups VirtNetworkHost resources into it to define the list of static host allocations. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">auth</span> (Auth) <span style="font-style: italic;">struct{username str; password str}</span>
+								<br>
+								Auth points to the libvirt credentials to use if any are necessary.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">device</span> (Device) <span style="font-style: italic;">str</span>
+								<br>
+								Device is the name of the Linux network device we use for this network. If absent this defaults to virbr0.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">ip</span> (IP) <span style="font-style: italic;">str</span>
+								<br>
+								IP is the (router) IPv4 address with the CIDR suffix that we use for the network.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">mac</span> (Mac) <span style="font-style: italic;">str</span>
+								<br>
+								Mac is the mac address of the host in lower case and separated with colons.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">mode</span> (Mode) <span style="font-style: italic;">str</span>
+								<br>
+								Mode is the forward mode for this device. Currently only &#34;nat&#34; is supported. Currently this defaults to &#34;nat&#34;.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">uri</span> (URI) <span style="font-style: italic;">str</span>
+								<br>
+								URI is the libvirt connection URI, eg: `qemu:///session`.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">uuid</span> (UUID) <span style="font-style: italic;">str</span>
+								<br>
+								UUID of the network. If unspecified, one is chosen randomly.
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+				<li>
+					<h2 id="virtnetworkhost"> <span style="color: rgb(8, 8, 168);">virt:network:host</span> (VirtNetworkHostRes)
+					
+					<a href="https://github.com/purpleidea/mgmt/blob/25804c71d/engine/resources/virt_network.go"
+					style="float: right; color: #007bff; text-decoration: none; font-size: 0.6em;">View Source</a>
+					</h2>
+					<hr class="header-line">
+					<p class="description"> <span style="color: black;">VirtNetworkHostRes is a representation of a static host assignment in DHCP. </span></p>
+					
+					<div class="box">
+						<ul>
+
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">ip</span> (IP) <span style="font-style: italic;">str</span>
+								<br>
+								IP is the IPv4 address with the CIDR suffix. The suffix is required in case we eventually need it somewhere and for consistency with the API of the dhcp:host resource. For example, you might specify 192.0.2.42/24 which represents a mask of 255.255.255.0 that is used.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">mac</span> (Mac) <span style="font-style: italic;">str</span>
+								<br>
+								Mac is the mac address of the host in lower case and separated with colons.
+							</li>
+
+							<li style="margin-bottom: 5px;">
+								&#8226; <span style="color: blue;">server</span> (Server) <span style="font-style: italic;">str</span>
+								<br>
+								Server is the name of the virt network resource to group this into. If it is omitted, and there is only a single virt network resource, then it will be grouped into it automatically. If there is more than one main virt network resource being used, then the grouping behaviour is *undefined* when this is not specified, and it is not recommended to leave this blank!
+							</li>
+
+						</ul>
+					</div>
+					<br>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+
+<style>
+	.header {
+		margin-left: 20px;
+		color: black;
+	}
+
+	.flex-container {
+		display: flex;
+		gap: 30px;
+	}
+
+	 
+	.container-left {
+		flex: 1.1;
+		max-width: fit-content;
+		margin-left: 3%;
+	}
+
+	.container-right {
+		flex: 4;
+		margin-right: 15%;
+	}
+
+	 
+	@media (max-width: 768px) {
+		.flex-container {
+			flex-direction: column;  
+			gap: 10px;  
+	}
+
+		.container-right {
+			width: 92%;  
+			margin-left: 4%;
+		}
+	}
+
+	.description {
+		margin-top: 0;  
+		margin-bottom: 0;  
+	}
+
+	.box {
+		border: 2px solid #000;  
+		padding: 20px;  
+		background-color: #f9f9f9;  
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  
+		border-radius: 8px;  
+		margin: 20px auto;  
+	}
+</style>
+
+
+
+  </div>
+
+  <div class="footer" style="background: #2f2f41;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-inner">
+          
+          <img style="height: 2em;" src="/images/logo_reversed_wide.svg" class="footer-title" />
+          <ul>
+            
+            
+            <li class="menu-item-home">
+              <a href="/">
+                Home
+              </a>
+            </li>
+            
+            <li class="menu-item-contact">
+              <a href="/contact/">
+                Contact
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="sub-footer" style="background: #1a1a23;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          <ul style="list-style-type: none;">
+
+            <li><strong>Email: </strong><a style="color: #8484a2;" href="mailto:contact@mgmtconfig.com">
+                contact@mgmtconfig.com</a></li>
+          </ul>
+	  <a style="color: #8484a2;" class="zerostatic" href="https://mgmtconfig.com/">mgmtconfig.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  
+  
+
+  
+    
+  
+  <script type="text/javascript" src="/js/scripts.min.433bb64e87f8e5d8e9530181ae5ab6f8b35109ed174269388dc30e101ef4182a.js"></script>
+
+  
+
+
+  
+
+
+</body>
+
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Values and Types - Mgmt Config</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="/">
+
+  
+
+
+  
+  
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.min.dc9a4fe1a2bfff142f2063aea53eaadd9da318cfa397e552bacd03d177ca6855.css">
+
+  
+
+  
+    
+    <meta property="og:title" content="Values and Types"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://mgmtconfig.com/docs/guide/values-and-types/"/>
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    
+    
+  
+
+</head>
+
+<body class='page page-default-single'>
+  <div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    
+    
+    <li class="menu-item-products ">
+      <a href="https://m9rx.com/products/">
+        <span>Products</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-services ">
+      <a href="https://m9rx.com/services/">
+        <span>Services</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-docs active">
+      <a href="/docs/">
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-about ">
+      <a href="/about/">
+        <span>About</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-contact ">
+      <a href="/contact/">
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+  <div class="wrapper">
+    
+<div class='header' >
+
+  <div class="container">
+    <div class="logo">
+      <a href="/"><img height=107px alt="Mgmt Config - Fast, Real-time, Closed-Loop Automation." src="/images/logo_default_symbol.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="/"><img height=50px alt="Mgmt Config - Fast, Real-time, Closed-Loop Automation." src="/images/logo_default_symbol.svg" /></a>
+    </div>
+    
+<style>
+li.active {
+	border-radius: 3px;
+	color: #ffffff;
+	background-color: #106be0;
+	font-weight: bold;
+}
+li.active span {
+	color: #ffffff;
+}
+</style>
+<div id="main-menu" class="main-menu">
+	<ul>
+		<li class="menu-item-products">
+			<a href="https://m9rx.com/products/"><span>Products</span></a>
+		</li>
+		
+		<li class="menu-item-services">
+			<a href="https://m9rx.com/services/"><span>Services</span></a>
+		</li>
+		
+		<li class="menu-item-docs active">
+			<a href="/docs/"><span>Docs</span></a>
+		</li>
+		
+		<li class="menu-item-about">
+			<a href="/about/"><span>About</span></a>
+		</li>
+		
+		<li class="menu-item-contact">
+			<a href="/contact/"><span>Contact</span></a>
+		</li>
+		
+	</ul>
+</div>
+
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button" aria-label="Mobile Menu">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+
+    
+<div class="container pb-6 pt-6 pt-md-14 pb-md-14">
+  <div class="row justify-content-start">
+    <div class="col-12 col-md-8">
+      <h1 class="title">Values and Types</h1>
+
+      <div class="content"><p>All of the expressions in <code>mgmt</code> must have a specific, concrete type. These are
+determined at compile time. This is an important design principle of safe code.
+There is no <code>nil</code>, <code>null</code>, or <code>undefined</code> value. This helps prevent another
+<a href="https://en.wikipedia.org/wiki/Null_pointer">billion dollar mistake</a>.</p>
+<p>The basic types are: <code>bool</code>, <code>str</code>, <code>int</code>, and <code>float</code>. The composite types are
+<code>list</code>, <code>map</code> and <code>struct</code>. Finally we also have a <code>func</code> type.</p>
+<p>For example, a composite type, such as a list of strings (<code>[]str</code>), differs from
+a list of integers (<code>[]int</code>). Let&rsquo;s first go over how we express each type of
+value.</p>
+<h1 id="values">Values</h1>
+<p>Values are not mutable. You can express them quite simply.</p>
+<p><strong>bool</strong></p>
+<p>A <code>true</code> or <code>false</code> value.</p>
+<p><strong>str</strong></p>
+<p>A string, which we call an <code>str</code> is <code>&quot;something&quot;</code> enclosed in quotes.</p>
+<p><strong>int</strong></p>
+<p>A number, such as <code>42</code> or <code>-13</code>. Make sure it does not overflow or you will
+error.</p>
+<p><strong>float</strong></p>
+<p>A floating point value, for instance: <code>3.1415926</code>. Make sure it does not
+overflow or you will error.</p>
+<p><strong>list</strong></p>
+<p>Separate the values with commas and wrap the ends with square brackets, eg:</p>
+<p><code>[6, 7, 8, 9,]</code>.</p>
+<p>(At the moment, lists always require a trailing comma after the last element.
+This will soon change depending on if there&rsquo;s a newline or not.)</p>
+<p><strong>map</strong></p>
+<p>Each key and value is separated with the &ldquo;rocket&rdquo; operator, and the pairs are
+separated by commas. The whole thing gets wrapped in curly brackets, eg:</p>
+<pre tabindex="0"><code>{
+	&#34;boiling&#34; =&gt; 100,
+	&#34;freezing&#34; =&gt; 0,
+	&#34;room&#34; =&gt; 25,
+	&#34;house&#34; =&gt; 22,
+	&#34;canada&#34; =&gt; -30,
+}
+</code></pre><p>(At the moment, maps always require a trailing comma after the last element.
+This will soon change depending on if there&rsquo;s a newline or not.)</p>
+<p><strong>struct</strong></p>
+<p>Similar to a map, except it starts with the keyword <code>struct</code>, eg:</p>
+<pre tabindex="0"><code>struct{
+	answer =&gt; &#34;42&#34;,
+	james =&gt; &#34;awesome&#34;,
+	is_mgmt_awesome =&gt; true,
+}
+</code></pre><ul>
+<li>Note the syntactical difference between <strong>map</strong> and <strong>struct</strong>. Whereas the
+<em>keys</em> in <strong>map</strong>&rsquo;s have types and therefore are enclosed in quotes if they are
+strings, the <em>fields</em> in <strong>struct</strong> &lsquo;sare never string values and therefore are
+specified without quotes.</li>
+</ul>
+<p><strong>func</strong></p>
+<p>When defining a function, it is often common to omit the types unless you want
+to strictly ensure a specific type. The body of the function is the return
+value.</p>
+<pre tabindex="0"><code>func($d) {
+	42 + $d
+}
+</code></pre><p>or:</p>
+<pre tabindex="0"><code>func($a bool, $some []str, $m map{str: float}) struct{foo str; bar int} {
+	# function contents here
+}
+</code></pre><p>Functions defined in this way are used as values, that is, they are usually
+passed to other functions and applied, often to some number of arguments. When
+used in this way, we sometimes call them lambdas.</p>
+<p>Lambda functions may only have a single type, even if they are used in more than
+one place where it might seem plausible to allow it to be polymorphic. If you
+don&rsquo;t know what this means, don&rsquo;t worry about it right now, just know that later
+on we will learn to define a function as a statement, where it can be reused
+with multiple different signatures.</p>
+<h1 id="types">Types</h1>
+<p>You rarely need to explicitly express a type, but when you do here&rsquo;s how it
+would look:</p>
+<p><strong>bool, str, int, float</strong></p>
+<p>The basic types can be referred to with their keyword: <code>bool</code>, <code>str</code>, <code>int</code>, and
+<code>float</code>. These wrap the golang <code>bool</code>, <code>string</code>, <code>int64</code> and <code>float64</code> types
+respectively. We may represent the <code>int</code> type as a platform specific golang
+<code>int</code> in the future.</p>
+<p><strong>list</strong></p>
+<p>Lists are ordered collections of values of the same type. They can be expressed
+as:</p>
+<p><code>[]type</code>, for example <code>[]str</code> or <code>[][]bool</code> and so on.</p>
+<p>Even empty lists have a type, although without type hints it may be impossible
+to infer the type.</p>
+<p><strong>map</strong></p>
+<p>Maps are unordered set of pairs of unique keys of the same type and the
+corresponding values of another type, eg:</p>
+<p><code>map{type_key: type_val}</code>, for example <code>map{str: int}</code> or
+<code>map{map{str: int}: map{int: bool}}</code> and so on.</p>
+<p>Just as all keys must be of the same type, all values must be of the same type.
+You can use any type for the values. The type of the keys must be one which is
+comparable.</p>
+<p><strong>struct</strong></p>
+<p>A struct usefully combines multiple types into the same container. It is a set
+of field names with a corresponding type for each. To express one, you may
+write:</p>
+<pre tabindex="0"><code>struct{a type1; b type2; c type3}
+</code></pre><p>For example:</p>
+<pre tabindex="0"><code>struct{a bool; bb int}
+</code></pre><p>or:</p>
+<pre tabindex="0"><code>struct{a bool; bb int; ccc []str; dddd struct{a int; z bool}}
+</code></pre><p><strong>func</strong></p>
+<p>A function is an ordered set of optionally named, differently typed input
+arguments, and a return type, eg:</p>
+<pre tabindex="0"><code>func(arg_zero bool, arg_one str) int
+</code></pre><p>or:</p>
+<pre tabindex="0"><code>func(bool, []str, {str: float}) struct{foo str; bar int}
+</code></pre><p>Functions may only have a single return type, and it must not be omitted. Only
+the arg names may be omitted when defining the type. Two function types with the
+same signature, but different arg names are compatible types.</p>
+<ul>
+<li>Note the syntactical difference between <strong>func</strong> <code>value</code> and the <strong>func</strong>
+<code>type</code>. The arg names in the <code>value</code> contain a <code>$</code> prefix and are required.
+Specifying types is optional. Where as in the <code>type</code> syntax specifying the arg
+names is optional and there are no <code>$</code> prefixes. Naturally you must specify all
+of the types.</li>
+</ul>
+<h1 id="specifying-a-type">Specifying a type</h1>
+<p>Most of the time, the <strong>type unification</strong> algorithm will automatically figure
+out what types are correct for each of your expressions. Occasionally, or for
+policy, you will want to explicitly specify some of them. There are two methods
+for doing so.</p>
+<h2 id="bind-statement">Bind Statement</h2>
+<p>When using the bind statement, an optional type is allowed. It looks like this:</p>
+<pre tabindex="0"><code>$foo int = 42
+</code></pre><p>The expression (in this case <code>42</code>) is seen on the right hand side. The variable
+we&rsquo;re binding this to is seen on the left. Immediately to the left of the equals
+assignment operator you may specify an optional type in the type format seen
+above.</p>
+<h2 id="function-definitions">Function Definitions</h2>
+<p>In any function definition the types may be specified. For example:</p>
+<pre tabindex="0"><code>func foo($a int, $b) str {
+	if $a &gt; $b {
+		&#34;a is bigger than b&#34;
+	} else {
+		&#34;a is not bigger than b&#34;
+	}
+}
+</code></pre><p>Note that the return type of <code>str</code> can be safeloy omitted here, where as this
+function would also work with <code>float</code> if the <code>int</code> wasn&rsquo;t specified. The second
+argument does not specify that it must be an <code>int</code> but that will be inferred
+during type unification.</p>
+<h1 id="type-unification">Type Unification</h1>
+<p>The golden rule of working with types in <em>mgmt</em> is that each expression must
+have a known type at compile time. Some languages require that every type
+be annotated. Others look at types during runtime. With <em>mgmt</em>, we do something
+called <strong>type unification</strong>, which is an elegant mechanism for letting the
+compiler figure out the correct types during compile time. This gives you the
+benefit of not needing to constantly annotate your code, while still gaining the
+safety benefits of a statically typed language.</p>
+<h2 id="success">Success:</h2>
+<p>Type unification is mandatory and automatic, but if you&rsquo;d like to solely type
+check your code, run the following:</p>
+<p><code>mgmt run --tmp-prefix lang --only-unify hello0.mcl</code></p>
+<p>You will likely seen the engine print something along the lines of:</p>
+<p><code>09:41:23 cli: lang: type unification succeeded in 365.892µs</code>.</p>
+<h2 id="failure">Failure:</h2>
+<p>Similarly, examine what will happen if you attempt to write some invalid code:</p>
+<pre tabindex="0"><code>file &#34;/tmp/foo&#34; {
+	content =&gt; 42 + &#34;hello&#34;,
+}
+</code></pre><p>This program will not type check or compile, and instead you will see:</p>
+<pre tabindex="0"><code>23:22:24 cli: lang: running type unification...
+23:22:24 cli: lang: unification: type error: int != str: failure.mcl @ 2:13-2:18
+
+	content =&gt; 42 + &#34;hello&#34;,
+	           ^^^^^^
+</code></pre><p>This is because it is illegal to use the <code>+</code> operator to combine an <code>int</code> with
+an <code>str</code>.</p>
+</div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <div class="footer" style="background: #2f2f41;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-inner">
+          
+          <img style="height: 2em;" src="/images/logo_reversed_wide.svg" class="footer-title" />
+          <ul>
+            
+            
+            <li class="menu-item-home">
+              <a href="/">
+                Home
+              </a>
+            </li>
+            
+            <li class="menu-item-contact">
+              <a href="/contact/">
+                Contact
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="sub-footer" style="background: #1a1a23;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          <ul style="list-style-type: none;">
+
+            <li><strong>Email: </strong><a style="color: #8484a2;" href="mailto:contact@mgmtconfig.com">
+                contact@mgmtconfig.com</a></li>
+          </ul>
+	  <a style="color: #8484a2;" class="zerostatic" href="https://mgmtconfig.com/">mgmtconfig.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  
+  
+
+  
+    
+  
+  <script type="text/javascript" src="/js/scripts.min.433bb64e87f8e5d8e9530181ae5ab6f8b35109ed174269388dc30e101ef4182a.js"></script>
+
+  
+
+
+  
+
+
+</body>
+
+</html>

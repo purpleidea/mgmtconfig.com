@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Language Features - Mgmt Config</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="/">
+
+  
+
+
+  
+  
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.min.dc9a4fe1a2bfff142f2063aea53eaadd9da318cfa397e552bacd03d177ca6855.css">
+
+  
+
+  
+    
+    <meta property="og:title" content="Language Features"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://mgmtconfig.com/docs/guide/language-features/"/>
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    
+    
+  
+
+</head>
+
+<body class='page page-default-single'>
+  <div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    
+    
+    <li class="menu-item-products ">
+      <a href="https://m9rx.com/products/">
+        <span>Products</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-services ">
+      <a href="https://m9rx.com/services/">
+        <span>Services</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-docs active">
+      <a href="/docs/">
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-about ">
+      <a href="/about/">
+        <span>About</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-contact ">
+      <a href="/contact/">
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+  <div class="wrapper">
+    
+<div class='header' >
+
+  <div class="container">
+    <div class="logo">
+      <a href="/"><img height=107px alt="Mgmt Config - Fast, Real-time, Closed-Loop Automation." src="/images/logo_default_symbol.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="/"><img height=50px alt="Mgmt Config - Fast, Real-time, Closed-Loop Automation." src="/images/logo_default_symbol.svg" /></a>
+    </div>
+    
+<style>
+li.active {
+	border-radius: 3px;
+	color: #ffffff;
+	background-color: #106be0;
+	font-weight: bold;
+}
+li.active span {
+	color: #ffffff;
+}
+</style>
+<div id="main-menu" class="main-menu">
+	<ul>
+		<li class="menu-item-products">
+			<a href="https://m9rx.com/products/"><span>Products</span></a>
+		</li>
+		
+		<li class="menu-item-services">
+			<a href="https://m9rx.com/services/"><span>Services</span></a>
+		</li>
+		
+		<li class="menu-item-docs active">
+			<a href="/docs/"><span>Docs</span></a>
+		</li>
+		
+		<li class="menu-item-about">
+			<a href="/about/"><span>About</span></a>
+		</li>
+		
+		<li class="menu-item-contact">
+			<a href="/contact/"><span>Contact</span></a>
+		</li>
+		
+	</ul>
+</div>
+
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button" aria-label="Mobile Menu">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+
+    
+<div class="container pb-6 pt-6 pt-md-14 pb-md-14">
+  <div class="row justify-content-start">
+    <div class="col-12 col-md-8">
+      <h1 class="title">Language Features</h1>
+
+      <div class="content"><p>At this point you should have a rough understanding of how the language works.
+Let&rsquo;s dive into a few unique features which we should elaborate on.</p>
+<h1 id="structure">Structure</h1>
+<p>Every top-level <code>mgmt</code> program is a list of <code>statements</code>.</p>
+<h2 id="statements">Statements</h2>
+<p>The available <strong>statements</strong> are <code>bind</code>, <code>func</code>, <code>res</code>, <code>edge</code>, <code>if</code>, <code>class</code>,
+<code>include</code>, <code>import</code>, <code>comment</code>, <code>for</code>, <code>forkv</code>, <code>collect</code>, and <code>panic</code>. We&rsquo;ll
+cover these in detail later. Most of these take one or more <strong>expressions</strong>,
+which produces a value.</p>
+<h2 id="expressions">Expressions</h2>
+<p>The available <strong>expressions</strong> are <code>call</code>, <code>var</code>, <code>if</code>, or any literal <code>value</code>.
+Note that the <code>if</code> <strong>expression</strong> differs from the <code>if</code> <strong>statement</strong>, in that
+the former returns an expression in either scenario, and the latter returns a
+list of statements. The <code>else</code> branch in an <code>if</code> statement is optional.</p>
+<h1 id="escape-characters">Escape Characters</h1>
+<p>When specifying a string, you may include any number of special escape
+characters. The list includes:</p>
+<ul>
+<li><code>\\</code> a backslash</li>
+<li><code>\a</code> a bell</li>
+<li><code>\b</code> a backspace</li>
+<li><code>\f</code> a form feed</li>
+<li><code>\n</code> a newline</li>
+<li><code>\r</code> a carriage return</li>
+<li><code>\t</code> a horizontal tab</li>
+<li><code>\v</code> a vertical tab</li>
+<li><code>\&quot;</code> a quotation mark</li>
+<li><code>\$</code> a dollar sign</li>
+</ul>
+<h1 id="string-interpolation">String Interpolation</h1>
+<p>Strings support interpolation. You may substitute in a variable of type <code>str</code>
+anywhere you like by adding a dollar sign in front of a pair of curly brackets
+with the variable name inside it. Example:</p>
+<pre tabindex="0"><code>$person = &#34;purpleidea&#34;
+file &#34;/tmp/foo&#34; {
+	content =&gt; &#34;hello from ${person}\n&#34;,
+}
+</code></pre><p>Please note that the curly braces are not optional. Furthermore, remember that
+for example, if the variable is of type <code>int</code>, it will not automatically convert
+to <code>str</code> and you will have a type unification error.</p>
+<h1 id="immutability">Immutability</h1>
+<p>Variables (and values) are immutable in <code>mcl</code>. In other words, the following is
+a compile time error:</p>
+<pre tabindex="0"><code>$s = &#34;hello&#34;
+$s = &#34;world&#34;
+file &#34;/tmp/foo&#34; {
+	content =&gt; $s,
+}
+</code></pre><p>This errors with:</p>
+<pre tabindex="0"><code>duplicate assignment to `var:s`, have: bind(s)
+</code></pre><p>Immutability is an import safety feature in programming.</p>
+<h1 id="shadowing">Shadowing</h1>
+<p>This doesn&rsquo;t mean that variables can&rsquo;t be &ldquo;shadowed&rdquo;. Shadowing is where you
+define a variable in a child (nested) scope, which has the same variable name as
+one that exists in the parent scope.</p>
+<pre tabindex="0"><code>$s = &#34;hello&#34;
+if true {
+	$s = &#34;world&#34; # shadows the parent in this scope
+	file &#34;/tmp/bar&#34; {
+		state =&gt; &#34;exists&#34;,
+		content =&gt; $s,
+	}
+}
+file &#34;/tmp/foo&#34; {
+	state =&gt; &#34;exists&#34;,
+	content =&gt; $s,
+}
+</code></pre><p>While the above code is legal, it is not necessarily the recommended best
+practice. The <code>$s</code> variable is never mutated, rather, a second variable is
+created in the <code>if</code> statement body, which overwrites what would ordinarily
+contain a reference to the outer variable.</p>
+<h1 id="ordering">Ordering</h1>
+<p>Strangely, the &ldquo;ordering&rdquo; of statements in an <code>mcl</code> program does not matter.
+This is not to say that you should write things in an illogical way. For
+example:</p>
+<pre tabindex="0"><code class="language-mcl" data-lang="mcl">file &#34;/tmp/mgmt/hello&#34; {
+	state =&gt; &#34;exists&#34;,
+	content =&gt; &#34;${y}\n&#34;,
+}
+
+file &#34;/tmp/mgmt/&#34; { # this is a directory
+	state =&gt; &#34;exists&#34;,
+}
+$y = $x
+$x = &#34;hello&#34;
+</code></pre><p>Note that the language aspects (<code>$y = $x</code>) do not need to be in the logical
+order, and that the engine aspects (file before it&rsquo;s parent directory) don&rsquo;t
+either.</p>
+<p>This is because the language forms a <strong>function graph</strong>, which produces a
+<strong>resource graph</strong> for the engine, neither of which necessarily have a linear
+order when executed in graph format.</p>
+<p>We may consider adding a flag or feature which enforces the
+<a href="https://en.wikipedia.org/wiki/Topological_sorting">&ldquo;topological sort&rdquo;</a> ordering
+at some point in the future, so keep your code logically ordered where possible.</p>
+<h1 id="reactivity">Reactivity</h1>
+<p>As previously mentioned, all values in <code>mcl</code> are actually streams. This enables
+<code>mgmt</code> to be quite powerful, without compromising too much on safety. Every
+stream must produce at least one value. It can decide to produce values forever,
+or it can produce some number of values and then shut down the stream. Most
+programs start out initially quite large, and then quickly collapse themselves
+down after a few moments into smaller, more compact programs. This frees memory
+when it happens too!</p>
+<h1 id="modules">Modules</h1>
+<p>Any imported module may only contain functions, variables, and class definitions
+at the top-level. This is because an <code>import</code> must not cause any side effects.
+This is all about preventing surprises to the programmer. There are some rare
+exceptions to this rule. Modules will be explained in a subsequent section.</p>
+<h1 id="indentation">Indentation</h1>
+<p>All <code>mcl</code> programs must be indented with tabs, the same as <code>golang</code> programs.
+Using tabs is faster, more efficient, more accessible, and elegant.</p>
+</div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <div class="footer" style="background: #2f2f41;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-inner">
+          
+          <img style="height: 2em;" src="/images/logo_reversed_wide.svg" class="footer-title" />
+          <ul>
+            
+            
+            <li class="menu-item-home">
+              <a href="/">
+                Home
+              </a>
+            </li>
+            
+            <li class="menu-item-contact">
+              <a href="/contact/">
+                Contact
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="sub-footer" style="background: #1a1a23;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          <ul style="list-style-type: none;">
+
+            <li><strong>Email: </strong><a style="color: #8484a2;" href="mailto:contact@mgmtconfig.com">
+                contact@mgmtconfig.com</a></li>
+          </ul>
+	  <a style="color: #8484a2;" class="zerostatic" href="https://mgmtconfig.com/">mgmtconfig.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  
+  
+
+  
+    
+  
+  <script type="text/javascript" src="/js/scripts.min.433bb64e87f8e5d8e9530181ae5ab6f8b35109ed174269388dc30e101ef4182a.js"></script>
+
+  
+
+
+  
+
+
+</body>
+
+</html>

@@ -57,7 +57,7 @@ theme = "hugo-serif-theme"
 [params.homepage]
 	sticky_header = false
 	show_contact_box = true      # show / hide the contact box on the homepage
-	show_services_button = true # show / hide the "view all services" button
+	show_services_button = false # show / hide the "view all services" button
 
 [params.homepage_meta_tags]
 	meta_description = "Mgmt Config - Fast, Real-time, Closed-Loop Automation."
@@ -74,31 +74,31 @@ theme = "hugo-serif-theme"
 [menu]
 	# Main Menu
 	[[menu.main]]
-		name = "Services"
-		pageRef = "/services/"
+		name = "Products"
+		url = "https://m9rx.com/products/"
 		weight = 1
+
+	[[menu.main]]
+		name = "Services"
+		url = "https://m9rx.com/services/"
+		weight = 2
 
 	[[menu.main]]
 		name = "Docs"
 		pageRef = "/docs/"
-		weight = 1
+		weight = 3
 
 	[[menu.main]]
 		name = "Resources"
 		pageRef = "/docs/resources/"
 		parent = "Docs"
-		weight = 2
+		weight = 3
 
 	[[menu.main]]
 		name = "Functions"
 		pageRef = "/docs/functions/"
 		parent = "Docs"
-		weight = 2
-
-	#[[menu.main]]
-	#	name = "Team"
-	#	url = "/team/"
-	#	weight = 2
+		weight = 3
 
 	# Footer Menu
 	[[menu.footer]]

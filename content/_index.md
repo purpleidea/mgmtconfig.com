@@ -7,6 +7,6 @@ intro_image_hide_on_mobile: true
 
 # Fast, Real-time, Closed-Loop Automation.
 
-Mgmt Config is a new automation tool that's fast, powerful and safe.
+Mgmt Config is an open source automation tool that's fast, powerful and safe.
 
-Model your infrastructure as code and let Mgmt run it autonomously for you.
+Model your infrastructure as code and let `mgmt` run it autonomously for you.

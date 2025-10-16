@@ -16,4 +16,6 @@ title: "User Guide"
 
 * ### [Language Features](language-features/)
 
+* ### [Classes](classes/)
+
 More sections coming soon...

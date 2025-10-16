@@ -110,3 +110,8 @@ theme = "hugo-serif-theme"
 		name = "Contact"
 		url = "/contact/"
 		weight = 2
+
+# Github pages stuff...
+[caches]
+	[caches.images]
+		dir = ':cacheDir/images'

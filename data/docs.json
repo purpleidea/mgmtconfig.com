@@ -1,5 +1,5 @@
 {
-  "version": "25804c71d",
+  "version": "1.0.1",
   "resources": {
     "augeas": {
       "name": "AugeasRes",
@@ -491,17 +491,37 @@
         "ifcmd": {
           "name": "IfCmd",
           "type": "str",
-          "description": "IfCmd is the command that runs to guard against running the Cmd. If this command succeeds, then Cmd *will* be run. If this command returns a non-zero result, then the Cmd will not be run. Any error scenario or timeout will cause the resource to error."
+          "description": "IfCmd is the command that runs to guard against running the Cmd. If this command succeeds, then Cmd *will not* be blocked from running. If this command returns a non-zero result, then the Cmd will not be run. Any error scenario or timeout will cause the resource to error."
         },
         "ifcwd": {
           "name": "IfCwd",
           "type": "str",
           "description": "IfCwd is the Cwd for the IfCmd. See the docs for Cwd."
         },
+        "ifequals": {
+          "name": "IfEquals",
+          "type": "str",
+          "description": "IfEquals specifies that if the ifcmd returns zero, and that the output matches this string, then it will guard against the Cmd running. This can be the empty string. Remember to take into account if the output includes a trailing newline or not. (Hint: it usually does!)"
+        },
         "ifshell": {
           "name": "IfShell",
           "type": "str",
           "description": "IfShell is the Shell for the IfCmd. See the docs for Shell."
+        },
+        "nifcmd": {
+          "name": "NIfCmd",
+          "type": "str",
+          "description": "NIfCmd is the command that runs to guard against running the Cmd. If this command succeeds, then Cmd *will* be blocked from running. If this command returns a non-zero result, then the Cmd will be allowed to run if not blocked by anything else. This is the opposite of the IfCmd."
+        },
+        "nifcwd": {
+          "name": "NIfCwd",
+          "type": "str",
+          "description": "NIfCwd is the Cwd for the NIfCmd. See the docs for Cwd."
+        },
+        "nifshell": {
+          "name": "NIfShell",
+          "type": "str",
+          "description": "NIfShell is the Shell for the NIfCmd. See the docs for Shell."
         },
         "send_output": {
           "name": "SendOutput",
@@ -661,6 +681,44 @@
         }
       }
     },
+    "fwattr": {
+      "name": "FWAttrRes",
+      "kind": "fwattr",
+      "file": "fwattr.go",
+      "description": "FWAttrRes is a resource for interacting with the kernel firmware attributes API. This resource will automatically use the correct \"value\" for a key when more than one is possible for that particular vendor. If you have a mapping that is not in our database, please send a patch.\nPlease note that on some platforms such as Lenovo (thinklmi), there is an architectural limitation that prevents more than 48 attributes from being set before presumably needing to reboot.\nhttps://www.kernel.org/doc/Documentation/ABI/testing/sysfs-class-firmware-attributes\nApparently if we go over, you need to manually enter the BIOS to clear the error. Of course we can never know if the user edited these elsewhere.",
+      "fields": {
+        "check": {
+          "name": "Check",
+          "type": "bool",
+          "description": "Check (which defaults to true) turns off the validation that runs before we attempt to change a setting. This should only be used in rare exceptions where you have an old/buggy version of firmware that has illogical data presented through the kernel API. For example, one version of BootOrder on thinklmi had type \"enumeration\" and \"possible_values\" of: `HDD0;HDD1;HDD2;...` but took a \"current_value\" of `HDD0:HDD1:HDD2:...` which would be illogical. Newer versions just have type \"string\"."
+        },
+        "driver": {
+          "name": "Driver",
+          "type": "str",
+          "description": "Driver is the interface that is supported. Available options can be found in the /sys/class/firmware-attributes/ directory. Common values include \"thinklmi\" (lenovo), \"dell-wmi-sysman\" (dell) and more. If you do not specify this, then we will attempt to determine it automatically, however if zero or more than one option exists, then this will error."
+        },
+        "key": {
+          "name": "Key",
+          "type": "str",
+          "description": "Key is the name of the field to modify. If this is not set we use the Name field. This is case sensitive."
+        },
+        "skip": {
+          "name": "Skip",
+          "type": "bool",
+          "description": "Skip let's you turn this resource into a \"noop\" if the key doesn't exist. This should ideally not be used because a typo would effectively make this resource ineffective. As a result, if you use this, it will emit a warning. This option is very useful, because you can add a more general \"configuration set\" of values to all of your machine, without having to match them precisely, and this won't cause errors if one of them has an old version of a BIOS without that feature. This will also skip if the attributes API doesn't exist on this machine."
+        },
+        "strict": {
+          "name": "Strict",
+          "type": "bool",
+          "description": "Strict means that we won't use the \"quirks\" alternate values mapping if the exact key is not available. It should not be harmful to keep this off, but it would be useful to find which old values are being used long after legacy firmware has been deprecated."
+        },
+        "value": {
+          "name": "Value",
+          "type": "str",
+          "description": "Value is the string value to set. Make sure you specify it in the same format that the kernel offers it as to avoid automation \"flapping\" or errors. You can test this by writing a value to the /sys/class/firmware-attributes/<driver>/<key>/current_value path with `echo foo >` and seeing if it works without erroring. You must not include the trailing newline which is present all values.\nthis also be an int or a bool, and for booleans, map them using our json file to the correct string value of \"Enabled\" (for those keys of the boolean variety)."
+        }
+      }
+    },
     "group": {
       "name": "GroupRes",
       "kind": "group",
@@ -676,6 +734,44 @@
           "name": "State",
           "type": "str",
           "description": "State is `exists` or `absent`."
+        }
+      }
+    },
+    "gsettings": {
+      "name": "GsettingsRes",
+      "kind": "gsettings",
+      "file": "gsettings.go",
+      "description": "GsettingsRes is a resource for setting dconf values through gsettings. The ideal scenario is that this runs as the same user that wants settings set. This should be done by a local user-specific mgmt daemon. As a special case, we can run as root (or anyone with permission) which launches a subprocess which setuid/setgid's to that user to run the needed operations. To specify the schema and key, set the resource name as \"schema key\" (separated by a single space character) or use the parameters.",
+      "fields": {
+        "group": {
+          "name": "Group",
+          "type": "str",
+          "description": "Group is the (optional) group to use to execute the command. It is used for any command being run."
+        },
+        "key": {
+          "name": "Key",
+          "type": "str",
+          "description": "Key is the key to set."
+        },
+        "schema": {
+          "name": "Schema",
+          "type": "str",
+          "description": "Schema is the schema to use in. This can be schema:path if the schema doesn't have a fixed path. See the `gsettings` manual for more info."
+        },
+        "type": {
+          "name": "Type",
+          "type": "str",
+          "description": "Type is the type value to set. This can be \"bool\", \"str\", \"int\", or \"custom\"."
+        },
+        "user": {
+          "name": "User",
+          "type": "str",
+          "description": "User is the (optional) user to use to execute the command. It is used for any command being run."
+        },
+        "value": {
+          "name": "Value",
+          "type": "variant",
+          "description": "Value is the value to set. It is interface{} because it can hold any value type."
         }
       }
     },
@@ -1217,7 +1313,7 @@
       "name": "PkgRes",
       "kind": "pkg",
       "file": "pkg.go",
-      "description": "PkgRes is a package resource for packagekit.",
+      "description": "PkgRes is a package resource for packagekit.\nIt will attempt to make automatic edges with the package name, unless Meta:autoedge is false. For the unique scenario where you are adding a new package repository, and then installing something from it, you will want to disable automatic edges, or this will fail to find the package during the Init stage before mgmt can even run and create the repo! As a result, add an edge between this and the repo creation stage, and avoid graph errors!",
       "fields": {
         "allownonfree": {
           "name": "AllowNonFree",
@@ -1879,72 +1975,6 @@
           "description": "Update specifies that we should update the installed packages during image build. This defaults to true."
         }
       }
-    },
-    "virt:network": {
-      "name": "VirtNetworkRes",
-      "kind": "virt:network",
-      "file": "virt_network.go",
-      "description": "VirtNetworkRes is libvirt network resource. The name is used as the network name. This autogroups VirtNetworkHost resources into it to define the list of static host allocations.",
-      "fields": {
-        "auth": {
-          "name": "Auth",
-          "type": "struct{username str; password str}",
-          "description": "Auth points to the libvirt credentials to use if any are necessary."
-        },
-        "device": {
-          "name": "Device",
-          "type": "str",
-          "description": "Device is the name of the Linux network device we use for this network. If absent this defaults to virbr0."
-        },
-        "ip": {
-          "name": "IP",
-          "type": "str",
-          "description": "IP is the (router) IPv4 address with the CIDR suffix that we use for the network."
-        },
-        "mac": {
-          "name": "Mac",
-          "type": "str",
-          "description": "Mac is the mac address of the host in lower case and separated with colons."
-        },
-        "mode": {
-          "name": "Mode",
-          "type": "str",
-          "description": "Mode is the forward mode for this device. Currently only \"nat\" is supported. Currently this defaults to \"nat\"."
-        },
-        "uri": {
-          "name": "URI",
-          "type": "str",
-          "description": "URI is the libvirt connection URI, eg: `qemu:///session`."
-        },
-        "uuid": {
-          "name": "UUID",
-          "type": "str",
-          "description": "UUID of the network. If unspecified, one is chosen randomly."
-        }
-      }
-    },
-    "virt:network:host": {
-      "name": "VirtNetworkHostRes",
-      "kind": "virt:network:host",
-      "file": "virt_network.go",
-      "description": "VirtNetworkHostRes is a representation of a static host assignment in DHCP.",
-      "fields": {
-        "ip": {
-          "name": "IP",
-          "type": "str",
-          "description": "IP is the IPv4 address with the CIDR suffix. The suffix is required in case we eventually need it somewhere and for consistency with the API of the dhcp:host resource. For example, you might specify 192.0.2.42/24 which represents a mask of 255.255.255.0 that is used."
-        },
-        "mac": {
-          "name": "Mac",
-          "type": "str",
-          "description": "Mac is the mac address of the host in lower case and separated with colons."
-        },
-        "server": {
-          "name": "Server",
-          "type": "str",
-          "description": "Server is the name of the virt network resource to group this into. If it is omitted, and there is only a single virt network resource, then it will be grouped into it automatically. If there is more than one main virt network resource being used, then the grouping behaviour is *undefined* when this is not specified, and it is not recommended to leave this blank!"
-        }
-      }
     }
   },
   "functions": {
@@ -2083,14 +2113,6 @@
       "file": "deploy/bootstrap_packages.go",
       "description": "BootstrapPackages returns the list of packages corresponding to the distro for bootstrapping new machines which will need these installed before they can run mgmt.",
       "signature": "func(0 str) []str"
-    },
-    "deploy.directory": {
-      "name": "DirectoryFunc",
-      "package": "deploy",
-      "func": "directory",
-      "file": "deploy/directory.go",
-      "description": "DirectoryFunc is a function that reads the full contents of a directory from our deploy. It puts them into a private temporary directory and returns that path. The returned path will be an absolute directory path. The directory contents can only change with a new deploy, so this is static.",
-      "signature": "func(directory str) str"
     },
     "deploy.readfile": {
       "name": "ReadFileFunc",
@@ -2455,7 +2477,7 @@
       "package": "golang/math",
       "func": "atan_2",
       "file": "https://pkg.go.dev/math#Atan2",
-      "description": "MathAtan2 is an autogenerated function. func Atan2(y, x float64) float64 Atan2 returns the arc tangent of y/x, using the signs of the two to determine the quadrant of the return value.\nSpecial cases are (in order):\nAtan2(y, NaN) = NaN Atan2(NaN, x) = NaN Atan2(+0, x>=0) = +0 Atan2(-0, x>=0) = -0 Atan2(+0, x<=-0) = +Pi Atan2(-0, x<=-0) = -Pi Atan2(y>0, 0) = +Pi/2 Atan2(y<0, 0) = -Pi/2 Atan2(+Inf, +Inf) = +Pi/4 Atan2(-Inf, +Inf) = -Pi/4 Atan2(+Inf, -Inf) = 3Pi/4 Atan2(-Inf, -Inf) = -3Pi/4 Atan2(y, +Inf) = 0 Atan2(y>0, -Inf) = +Pi Atan2(y<0, -Inf) = -Pi Atan2(+Inf, x) = +Pi/2 Atan2(-Inf, x) = -Pi/2",
+      "description": "MathAtan2 is an autogenerated function. func Atan2(y float64, x float64) float64 Atan2 returns the arc tangent of y/x, using the signs of the two to determine the quadrant of the return value.\nSpecial cases are (in order):\nAtan2(y, NaN) = NaN Atan2(NaN, x) = NaN Atan2(+0, x>=0) = +0 Atan2(-0, x>=0) = -0 Atan2(+0, x<=-0) = +Pi Atan2(-0, x<=-0) = -Pi Atan2(y>0, 0) = +Pi/2 Atan2(y<0, 0) = -Pi/2 Atan2(+Inf, +Inf) = +Pi/4 Atan2(-Inf, +Inf) = -Pi/4 Atan2(+Inf, -Inf) = 3Pi/4 Atan2(-Inf, -Inf) = -3Pi/4 Atan2(y, +Inf) = 0 Atan2(y>0, -Inf) = +Pi Atan2(y<0, -Inf) = -Pi Atan2(+Inf, x) = +Pi/2 Atan2(-Inf, x) = -Pi/2",
       "signature": "func(y float, x float) float"
     },
     "golang/math.atanh": {
@@ -2487,7 +2509,7 @@
       "package": "golang/math",
       "func": "copysign",
       "file": "https://pkg.go.dev/math#Copysign",
-      "description": "MathCopysign is an autogenerated function. func Copysign(f, sign float64) float64 Copysign returns a value with the magnitude of f and the sign of sign.",
+      "description": "MathCopysign is an autogenerated function. func Copysign(f float64, sign float64) float64 Copysign returns a value with the magnitude of f and the sign of sign.",
       "signature": "func(f float, sign float) float"
     },
     "golang/math.cos": {
@@ -2511,7 +2533,7 @@
       "package": "golang/math",
       "func": "dim",
       "file": "https://pkg.go.dev/math#Dim",
-      "description": "MathDim is an autogenerated function. func Dim(x, y float64) float64 Dim returns the maximum of x-y or 0.\nSpecial cases are:\nDim(+Inf, +Inf) = NaN Dim(-Inf, -Inf) = NaN Dim(x, NaN) = Dim(NaN, x) = NaN",
+      "description": "MathDim is an autogenerated function. func Dim(x float64, y float64) float64 Dim returns the maximum of x-y or 0.\nSpecial cases are:\nDim(+Inf, +Inf) = NaN Dim(-Inf, -Inf) = NaN Dim(x, NaN) = Dim(NaN, x) = NaN",
       "signature": "func(x float, y float) float"
     },
     "golang/math.erf": {
@@ -2535,7 +2557,7 @@
       "package": "golang/math",
       "func": "erfcinv",
       "file": "https://pkg.go.dev/math#Erfcinv",
-      "description": "MathErfcinv is an autogenerated function. func Erfcinv(x float64) float64 Erfcinv returns the inverse of Erfc(x).\nSpecial cases are:\nErfcinv(0) = +Inf Erfcinv(2) = -Inf Erfcinv(x) = NaN if x < 0 or x > 2 Erfcinv(NaN) = NaN",
+      "description": "MathErfcinv is an autogenerated function. func Erfcinv(x float64) float64 Erfcinv returns the inverse of [Erfc](x).\nSpecial cases are:\nErfcinv(0) = +Inf Erfcinv(2) = -Inf Erfcinv(x) = NaN if x < 0 or x > 2 Erfcinv(NaN) = NaN",
       "signature": "func(x float) float"
     },
     "golang/math.erfinv": {
@@ -2559,7 +2581,7 @@
       "package": "golang/math",
       "func": "exp_2",
       "file": "https://pkg.go.dev/math#Exp2",
-      "description": "MathExp2 is an autogenerated function. func Exp2(x float64) float64 Exp2 returns 2**x, the base-2 exponential of x.\nSpecial cases are the same as Exp.",
+      "description": "MathExp2 is an autogenerated function. func Exp2(x float64) float64 Exp2 returns 2**x, the base-2 exponential of x.\nSpecial cases are the same as [Exp].",
       "signature": "func(x float) float"
     },
     "golang/math.expm_1": {
@@ -2567,7 +2589,7 @@
       "package": "golang/math",
       "func": "expm_1",
       "file": "https://pkg.go.dev/math#Expm1",
-      "description": "MathExpm1 is an autogenerated function. func Expm1(x float64) float64 Expm1 returns e**x - 1, the base-e exponential of x minus 1. It is more accurate than Exp(x) - 1 when x is near zero.\nSpecial cases are:\nExpm1(+Inf) = +Inf Expm1(-Inf) = -1 Expm1(NaN) = NaN\nVery large values overflow to -1 or +Inf.",
+      "description": "MathExpm1 is an autogenerated function. func Expm1(x float64) float64 Expm1 returns e**x - 1, the base-e exponential of x minus 1. It is more accurate than [Exp](x) - 1 when x is near zero.\nSpecial cases are:\nExpm1(+Inf) = +Inf Expm1(-Inf) = -1 Expm1(NaN) = NaN\nVery large values overflow to -1 or +Inf.",
       "signature": "func(x float) float"
     },
     "golang/math.floor": {
@@ -2583,7 +2605,7 @@
       "package": "golang/math",
       "func": "fma",
       "file": "https://pkg.go.dev/math#FMA",
-      "description": "MathFMA is an autogenerated function. func FMA(x, y, z float64) float64 FMA returns x * y + z, computed with only one rounding. (That is, FMA returns the fused multiply-add of x, y, and z.)",
+      "description": "MathFMA is an autogenerated function. func FMA(x float64, y float64, z float64) float64 FMA returns x * y + z, computed with only one rounding. (That is, FMA returns the fused multiply-add of x, y, and z.)",
       "signature": "func(x float, y float, z float) float"
     },
     "golang/math.gamma": {
@@ -2599,7 +2621,7 @@
       "package": "golang/math",
       "func": "hypot",
       "file": "https://pkg.go.dev/math#Hypot",
-      "description": "MathHypot is an autogenerated function. func Hypot(p, q float64) float64 Hypot returns Sqrt(p*p + q*q), taking care to avoid unnecessary overflow and underflow.\nSpecial cases are:\nHypot(±Inf, q) = +Inf Hypot(p, ±Inf) = +Inf Hypot(NaN, q) = NaN Hypot(p, NaN) = NaN",
+      "description": "MathHypot is an autogenerated function. func Hypot(p float64, q float64) float64 Hypot returns [Sqrt](p*p + q*q), taking care to avoid unnecessary overflow and underflow.\nSpecial cases are:\nHypot(±Inf, q) = +Inf Hypot(p, ±Inf) = +Inf Hypot(NaN, q) = NaN Hypot(p, NaN) = NaN",
       "signature": "func(p float, q float) float"
     },
     "golang/math.ilogb": {
@@ -2625,6 +2647,14 @@
       "file": "https://pkg.go.dev/math#IsInf",
       "description": "MathIsInf is an autogenerated function. func IsInf(f float64, sign int) bool IsInf reports whether f is an infinity, according to sign. If sign > 0, IsInf reports whether f is positive infinity. If sign < 0, IsInf reports whether f is negative infinity. If sign == 0, IsInf reports whether f is either infinity.",
       "signature": "func(f float, sign int) bool"
+    },
+    "golang/math.is_na_n": {
+      "name": "MathIsNaN",
+      "package": "golang/math",
+      "func": "is_na_n",
+      "file": "https://pkg.go.dev/math#IsNaN",
+      "description": "MathIsNaN is an autogenerated function. func IsNaN(f float64) (is bool) IsNaN reports whether f is an IEEE 754 “not-a-number” value.",
+      "signature": "func(f float) bool"
     },
     "golang/math.j_0": {
       "name": "MathJ0",
@@ -2655,7 +2685,7 @@
       "package": "golang/math",
       "func": "ldexp",
       "file": "https://pkg.go.dev/math#Ldexp",
-      "description": "MathLdexp is an autogenerated function. func Ldexp(frac float64, exp int) float64 Ldexp is the inverse of Frexp. It returns frac × 2**exp.\nSpecial cases are:\nLdexp(±0, exp) = ±0 Ldexp(±Inf, exp) = ±Inf Ldexp(NaN, exp) = NaN",
+      "description": "MathLdexp is an autogenerated function. func Ldexp(frac float64, exp int) float64 Ldexp is the inverse of [Frexp]. It returns frac × 2**exp.\nSpecial cases are:\nLdexp(±0, exp) = ±0 Ldexp(±Inf, exp) = ±Inf Ldexp(NaN, exp) = NaN",
       "signature": "func(frac float, exp int) float"
     },
     "golang/math.log": {
@@ -2671,7 +2701,7 @@
       "package": "golang/math",
       "func": "log_10",
       "file": "https://pkg.go.dev/math#Log10",
-      "description": "MathLog10 is an autogenerated function. func Log10(x float64) float64 Log10 returns the decimal logarithm of x. The special cases are the same as for Log.",
+      "description": "MathLog10 is an autogenerated function. func Log10(x float64) float64 Log10 returns the decimal logarithm of x. The special cases are the same as for [Log].",
       "signature": "func(x float) float"
     },
     "golang/math.log_1_p": {
@@ -2679,7 +2709,7 @@
       "package": "golang/math",
       "func": "log_1_p",
       "file": "https://pkg.go.dev/math#Log1p",
-      "description": "MathLog1p is an autogenerated function. func Log1p(x float64) float64 Log1p returns the natural logarithm of 1 plus its argument x. It is more accurate than Log(1 + x) when x is near zero.\nSpecial cases are:\nLog1p(+Inf) = +Inf Log1p(±0) = ±0 Log1p(-1) = -Inf Log1p(x < -1) = NaN Log1p(NaN) = NaN",
+      "description": "MathLog1p is an autogenerated function. func Log1p(x float64) float64 Log1p returns the natural logarithm of 1 plus its argument x. It is more accurate than [Log](1 + x) when x is near zero.\nSpecial cases are:\nLog1p(+Inf) = +Inf Log1p(±0) = ±0 Log1p(-1) = -Inf Log1p(x < -1) = NaN Log1p(NaN) = NaN",
       "signature": "func(x float) float"
     },
     "golang/math.log_2": {
@@ -2687,7 +2717,7 @@
       "package": "golang/math",
       "func": "log_2",
       "file": "https://pkg.go.dev/math#Log2",
-      "description": "MathLog2 is an autogenerated function. func Log2(x float64) float64 Log2 returns the binary logarithm of x. The special cases are the same as for Log.",
+      "description": "MathLog2 is an autogenerated function. func Log2(x float64) float64 Log2 returns the binary logarithm of x. The special cases are the same as for [Log].",
       "signature": "func(x float) float"
     },
     "golang/math.logb": {
@@ -2703,7 +2733,7 @@
       "package": "golang/math",
       "func": "max",
       "file": "https://pkg.go.dev/math#Max",
-      "description": "MathMax is an autogenerated function. func Max(x, y float64) float64 Max returns the larger of x or y.\nSpecial cases are:\nMax(x, +Inf) = Max(+Inf, x) = +Inf Max(x, NaN) = Max(NaN, x) = NaN Max(+0, ±0) = Max(±0, +0) = +0 Max(-0, -0) = -0\nNote that this differs from the built-in function max when called with NaN and +Inf.",
+      "description": "MathMax is an autogenerated function. func Max(x float64, y float64) float64 Max returns the larger of x or y.\nSpecial cases are:\nMax(x, +Inf) = Max(+Inf, x) = +Inf Max(x, NaN) = Max(NaN, x) = NaN Max(+0, ±0) = Max(±0, +0) = +0 Max(-0, -0) = -0\nNote that this differs from the built-in function max when called with NaN and +Inf.",
       "signature": "func(x float, y float) float"
     },
     "golang/math.min": {
@@ -2711,7 +2741,7 @@
       "package": "golang/math",
       "func": "min",
       "file": "https://pkg.go.dev/math#Min",
-      "description": "MathMin is an autogenerated function. func Min(x, y float64) float64 Min returns the smaller of x or y.\nSpecial cases are:\nMin(x, -Inf) = Min(-Inf, x) = -Inf Min(x, NaN) = Min(NaN, x) = NaN Min(-0, ±0) = Min(±0, -0) = -0\nNote that this differs from the built-in function min when called with NaN and -Inf.",
+      "description": "MathMin is an autogenerated function. func Min(x float64, y float64) float64 Min returns the smaller of x or y.\nSpecial cases are:\nMin(x, -Inf) = Min(-Inf, x) = -Inf Min(x, NaN) = Min(NaN, x) = NaN Min(-0, ±0) = Min(±0, -0) = -0\nNote that this differs from the built-in function min when called with NaN and -Inf.",
       "signature": "func(x float, y float) float"
     },
     "golang/math.mod": {
@@ -2719,7 +2749,7 @@
       "package": "golang/math",
       "func": "mod",
       "file": "https://pkg.go.dev/math#Mod",
-      "description": "MathMod is an autogenerated function. func Mod(x, y float64) float64 Mod returns the floating-point remainder of x/y. The magnitude of the result is less than y and its sign agrees with that of x.\nSpecial cases are:\nMod(±Inf, y) = NaN Mod(NaN, y) = NaN Mod(x, 0) = NaN Mod(x, ±Inf) = x Mod(x, NaN) = NaN",
+      "description": "MathMod is an autogenerated function. func Mod(x float64, y float64) float64 Mod returns the floating-point remainder of x/y. The magnitude of the result is less than y and its sign agrees with that of x.\nSpecial cases are:\nMod(±Inf, y) = NaN Mod(NaN, y) = NaN Mod(x, 0) = NaN Mod(x, ±Inf) = x Mod(x, NaN) = NaN",
       "signature": "func(x float, y float) float"
     },
     "golang/math.na_n": {
@@ -2730,12 +2760,20 @@
       "description": "MathNaN is an autogenerated function. func NaN() float64 NaN returns an IEEE 754 “not-a-number” value.",
       "signature": "func() float"
     },
+    "golang/math.nextafter": {
+      "name": "MathNextafter",
+      "package": "golang/math",
+      "func": "nextafter",
+      "file": "https://pkg.go.dev/math#Nextafter",
+      "description": "MathNextafter is an autogenerated function. func Nextafter(x float64, y float64) (r float64) Nextafter returns the next representable float64 value after x towards y.\nSpecial cases are:\nNextafter(x, x)   = x Nextafter(NaN, y) = NaN Nextafter(x, NaN) = NaN",
+      "signature": "func(x float, y float) float"
+    },
     "golang/math.pow": {
       "name": "MathPow",
       "package": "golang/math",
       "func": "pow",
       "file": "https://pkg.go.dev/math#Pow",
-      "description": "MathPow is an autogenerated function. func Pow(x, y float64) float64 Pow returns x**y, the base-x exponential of y.\nSpecial cases are (in order):\nPow(x, ±0) = 1 for any x Pow(1, y) = 1 for any y Pow(x, 1) = x for any x Pow(NaN, y) = NaN Pow(x, NaN) = NaN Pow(±0, y) = ±Inf for y an odd integer < 0 Pow(±0, -Inf) = +Inf Pow(±0, +Inf) = +0 Pow(±0, y) = +Inf for finite y < 0 and not an odd integer Pow(±0, y) = ±0 for y an odd integer > 0 Pow(±0, y) = +0 for finite y > 0 and not an odd integer Pow(-1, ±Inf) = 1 Pow(x, +Inf) = +Inf for |x| > 1 Pow(x, -Inf) = +0 for |x| > 1 Pow(x, +Inf) = +0 for |x| < 1 Pow(x, -Inf) = +Inf for |x| < 1 Pow(+Inf, y) = +Inf for y > 0 Pow(+Inf, y) = +0 for y < 0 Pow(-Inf, y) = Pow(-0, -y) Pow(x, y) = NaN for finite x < 0 and finite non-integer y",
+      "description": "MathPow is an autogenerated function. func Pow(x float64, y float64) float64 Pow returns x**y, the base-x exponential of y.\nSpecial cases are (in order):\nPow(x, ±0) = 1 for any x Pow(1, y) = 1 for any y Pow(x, 1) = x for any x Pow(NaN, y) = NaN Pow(x, NaN) = NaN Pow(±0, y) = ±Inf for y an odd integer < 0 Pow(±0, -Inf) = +Inf Pow(±0, +Inf) = +0 Pow(±0, y) = +Inf for finite y < 0 and not an odd integer Pow(±0, y) = ±0 for y an odd integer > 0 Pow(±0, y) = +0 for finite y > 0 and not an odd integer Pow(-1, ±Inf) = 1 Pow(x, +Inf) = +Inf for |x| > 1 Pow(x, -Inf) = +0 for |x| > 1 Pow(x, +Inf) = +0 for |x| < 1 Pow(x, -Inf) = +Inf for |x| < 1 Pow(+Inf, y) = +Inf for y > 0 Pow(+Inf, y) = +0 for y < 0 Pow(-Inf, y) = Pow(-0, -y) Pow(x, y) = NaN for finite x < 0 and finite non-integer y",
       "signature": "func(x float, y float) float"
     },
     "golang/math.pow_10": {
@@ -2751,7 +2789,7 @@
       "package": "golang/math",
       "func": "remainder",
       "file": "https://pkg.go.dev/math#Remainder",
-      "description": "MathRemainder is an autogenerated function. func Remainder(x, y float64) float64 Remainder returns the IEEE 754 floating-point remainder of x/y.\nSpecial cases are:\nRemainder(±Inf, y) = NaN Remainder(NaN, y) = NaN Remainder(x, 0) = NaN Remainder(x, ±Inf) = x Remainder(x, NaN) = NaN",
+      "description": "MathRemainder is an autogenerated function. func Remainder(x float64, y float64) float64 Remainder returns the IEEE 754 floating-point remainder of x/y.\nSpecial cases are:\nRemainder(±Inf, y) = NaN Remainder(NaN, y) = NaN Remainder(x, 0) = NaN Remainder(x, ±Inf) = x Remainder(x, NaN) = NaN",
       "signature": "func(x float, y float) float"
     },
     "golang/math.round": {
@@ -2855,7 +2893,7 @@
       "package": "golang/math/rand",
       "func": "exp_float_64",
       "file": "https://pkg.go.dev/math/rand#ExpFloat64",
-      "description": "MathrandExpFloat64 is an autogenerated function. func ExpFloat64() float64 ExpFloat64 returns an exponentially distributed float64 in the range (0, +[math.MaxFloat64]] with an exponential distribution whose rate parameter (lambda) is 1 and whose mean is 1/lambda (1) from the default Source. To produce a distribution with a different rate parameter, callers can adjust the output using:\nsample = ExpFloat64() / desiredRateParameter",
+      "description": "MathrandExpFloat64 is an autogenerated function. func ExpFloat64() float64 ExpFloat64 returns an exponentially distributed float64 in the range (0, +[math.MaxFloat64]] with an exponential distribution whose rate parameter (lambda) is 1 and whose mean is 1/lambda (1) from the default [Source]. To produce a distribution with a different rate parameter, callers can adjust the output using:\nsample = ExpFloat64() / desiredRateParameter",
       "signature": "func() float"
     },
     "golang/math/rand.float_64": {
@@ -2863,7 +2901,7 @@
       "package": "golang/math/rand",
       "func": "float_64",
       "file": "https://pkg.go.dev/math/rand#Float64",
-      "description": "MathrandFloat64 is an autogenerated function. func Float64() float64 Float64 returns, as a float64, a pseudo-random number in the half-open interval [0.0,1.0) from the default Source.",
+      "description": "MathrandFloat64 is an autogenerated function. func Float64() float64 Float64 returns, as a float64, a pseudo-random number in the half-open interval [0.0,1.0) from the default [Source].",
       "signature": "func() float"
     },
     "golang/math/rand.int": {
@@ -2871,7 +2909,7 @@
       "package": "golang/math/rand",
       "func": "int",
       "file": "https://pkg.go.dev/math/rand#Int",
-      "description": "MathrandInt is an autogenerated function. func Int() int Int returns a non-negative pseudo-random int from the default Source.",
+      "description": "MathrandInt is an autogenerated function. func Int() int Int returns a non-negative pseudo-random int from the default [Source].",
       "signature": "func() int"
     },
     "golang/math/rand.int_63": {
@@ -2879,7 +2917,7 @@
       "package": "golang/math/rand",
       "func": "int_63",
       "file": "https://pkg.go.dev/math/rand#Int63",
-      "description": "MathrandInt63 is an autogenerated function. func Int63() int64 Int63 returns a non-negative pseudo-random 63-bit integer as an int64 from the default Source.",
+      "description": "MathrandInt63 is an autogenerated function. func Int63() int64 Int63 returns a non-negative pseudo-random 63-bit integer as an int64 from the default [Source].",
       "signature": "func() int"
     },
     "golang/math/rand.int_63_n": {
@@ -2887,7 +2925,7 @@
       "package": "golang/math/rand",
       "func": "int_63_n",
       "file": "https://pkg.go.dev/math/rand#Int63n",
-      "description": "MathrandInt63n is an autogenerated function. func Int63n(n int64) int64 Int63n returns, as an int64, a non-negative pseudo-random number in the half-open interval [0,n) from the default Source. It panics if n <= 0.",
+      "description": "MathrandInt63n is an autogenerated function. func Int63n(n int64) int64 Int63n returns, as an int64, a non-negative pseudo-random number in the half-open interval [0,n) from the default [Source]. It panics if n <= 0.",
       "signature": "func(n int) int"
     },
     "golang/math/rand.intn": {
@@ -2895,7 +2933,7 @@
       "package": "golang/math/rand",
       "func": "intn",
       "file": "https://pkg.go.dev/math/rand#Intn",
-      "description": "MathrandIntn is an autogenerated function. func Intn(n int) int Intn returns, as an int, a non-negative pseudo-random number in the half-open interval [0,n) from the default Source. It panics if n <= 0.",
+      "description": "MathrandIntn is an autogenerated function. func Intn(n int) int Intn returns, as an int, a non-negative pseudo-random number in the half-open interval [0,n) from the default [Source]. It panics if n <= 0.",
       "signature": "func(n int) int"
     },
     "golang/math/rand.norm_float_64": {
@@ -2903,15 +2941,23 @@
       "package": "golang/math/rand",
       "func": "norm_float_64",
       "file": "https://pkg.go.dev/math/rand#NormFloat64",
-      "description": "MathrandNormFloat64 is an autogenerated function. func NormFloat64() float64 NormFloat64 returns a normally distributed float64 in the range [-math.MaxFloat64, +[math.MaxFloat64]] with standard normal distribution (mean = 0, stddev = 1) from the default Source. To produce a different normal distribution, callers can adjust the output using:\nsample = NormFloat64() * desiredStdDev + desiredMean",
+      "description": "MathrandNormFloat64 is an autogenerated function. func NormFloat64() float64 NormFloat64 returns a normally distributed float64 in the range [-[math.MaxFloat64], +[math.MaxFloat64]] with standard normal distribution (mean = 0, stddev = 1) from the default [Source]. To produce a different normal distribution, callers can adjust the output using:\nsample = NormFloat64() * desiredStdDev + desiredMean",
       "signature": "func() float"
+    },
+    "golang/math/rand.read": {
+      "name": "MathrandRead",
+      "package": "golang/math/rand",
+      "func": "read",
+      "file": "https://pkg.go.dev/math/rand#Read",
+      "description": "MathrandRead is an autogenerated function. func Read(p []byte) (n int, err error) Read generates len(p) random bytes from the default [Source] and writes them into p. It always returns len(p) and a nil error. Read, unlike the [Rand.Read] method, is safe for concurrent use.\nDeprecated: For almost all use cases, [crypto/rand.Read] is more appropriate. If a deterministic source is required, use [math/rand/v2.ChaCha8.Read].",
+      "signature": "func(p str) int"
     },
     "golang/os.executable": {
       "name": "OsExecutable",
       "package": "golang/os",
       "func": "executable",
       "file": "https://pkg.go.dev/os#Executable",
-      "description": "OsExecutable is an autogenerated function. func Executable() (string, error) Executable returns the path name for the executable that started the current process. There is no guarantee that the path is still pointing to the correct executable. If a symlink was used to start the process, depending on the operating system, the result might be the symlink or the path it pointed to. If a stable result is needed, path/filepath.EvalSymlinks might help.\nExecutable returns an absolute path unless an error occurred.\nThe main use case is finding resources located relative to an executable.",
+      "description": "OsExecutable is an autogenerated function. func Executable() (string, error) Executable returns the path name for the executable that started the current process. There is no guarantee that the path is still pointing to the correct executable. If a symlink was used to start the process, depending on the operating system, the result might be the symlink or the path it pointed to. If a stable result is needed, [path/filepath.EvalSymlinks] might help.\nExecutable returns an absolute path unless an error occurred.\nThe main use case is finding resources located relative to an executable.",
       "signature": "func() str"
     },
     "golang/os.expand_env": {
@@ -2935,7 +2981,7 @@
       "package": "golang/os",
       "func": "getenv",
       "file": "https://pkg.go.dev/os#Getenv",
-      "description": "OsGetenv is an autogenerated function. func Getenv(key string) string Getenv retrieves the value of the environment variable named by the key. It returns the value, which will be empty if the variable is not present. To distinguish between an empty value and an unset value, use LookupEnv.",
+      "description": "OsGetenv is an autogenerated function. func Getenv(key string) string Getenv retrieves the value of the environment variable named by the key. It returns the value, which will be empty if the variable is not present. To distinguish between an empty value and an unset value, use [LookupEnv].",
       "signature": "func(key str) str"
     },
     "golang/os.geteuid": {
@@ -2986,12 +3032,28 @@
       "description": "OsGetuid is an autogenerated function. func Getuid() int Getuid returns the numeric user id of the caller.\nOn Windows, it returns -1.",
       "signature": "func() int"
     },
+    "golang/os.getwd": {
+      "name": "OsGetwd",
+      "package": "golang/os",
+      "func": "getwd",
+      "file": "https://pkg.go.dev/os#Getwd",
+      "description": "OsGetwd is an autogenerated function. func Getwd() (dir string, err error) Getwd returns an absolute path name corresponding to the current directory. If the current directory can be reached via multiple paths (due to symbolic links), Getwd may return any one of them.\nOn Unix platforms, if the environment variable PWD provides an absolute name, and it is a name of the current directory, it is returned.",
+      "signature": "func() str"
+    },
+    "golang/os.hostname": {
+      "name": "OsHostname",
+      "package": "golang/os",
+      "func": "hostname",
+      "file": "https://pkg.go.dev/os#Hostname",
+      "description": "OsHostname is an autogenerated function. func Hostname() (name string, err error) Hostname returns the host name reported by the kernel.",
+      "signature": "func() str"
+    },
     "golang/os.mkdir_temp": {
       "name": "OsMkdirTemp",
       "package": "golang/os",
       "func": "mkdir_temp",
       "file": "https://pkg.go.dev/os#MkdirTemp",
-      "description": "OsMkdirTemp is an autogenerated function. func MkdirTemp(dir, pattern string) (string, error) MkdirTemp creates a new temporary directory in the directory dir and returns the pathname of the new directory. The new directory's name is generated by adding a random string to the end of pattern. If pattern includes a \"*\", the random string replaces the last \"*\" instead. The directory is created with mode 0o700 (before umask). If dir is the empty string, MkdirTemp uses the default directory for temporary files, as returned by TempDir. Multiple programs or goroutines calling MkdirTemp simultaneously will not choose the same directory. It is the caller's responsibility to remove the directory when it is no longer needed.",
+      "description": "OsMkdirTemp is an autogenerated function. func MkdirTemp(dir string, pattern string) (string, error) MkdirTemp creates a new temporary directory in the directory dir and returns the pathname of the new directory. The new directory's name is generated by adding a random string to the end of pattern. If pattern includes a \"*\", the random string replaces the last \"*\" instead. The directory is created with mode 0o700 (before umask). If dir is the empty string, MkdirTemp uses the default directory for temporary files, as returned by TempDir. Multiple programs or goroutines calling MkdirTemp simultaneously will not choose the same directory. It is the caller's responsibility to remove the directory when it is no longer needed.",
       "signature": "func(dir str, pattern str) str"
     },
     "golang/os.read_file": {
@@ -3047,7 +3109,7 @@
       "package": "golang/os/exec",
       "func": "look_path",
       "file": "https://pkg.go.dev/os/exec#LookPath",
-      "description": "OsexecLookPath is an autogenerated function. func LookPath(file string) (string, error) LookPath searches for an executable named file in the directories named by the PATH environment variable. If file contains a slash, it is tried directly and the PATH is not consulted. Otherwise, on success, the result is an absolute path.\nIn older versions of Go, LookPath could return a path relative to the current directory. As of Go 1.19, LookPath will instead return that path along with an error satisfying errors.Is(err, ErrDot). See the package documentation for more details.",
+      "description": "OsexecLookPath is an autogenerated function. func LookPath(file string) (string, error) LookPath searches for an executable named file in the directories named by the PATH environment variable. If file contains a slash, it is tried directly and the PATH is not consulted. Otherwise, on success, the result is an absolute path.\nIn older versions of Go, LookPath could return a path relative to the current directory. As of Go 1.19, LookPath will instead return that path along with an error satisfying [errors.Is](err, [ErrDot]). See the package documentation for more details.",
       "signature": "func(file str) str"
     },
     "golang/path.base": {
@@ -3071,7 +3133,7 @@
       "package": "golang/path",
       "func": "dir",
       "file": "https://pkg.go.dev/path#Dir",
-      "description": "PathDir is an autogenerated function. func Dir(path string) string Dir returns all but the last element of path, typically the path's directory. After dropping the final element using Split, the path is Cleaned and trailing slashes are removed. If the path is empty, Dir returns \".\". If the path consists entirely of slashes followed by non-slash bytes, Dir returns a single slash. In any other case, the returned path does not end in a slash.",
+      "description": "PathDir is an autogenerated function. func Dir(path string) string Dir returns all but the last element of path, typically the path's directory. After dropping the final element using [Split], the path is Cleaned and trailing slashes are removed. If the path is empty, Dir returns \".\". If the path consists entirely of slashes followed by non-slash bytes, Dir returns a single slash. In any other case, the returned path does not end in a slash.",
       "signature": "func(path str) str"
     },
     "golang/path.ext": {
@@ -3090,12 +3152,28 @@
       "description": "PathIsAbs is an autogenerated function. func IsAbs(path string) bool IsAbs reports whether the path is absolute.",
       "signature": "func(path str) bool"
     },
+    "golang/path.join": {
+      "name": "PathJoin",
+      "package": "golang/path",
+      "func": "join",
+      "file": "https://pkg.go.dev/path#Join",
+      "description": "PathJoin is an autogenerated function. func Join(elem ...string) string Join joins any number of path elements into a single path, separating them with slashes. Empty elements are ignored. The result is Cleaned. However, if the argument list is empty or all its elements are empty, Join returns an empty string.",
+      "signature": "func(elem []str) str"
+    },
+    "golang/path.match": {
+      "name": "PathMatch",
+      "package": "golang/path",
+      "func": "match",
+      "file": "https://pkg.go.dev/path#Match",
+      "description": "PathMatch is an autogenerated function. func Match(pattern string, name string) (matched bool, err error) Match reports whether name matches the shell pattern. The pattern syntax is:\npattern: { term } term: '*'         matches any sequence of non-/ characters '?'         matches any single non-/ character '[' [ '^' ] { character-range } ']' character class (must be non-empty) c           matches character c (c != '*', '?', '\\\\', '[') '\\\\' c      matches character c\ncharacter-range: c           matches character c (c != '\\\\', '-', ']') '\\\\' c      matches character c lo '-' hi   matches character c for lo <= c <= hi\nMatch requires pattern to match all of name, not just a substring. The only possible returned error is [ErrBadPattern], when pattern is malformed.",
+      "signature": "func(pattern str, name str) bool"
+    },
     "golang/path/filepath.abs": {
       "name": "PathfilepathAbs",
       "package": "golang/path/filepath",
       "func": "abs",
       "file": "https://pkg.go.dev/path/filepath#Abs",
-      "description": "PathfilepathAbs is an autogenerated function. func Abs(path string) (string, error) Abs returns an absolute representation of path. If the path is not absolute it will be joined with the current working directory to turn it into an absolute path. The absolute path name for a given file is not guaranteed to be unique. Abs calls Clean on the result.",
+      "description": "PathfilepathAbs is an autogenerated function. func Abs(path string) (string, error) Abs returns an absolute representation of path. If the path is not absolute it will be joined with the current working directory to turn it into an absolute path. The absolute path name for a given file is not guaranteed to be unique. Abs calls [Clean] on the result.",
       "signature": "func(path str) str"
     },
     "golang/path/filepath.base": {
@@ -3111,7 +3189,7 @@
       "package": "golang/path/filepath",
       "func": "clean",
       "file": "https://pkg.go.dev/path/filepath#Clean",
-      "description": "PathfilepathClean is an autogenerated function. func Clean(path string) string Clean returns the shortest path name equivalent to path by purely lexical processing. It applies the following rules iteratively until no further processing can be done:\n1. Replace multiple Separator elements with a single one. 2. Eliminate each . path name element (the current directory). 3. Eliminate each inner .. path name element (the parent directory) along with the non-.. element that precedes it. 4. Eliminate .. elements that begin a rooted path: that is, replace \"/..\" by \"/\" at the beginning of a path, assuming Separator is '/'.\nThe returned path ends in a slash only if it represents a root directory, such as \"/\" on Unix or `C:\\` on Windows.\nFinally, any occurrences of slash are replaced by Separator.\nIf the result of this process is an empty string, Clean returns the string \".\".\nOn Windows, Clean does not modify the volume name other than to replace occurrences of \"/\" with `\\`. For example, Clean(\"//host/share/../x\") returns `\\\\host\\share\\x`.\nSee also Rob Pike, “Lexical File Names in Plan 9 or Getting Dot-Dot Right,” https://9p.io/sys/doc/lexnames.html",
+      "description": "PathfilepathClean is an autogenerated function. func Clean(path string) string Clean returns the shortest path name equivalent to path by purely lexical processing. It applies the following rules iteratively until no further processing can be done:\n1. Replace multiple [Separator] elements with a single one. 2. Eliminate each . path name element (the current directory). 3. Eliminate each inner .. path name element (the parent directory) along with the non-.. element that precedes it. 4. Eliminate .. elements that begin a rooted path: that is, replace \"/..\" by \"/\" at the beginning of a path, assuming Separator is '/'.\nThe returned path ends in a slash only if it represents a root directory, such as \"/\" on Unix or `C:\\` on Windows.\nFinally, any occurrences of slash are replaced by Separator.\nIf the result of this process is an empty string, Clean returns the string \".\".\nOn Windows, Clean does not modify the volume name other than to replace occurrences of \"/\" with `\\`. For example, Clean(\"//host/share/../x\") returns `\\\\host\\share\\x`.\nSee also Rob Pike, “Lexical File Names in Plan 9 or Getting Dot-Dot Right,” https://9p.io/sys/doc/lexnames.html",
       "signature": "func(path str) str"
     },
     "golang/path/filepath.dir": {
@@ -3119,7 +3197,7 @@
       "package": "golang/path/filepath",
       "func": "dir",
       "file": "https://pkg.go.dev/path/filepath#Dir",
-      "description": "PathfilepathDir is an autogenerated function. func Dir(path string) string Dir returns all but the last element of path, typically the path's directory. After dropping the final element, Dir calls Clean on the path and trailing slashes are removed. If the path is empty, Dir returns \".\". If the path consists entirely of separators, Dir returns a single separator. The returned path does not end in a separator unless it is the root directory.",
+      "description": "PathfilepathDir is an autogenerated function. func Dir(path string) string Dir returns all but the last element of path, typically the path's directory. After dropping the final element, Dir calls [Clean] on the path and trailing slashes are removed. If the path is empty, Dir returns \".\". If the path consists entirely of separators, Dir returns a single separator. The returned path does not end in a separator unless it is the root directory.",
       "signature": "func(path str) str"
     },
     "golang/path/filepath.eval_symlinks": {
@@ -3127,7 +3205,7 @@
       "package": "golang/path/filepath",
       "func": "eval_symlinks",
       "file": "https://pkg.go.dev/path/filepath#EvalSymlinks",
-      "description": "PathfilepathEvalSymlinks is an autogenerated function. func EvalSymlinks(path string) (string, error) EvalSymlinks returns the path name after the evaluation of any symbolic links. If path is relative the result will be relative to the current directory, unless one of the components is an absolute symbolic link. EvalSymlinks calls Clean on the result.",
+      "description": "PathfilepathEvalSymlinks is an autogenerated function. func EvalSymlinks(path string) (string, error) EvalSymlinks returns the path name after the evaluation of any symbolic links. If path is relative the result will be relative to the current directory, unless one of the components is an absolute symbolic link. EvalSymlinks calls [Clean] on the result.",
       "signature": "func(path str) str"
     },
     "golang/path/filepath.ext": {
@@ -3151,7 +3229,7 @@
       "package": "golang/path/filepath",
       "func": "has_prefix",
       "file": "https://pkg.go.dev/path/filepath#HasPrefix",
-      "description": "PathfilepathHasPrefix is an autogenerated function. func HasPrefix(p, prefix string) bool HasPrefix exists for historical compatibility and should not be used.\nDeprecated: HasPrefix does not respect path boundaries and does not ignore case when required.",
+      "description": "PathfilepathHasPrefix is an autogenerated function. func HasPrefix(p string, prefix string) bool HasPrefix exists for historical compatibility and should not be used.\nDeprecated: HasPrefix does not respect path boundaries and does not ignore case when required.",
       "signature": "func(p str, prefix str) bool"
     },
     "golang/path/filepath.is_abs": {
@@ -3170,20 +3248,36 @@
       "description": "PathfilepathIsLocal is an autogenerated function. func IsLocal(path string) bool IsLocal reports whether path, using lexical analysis only, has all of these properties:\n- is within the subtree rooted at the directory in which path is evaluated - is not an absolute path - is not empty - on Windows, is not a reserved name such as \"NUL\"\nIf IsLocal(path) returns true, then Join(base, path) will always produce a path contained within base and Clean(path) will always produce an unrooted path with no \"..\" path elements.\nIsLocal is a purely lexical operation. In particular, it does not account for the effect of any symbolic links that may exist in the filesystem.",
       "signature": "func(path str) bool"
     },
+    "golang/path/filepath.join": {
+      "name": "PathfilepathJoin",
+      "package": "golang/path/filepath",
+      "func": "join",
+      "file": "https://pkg.go.dev/path/filepath#Join",
+      "description": "PathfilepathJoin is an autogenerated function. func Join(elem ...string) string Join joins any number of path elements into a single path, separating them with an OS specific [Separator]. Empty elements are ignored. The result is Cleaned. However, if the argument list is empty or all its elements are empty, Join returns an empty string. On Windows, the result will only be a UNC path if the first non-empty element is a UNC path.",
+      "signature": "func(elem []str) str"
+    },
     "golang/path/filepath.localize": {
       "name": "PathfilepathLocalize",
       "package": "golang/path/filepath",
       "func": "localize",
       "file": "https://pkg.go.dev/path/filepath#Localize",
-      "description": "PathfilepathLocalize is an autogenerated function. func Localize(path string) (string, error) Localize converts a slash-separated path into an operating system path. The input path must be a valid path as reported by io/fs.ValidPath.\nLocalize returns an error if the path cannot be represented by the operating system. For example, the path a\\b is rejected on Windows, on which \\ is a separator character and cannot be part of a filename.\nThe path returned by Localize will always be local, as reported by IsLocal.",
+      "description": "PathfilepathLocalize is an autogenerated function. func Localize(path string) (string, error) Localize converts a slash-separated path into an operating system path. The input path must be a valid path as reported by [io/fs.ValidPath].\nLocalize returns an error if the path cannot be represented by the operating system. For example, the path a\\b is rejected on Windows, on which \\ is a separator character and cannot be part of a filename.\nThe path returned by Localize will always be local, as reported by IsLocal.",
       "signature": "func(path str) str"
+    },
+    "golang/path/filepath.match": {
+      "name": "PathfilepathMatch",
+      "package": "golang/path/filepath",
+      "func": "match",
+      "file": "https://pkg.go.dev/path/filepath#Match",
+      "description": "PathfilepathMatch is an autogenerated function. func Match(pattern string, name string) (matched bool, err error) Match reports whether name matches the shell file name pattern. The pattern syntax is:\npattern: { term } term: '*'         matches any sequence of non-Separator characters '?'         matches any single non-Separator character '[' [ '^' ] { character-range } ']' character class (must be non-empty) c           matches character c (c != '*', '?', '\\\\', '[') '\\\\' c      matches character c\ncharacter-range: c           matches character c (c != '\\\\', '-', ']') '\\\\' c      matches character c lo '-' hi   matches character c for lo <= c <= hi\nMatch requires pattern to match all of name, not just a substring. The only possible returned error is [ErrBadPattern], when pattern is malformed.\nOn Windows, escaping is disabled. Instead, '\\\\' is treated as path separator.",
+      "signature": "func(pattern str, name str) bool"
     },
     "golang/path/filepath.rel": {
       "name": "PathfilepathRel",
       "package": "golang/path/filepath",
       "func": "rel",
       "file": "https://pkg.go.dev/path/filepath#Rel",
-      "description": "PathfilepathRel is an autogenerated function. func Rel(basepath, targpath string) (string, error) Rel returns a relative path that is lexically equivalent to targpath when joined to basepath with an intervening separator. That is, Join(basepath, Rel(basepath, targpath)) is equivalent to targpath itself. On success, the returned path will always be relative to basepath, even if basepath and targpath share no elements. An error is returned if targpath can't be made relative to basepath or if knowing the current working directory would be necessary to compute it. Rel calls Clean on the result.",
+      "description": "PathfilepathRel is an autogenerated function. func Rel(basepath string, targpath string) (string, error) Rel returns a relative path that is lexically equivalent to targpath when joined to basepath with an intervening separator. That is, [Join](basepath, Rel(basepath, targpath)) is equivalent to targpath itself. On success, the returned path will always be relative to basepath, even if basepath and targpath share no elements. An error is returned if targpath can't be made relative to basepath or if knowing the current working directory would be necessary to compute it. Rel calls [Clean] on the result.",
       "signature": "func(basepath str, targpath str) str"
     },
     "golang/path/filepath.to_slash": {
@@ -3207,7 +3301,7 @@
       "package": "golang/runtime",
       "func": "cpu_profile",
       "file": "https://pkg.go.dev/runtime#CPUProfile",
-      "description": "RuntimeCPUProfile is an autogenerated function. func CPUProfile() []byte CPUProfile panics. It formerly provided raw access to chunks of a pprof-format profile generated by the runtime. The details of generating that format have changed, so this functionality has been removed.\nDeprecated: Use the runtime/pprof package, or the handlers in the net/http/pprof package, or the testing package's -test.cpuprofile flag instead.",
+      "description": "RuntimeCPUProfile is an autogenerated function. func CPUProfile() []byte CPUProfile panics. It formerly provided raw access to chunks of a pprof-format profile generated by the runtime. The details of generating that format have changed, so this functionality has been removed.\nDeprecated: Use the [runtime/pprof] package, or the handlers in the [net/http/pprof] package, or the [testing] package's -test.cpuprofile flag instead.",
       "signature": "func() str"
     },
     "golang/runtime.gomaxprocs": {
@@ -3215,7 +3309,7 @@
       "package": "golang/runtime",
       "func": "gomaxprocs",
       "file": "https://pkg.go.dev/runtime#GOMAXPROCS",
-      "description": "RuntimeGOMAXPROCS is an autogenerated function. func GOMAXPROCS(n int) int GOMAXPROCS sets the maximum number of CPUs that can be executing simultaneously and returns the previous setting. It defaults to the value of runtime.NumCPU. If n < 1, it does not change the current setting. This call will go away when the scheduler improves.",
+      "description": "RuntimeGOMAXPROCS is an autogenerated function. func GOMAXPROCS(n int) int GOMAXPROCS sets the maximum number of CPUs that can be executing simultaneously and returns the previous setting. It defaults to the value of [runtime.NumCPU]. If n < 1, it does not change the current setting. This call will go away when the scheduler improves.",
       "signature": "func(n int) int"
     },
     "golang/runtime.goroot": {
@@ -3295,7 +3389,7 @@
       "package": "golang/strconv",
       "func": "append_int",
       "file": "https://pkg.go.dev/strconv#AppendInt",
-      "description": "StrconvAppendInt is an autogenerated function. func AppendInt(dst []byte, i int64, base int) []byte AppendInt appends the string form of the integer i, as generated by FormatInt, to dst and returns the extended buffer.",
+      "description": "StrconvAppendInt is an autogenerated function. func AppendInt(dst []byte, i int64, base int) []byte AppendInt appends the string form of the integer i, as generated by [FormatInt], to dst and returns the extended buffer.",
       "signature": "func(dst str, i int, base int) str"
     },
     "golang/strconv.append_quote": {
@@ -3303,7 +3397,7 @@
       "package": "golang/strconv",
       "func": "append_quote",
       "file": "https://pkg.go.dev/strconv#AppendQuote",
-      "description": "StrconvAppendQuote is an autogenerated function. func AppendQuote(dst []byte, s string) []byte AppendQuote appends a double-quoted Go string literal representing s, as generated by Quote, to dst and returns the extended buffer.",
+      "description": "StrconvAppendQuote is an autogenerated function. func AppendQuote(dst []byte, s string) []byte AppendQuote appends a double-quoted Go string literal representing s, as generated by [Quote], to dst and returns the extended buffer.",
       "signature": "func(dst str, s str) str"
     },
     "golang/strconv.append_quote_to_ascii": {
@@ -3311,7 +3405,7 @@
       "package": "golang/strconv",
       "func": "append_quote_to_ascii",
       "file": "https://pkg.go.dev/strconv#AppendQuoteToASCII",
-      "description": "StrconvAppendQuoteToASCII is an autogenerated function. func AppendQuoteToASCII(dst []byte, s string) []byte AppendQuoteToASCII appends a double-quoted Go string literal representing s, as generated by QuoteToASCII, to dst and returns the extended buffer.",
+      "description": "StrconvAppendQuoteToASCII is an autogenerated function. func AppendQuoteToASCII(dst []byte, s string) []byte AppendQuoteToASCII appends a double-quoted Go string literal representing s, as generated by [QuoteToASCII], to dst and returns the extended buffer.",
       "signature": "func(dst str, s str) str"
     },
     "golang/strconv.append_quote_to_graphic": {
@@ -3319,7 +3413,7 @@
       "package": "golang/strconv",
       "func": "append_quote_to_graphic",
       "file": "https://pkg.go.dev/strconv#AppendQuoteToGraphic",
-      "description": "StrconvAppendQuoteToGraphic is an autogenerated function. func AppendQuoteToGraphic(dst []byte, s string) []byte AppendQuoteToGraphic appends a double-quoted Go string literal representing s, as generated by QuoteToGraphic, to dst and returns the extended buffer.",
+      "description": "StrconvAppendQuoteToGraphic is an autogenerated function. func AppendQuoteToGraphic(dst []byte, s string) []byte AppendQuoteToGraphic appends a double-quoted Go string literal representing s, as generated by [QuoteToGraphic], to dst and returns the extended buffer.",
       "signature": "func(dst str, s str) str"
     },
     "golang/strconv.atoi": {
@@ -3359,7 +3453,7 @@
       "package": "golang/strconv",
       "func": "itoa",
       "file": "https://pkg.go.dev/strconv#Itoa",
-      "description": "StrconvItoa is an autogenerated function. func Itoa(i int) string Itoa is equivalent to FormatInt(int64(i), 10).",
+      "description": "StrconvItoa is an autogenerated function. func Itoa(i int) string Itoa is equivalent to [FormatInt](int64(i), 10).",
       "signature": "func(i int) str"
     },
     "golang/strconv.parse_bool": {
@@ -3375,15 +3469,23 @@
       "package": "golang/strconv",
       "func": "parse_float",
       "file": "https://pkg.go.dev/strconv#ParseFloat",
-      "description": "StrconvParseFloat is an autogenerated function. func ParseFloat(s string, bitSize int) (float64, error) ParseFloat converts the string s to a floating-point number with the precision specified by bitSize: 32 for float32, or 64 for float64. When bitSize=32, the result still has type float64, but it will be convertible to float32 without changing its value.\nParseFloat accepts decimal and hexadecimal floating-point numbers as defined by the Go syntax for floating-point literals. If s is well-formed and near a valid floating-point number, ParseFloat returns the nearest floating-point number rounded using IEEE754 unbiased rounding. (Parsing a hexadecimal floating-point value only rounds when there are more bits in the hexadecimal representation than will fit in the mantissa.)\nThe errors that ParseFloat returns have concrete type *NumError and include err.Num = s.\nIf s is not syntactically well-formed, ParseFloat returns err.Err = ErrSyntax.\nIf s is syntactically well-formed but is more than 1/2 ULP away from the largest floating point number of the given size, ParseFloat returns f = ±Inf, err.Err = ErrRange.\nParseFloat recognizes the string \"NaN\", and the (possibly signed) strings \"Inf\" and \"Infinity\" as their respective special floating point values. It ignores case when matching.\n[floating-point literals]: https://go.dev/ref/spec#Floating-point_literals",
+      "description": "StrconvParseFloat is an autogenerated function. func ParseFloat(s string, bitSize int) (float64, error) ParseFloat converts the string s to a floating-point number with the precision specified by bitSize: 32 for float32, or 64 for float64. When bitSize=32, the result still has type float64, but it will be convertible to float32 without changing its value.\nParseFloat accepts decimal and hexadecimal floating-point numbers as defined by the Go syntax for [floating-point literals]. If s is well-formed and near a valid floating-point number, ParseFloat returns the nearest floating-point number rounded using IEEE754 unbiased rounding. (Parsing a hexadecimal floating-point value only rounds when there are more bits in the hexadecimal representation than will fit in the mantissa.)\nThe errors that ParseFloat returns have concrete type *NumError and include err.Num = s.\nIf s is not syntactically well-formed, ParseFloat returns err.Err = ErrSyntax.\nIf s is syntactically well-formed but is more than 1/2 ULP away from the largest floating point number of the given size, ParseFloat returns f = ±Inf, err.Err = ErrRange.\nParseFloat recognizes the string \"NaN\", and the (possibly signed) strings \"Inf\" and \"Infinity\" as their respective special floating point values. It ignores case when matching.\n[floating-point literals]: https://go.dev/ref/spec#Floating-point_literals",
       "signature": "func(s str, bitSize int) float"
+    },
+    "golang/strconv.parse_int": {
+      "name": "StrconvParseInt",
+      "package": "golang/strconv",
+      "func": "parse_int",
+      "file": "https://pkg.go.dev/strconv#ParseInt",
+      "description": "StrconvParseInt is an autogenerated function. func ParseInt(s string, base int, bitSize int) (i int64, err error) ParseInt interprets a string s in the given base (0, 2 to 36) and bit size (0 to 64) and returns the corresponding value i.\nThe string may begin with a leading sign: \"+\" or \"-\".\nIf the base argument is 0, the true base is implied by the string's prefix following the sign (if present): 2 for \"0b\", 8 for \"0\" or \"0o\", 16 for \"0x\", and 10 otherwise. Also, for argument base 0 only, underscore characters are permitted as defined by the Go syntax for [integer literals].\nThe bitSize argument specifies the integer type that the result must fit into. Bit sizes 0, 8, 16, 32, and 64 correspond to int, int8, int16, int32, and int64. If bitSize is below 0 or above 64, an error is returned.\nThe errors that ParseInt returns have concrete type [*NumError] and include err.Num = s. If s is empty or contains invalid digits, err.Err = [ErrSyntax] and the returned value is 0; if the value corresponding to s cannot be represented by a signed integer of the given size, err.Err = [ErrRange] and the returned value is the maximum magnitude integer of the appropriate bitSize and sign.\n[integer literals]: https://go.dev/ref/spec#Integer_literals",
+      "signature": "func(s str, base int, bitSize int) int"
     },
     "golang/strconv.quote": {
       "name": "StrconvQuote",
       "package": "golang/strconv",
       "func": "quote",
       "file": "https://pkg.go.dev/strconv#Quote",
-      "description": "StrconvQuote is an autogenerated function. func Quote(s string) string Quote returns a double-quoted Go string literal representing s. The returned string uses Go escape sequences (\\t, \\n, \\xFF, \\u0100) for control characters and non-printable characters as defined by IsPrint.",
+      "description": "StrconvQuote is an autogenerated function. func Quote(s string) string Quote returns a double-quoted Go string literal representing s. The returned string uses Go escape sequences (\\t, \\n, \\xFF, \\u0100) for control characters and non-printable characters as defined by [IsPrint].",
       "signature": "func(s str) str"
     },
     "golang/strconv.quote_to_ascii": {
@@ -3391,7 +3493,7 @@
       "package": "golang/strconv",
       "func": "quote_to_ascii",
       "file": "https://pkg.go.dev/strconv#QuoteToASCII",
-      "description": "StrconvQuoteToASCII is an autogenerated function. func QuoteToASCII(s string) string QuoteToASCII returns a double-quoted Go string literal representing s. The returned string uses Go escape sequences (\\t, \\n, \\xFF, \\u0100) for non-ASCII characters and non-printable characters as defined by IsPrint.",
+      "description": "StrconvQuoteToASCII is an autogenerated function. func QuoteToASCII(s string) string QuoteToASCII returns a double-quoted Go string literal representing s. The returned string uses Go escape sequences (\\t, \\n, \\xFF, \\u0100) for non-ASCII characters and non-printable characters as defined by [IsPrint].",
       "signature": "func(s str) str"
     },
     "golang/strconv.quote_to_graphic": {
@@ -3399,7 +3501,7 @@
       "package": "golang/strconv",
       "func": "quote_to_graphic",
       "file": "https://pkg.go.dev/strconv#QuoteToGraphic",
-      "description": "StrconvQuoteToGraphic is an autogenerated function. func QuoteToGraphic(s string) string QuoteToGraphic returns a double-quoted Go string literal representing s. The returned string leaves Unicode graphic characters, as defined by IsGraphic, unchanged and uses Go escape sequences (\\t, \\n, \\xFF, \\u0100) for non-graphic characters.",
+      "description": "StrconvQuoteToGraphic is an autogenerated function. func QuoteToGraphic(s string) string QuoteToGraphic returns a double-quoted Go string literal representing s. The returned string leaves Unicode graphic characters, as defined by [IsGraphic], unchanged and uses Go escape sequences (\\t, \\n, \\xFF, \\u0100) for non-graphic characters.",
       "signature": "func(s str) str"
     },
     "golang/strconv.quoted_prefix": {
@@ -3407,7 +3509,7 @@
       "package": "golang/strconv",
       "func": "quoted_prefix",
       "file": "https://pkg.go.dev/strconv#QuotedPrefix",
-      "description": "StrconvQuotedPrefix is an autogenerated function. func QuotedPrefix(s string) (string, error) QuotedPrefix returns the quoted string (as understood by Unquote) at the prefix of s. If s does not start with a valid quoted string, QuotedPrefix returns an error.",
+      "description": "StrconvQuotedPrefix is an autogenerated function. func QuotedPrefix(s string) (string, error) QuotedPrefix returns the quoted string (as understood by [Unquote]) at the prefix of s. If s does not start with a valid quoted string, QuotedPrefix returns an error.",
       "signature": "func(s str) str"
     },
     "golang/strconv.unquote": {
@@ -3415,7 +3517,7 @@
       "package": "golang/strconv",
       "func": "unquote",
       "file": "https://pkg.go.dev/strconv#Unquote",
-      "description": "StrconvUnquote is an autogenerated function. func Unquote(s string) (string, error) Unquote interprets s as a single-quoted, double-quoted, or backquoted Go string literal, returning the string value that s quotes. (If s is single-quoted, it would be a Go character literal; Unquote returns the corresponding one-character string. For an empty character literal Unquote returns the empty string.)",
+      "description": "StrconvUnquote is an autogenerated function. func Unquote(s string) (string, error) Unquote interprets s as a single-quoted, double-quoted, or backquoted Go string literal, returning the string value that s quotes.  (If s is single-quoted, it would be a Go character literal; Unquote returns the corresponding one-character string. For an empty character literal Unquote returns the empty string.)",
       "signature": "func(s str) str"
     },
     "golang/strings.clone": {
@@ -3431,7 +3533,7 @@
       "package": "golang/strings",
       "func": "compare",
       "file": "https://pkg.go.dev/strings#Compare",
-      "description": "StringsCompare is an autogenerated function. func Compare(a, b string) int Compare returns an integer comparing two strings lexicographically. The result will be 0 if a == b, -1 if a < b, and +1 if a > b.\nUse Compare when you need to perform a three-way comparison (with slices.SortFunc, for example). It is usually clearer and always faster to use the built-in string comparison operators ==, <, >, and so on.",
+      "description": "StringsCompare is an autogenerated function. func Compare(a string, b string) int Compare returns an integer comparing two strings lexicographically. The result will be 0 if a == b, -1 if a < b, and +1 if a > b.\nUse Compare when you need to perform a three-way comparison (with [slices.SortFunc], for example). It is usually clearer and always faster to use the built-in string comparison operators ==, <, >, and so on.",
       "signature": "func(a str, b str) int"
     },
     "golang/strings.contains": {
@@ -3439,7 +3541,7 @@
       "package": "golang/strings",
       "func": "contains",
       "file": "https://pkg.go.dev/strings#Contains",
-      "description": "StringsContains is an autogenerated function. func Contains(s, substr string) bool Contains reports whether substr is within s.",
+      "description": "StringsContains is an autogenerated function. func Contains(s string, substr string) bool Contains reports whether substr is within s.",
       "signature": "func(s str, substr str) bool"
     },
     "golang/strings.contains_any": {
@@ -3447,7 +3549,7 @@
       "package": "golang/strings",
       "func": "contains_any",
       "file": "https://pkg.go.dev/strings#ContainsAny",
-      "description": "StringsContainsAny is an autogenerated function. func ContainsAny(s, chars string) bool ContainsAny reports whether any Unicode code points in chars are within s.",
+      "description": "StringsContainsAny is an autogenerated function. func ContainsAny(s string, chars string) bool ContainsAny reports whether any Unicode code points in chars are within s.",
       "signature": "func(s str, chars str) bool"
     },
     "golang/strings.count": {
@@ -3455,7 +3557,7 @@
       "package": "golang/strings",
       "func": "count",
       "file": "https://pkg.go.dev/strings#Count",
-      "description": "StringsCount is an autogenerated function. func Count(s, substr string) int Count counts the number of non-overlapping instances of substr in s. If substr is an empty string, Count returns 1 + the number of Unicode code points in s.",
+      "description": "StringsCount is an autogenerated function. func Count(s string, substr string) int Count counts the number of non-overlapping instances of substr in s. If substr is an empty string, Count returns 1 + the number of Unicode code points in s.",
       "signature": "func(s str, substr str) int"
     },
     "golang/strings.equal_fold": {
@@ -3463,7 +3565,7 @@
       "package": "golang/strings",
       "func": "equal_fold",
       "file": "https://pkg.go.dev/strings#EqualFold",
-      "description": "StringsEqualFold is an autogenerated function. func EqualFold(s, t string) bool EqualFold reports whether s and t, interpreted as UTF-8 strings, are equal under simple Unicode case-folding, which is a more general form of case-insensitivity.",
+      "description": "StringsEqualFold is an autogenerated function. func EqualFold(s string, t string) bool EqualFold reports whether s and t, interpreted as UTF-8 strings, are equal under simple Unicode case-folding, which is a more general form of case-insensitivity.",
       "signature": "func(s str, t str) bool"
     },
     "golang/strings.has_prefix": {
@@ -3471,7 +3573,7 @@
       "package": "golang/strings",
       "func": "has_prefix",
       "file": "https://pkg.go.dev/strings#HasPrefix",
-      "description": "StringsHasPrefix is an autogenerated function. func HasPrefix(s, prefix string) bool HasPrefix reports whether the string s begins with prefix.",
+      "description": "StringsHasPrefix is an autogenerated function. func HasPrefix(s string, prefix string) bool HasPrefix reports whether the string s begins with prefix.",
       "signature": "func(s str, prefix str) bool"
     },
     "golang/strings.has_suffix": {
@@ -3479,7 +3581,7 @@
       "package": "golang/strings",
       "func": "has_suffix",
       "file": "https://pkg.go.dev/strings#HasSuffix",
-      "description": "StringsHasSuffix is an autogenerated function. func HasSuffix(s, suffix string) bool HasSuffix reports whether the string s ends with suffix.",
+      "description": "StringsHasSuffix is an autogenerated function. func HasSuffix(s string, suffix string) bool HasSuffix reports whether the string s ends with suffix.",
       "signature": "func(s str, suffix str) bool"
     },
     "golang/strings.index": {
@@ -3487,7 +3589,7 @@
       "package": "golang/strings",
       "func": "index",
       "file": "https://pkg.go.dev/strings#Index",
-      "description": "StringsIndex is an autogenerated function. func Index(s, substr string) int Index returns the index of the first instance of substr in s, or -1 if substr is not present in s.",
+      "description": "StringsIndex is an autogenerated function. func Index(s string, substr string) int Index returns the index of the first instance of substr in s, or -1 if substr is not present in s.",
       "signature": "func(s str, substr str) int"
     },
     "golang/strings.index_any": {
@@ -3495,7 +3597,7 @@
       "package": "golang/strings",
       "func": "index_any",
       "file": "https://pkg.go.dev/strings#IndexAny",
-      "description": "StringsIndexAny is an autogenerated function. func IndexAny(s, chars string) int IndexAny returns the index of the first instance of any Unicode code point from chars in s, or -1 if no Unicode code point from chars is present in s.",
+      "description": "StringsIndexAny is an autogenerated function. func IndexAny(s string, chars string) int IndexAny returns the index of the first instance of any Unicode code point from chars in s, or -1 if no Unicode code point from chars is present in s.",
       "signature": "func(s str, chars str) int"
     },
     "golang/strings.join": {
@@ -3511,7 +3613,7 @@
       "package": "golang/strings",
       "func": "last_index",
       "file": "https://pkg.go.dev/strings#LastIndex",
-      "description": "StringsLastIndex is an autogenerated function. func LastIndex(s, substr string) int LastIndex returns the index of the last instance of substr in s, or -1 if substr is not present in s.",
+      "description": "StringsLastIndex is an autogenerated function. func LastIndex(s string, substr string) int LastIndex returns the index of the last instance of substr in s, or -1 if substr is not present in s.",
       "signature": "func(s str, substr str) int"
     },
     "golang/strings.last_index_any": {
@@ -3519,7 +3621,7 @@
       "package": "golang/strings",
       "func": "last_index_any",
       "file": "https://pkg.go.dev/strings#LastIndexAny",
-      "description": "StringsLastIndexAny is an autogenerated function. func LastIndexAny(s, chars string) int LastIndexAny returns the index of the last instance of any Unicode code point from chars in s, or -1 if no Unicode code point from chars is present in s.",
+      "description": "StringsLastIndexAny is an autogenerated function. func LastIndexAny(s string, chars string) int LastIndexAny returns the index of the last instance of any Unicode code point from chars in s, or -1 if no Unicode code point from chars is present in s.",
       "signature": "func(s str, chars str) int"
     },
     "golang/strings.repeat": {
@@ -3535,7 +3637,7 @@
       "package": "golang/strings",
       "func": "replace",
       "file": "https://pkg.go.dev/strings#Replace",
-      "description": "StringsReplace is an autogenerated function. func Replace(s, old, new string, n int) string Replace returns a copy of the string s with the first n non-overlapping instances of old replaced by new. If old is empty, it matches at the beginning of the string and after each UTF-8 sequence, yielding up to k+1 replacements for a k-rune string. If n < 0, there is no limit on the number of replacements.",
+      "description": "StringsReplace is an autogenerated function. func Replace(s string, old string, new string, n int) string Replace returns a copy of the string s with the first n non-overlapping instances of old replaced by new. If old is empty, it matches at the beginning of the string and after each UTF-8 sequence, yielding up to k+1 replacements for a k-rune string. If n < 0, there is no limit on the number of replacements.",
       "signature": "func(s str, old str, new str, n int) str"
     },
     "golang/strings.replace_all": {
@@ -3543,7 +3645,7 @@
       "package": "golang/strings",
       "func": "replace_all",
       "file": "https://pkg.go.dev/strings#ReplaceAll",
-      "description": "StringsReplaceAll is an autogenerated function. func ReplaceAll(s, old, new string) string ReplaceAll returns a copy of the string s with all non-overlapping instances of old replaced by new. If old is empty, it matches at the beginning of the string and after each UTF-8 sequence, yielding up to k+1 replacements for a k-rune string.",
+      "description": "StringsReplaceAll is an autogenerated function. func ReplaceAll(s string, old string, new string) string ReplaceAll returns a copy of the string s with all non-overlapping instances of old replaced by new. If old is empty, it matches at the beginning of the string and after each UTF-8 sequence, yielding up to k+1 replacements for a k-rune string.",
       "signature": "func(s str, old str, new str) str"
     },
     "golang/strings.title": {
@@ -3583,7 +3685,7 @@
       "package": "golang/strings",
       "func": "to_valid_utf_8",
       "file": "https://pkg.go.dev/strings#ToValidUTF8",
-      "description": "StringsToValidUTF8 is an autogenerated function. func ToValidUTF8(s, replacement string) string ToValidUTF8 returns a copy of the string s with each run of invalid UTF-8 byte sequences replaced by the replacement string, which may be empty.",
+      "description": "StringsToValidUTF8 is an autogenerated function. func ToValidUTF8(s string, replacement string) string ToValidUTF8 returns a copy of the string s with each run of invalid UTF-8 byte sequences replaced by the replacement string, which may be empty.",
       "signature": "func(s str, replacement str) str"
     },
     "golang/strings.trim": {
@@ -3591,7 +3693,7 @@
       "package": "golang/strings",
       "func": "trim",
       "file": "https://pkg.go.dev/strings#Trim",
-      "description": "StringsTrim is an autogenerated function. func Trim(s, cutset string) string Trim returns a slice of the string s with all leading and trailing Unicode code points contained in cutset removed.",
+      "description": "StringsTrim is an autogenerated function. func Trim(s string, cutset string) string Trim returns a slice of the string s with all leading and trailing Unicode code points contained in cutset removed.",
       "signature": "func(s str, cutset str) str"
     },
     "golang/strings.trim_left": {
@@ -3599,7 +3701,7 @@
       "package": "golang/strings",
       "func": "trim_left",
       "file": "https://pkg.go.dev/strings#TrimLeft",
-      "description": "StringsTrimLeft is an autogenerated function. func TrimLeft(s, cutset string) string TrimLeft returns a slice of the string s with all leading Unicode code points contained in cutset removed.\nTo remove a prefix, use TrimPrefix instead.",
+      "description": "StringsTrimLeft is an autogenerated function. func TrimLeft(s string, cutset string) string TrimLeft returns a slice of the string s with all leading Unicode code points contained in cutset removed.\nTo remove a prefix, use [TrimPrefix] instead.",
       "signature": "func(s str, cutset str) str"
     },
     "golang/strings.trim_prefix": {
@@ -3607,7 +3709,7 @@
       "package": "golang/strings",
       "func": "trim_prefix",
       "file": "https://pkg.go.dev/strings#TrimPrefix",
-      "description": "StringsTrimPrefix is an autogenerated function. func TrimPrefix(s, prefix string) string TrimPrefix returns s without the provided leading prefix string. If s doesn't start with prefix, s is returned unchanged.",
+      "description": "StringsTrimPrefix is an autogenerated function. func TrimPrefix(s string, prefix string) string TrimPrefix returns s without the provided leading prefix string. If s doesn't start with prefix, s is returned unchanged.",
       "signature": "func(s str, prefix str) str"
     },
     "golang/strings.trim_right": {
@@ -3615,7 +3717,7 @@
       "package": "golang/strings",
       "func": "trim_right",
       "file": "https://pkg.go.dev/strings#TrimRight",
-      "description": "StringsTrimRight is an autogenerated function. func TrimRight(s, cutset string) string TrimRight returns a slice of the string s, with all trailing Unicode code points contained in cutset removed.\nTo remove a suffix, use TrimSuffix instead.",
+      "description": "StringsTrimRight is an autogenerated function. func TrimRight(s string, cutset string) string TrimRight returns a slice of the string s, with all trailing Unicode code points contained in cutset removed.\nTo remove a suffix, use [TrimSuffix] instead.",
       "signature": "func(s str, cutset str) str"
     },
     "golang/strings.trim_space": {
@@ -3631,7 +3733,7 @@
       "package": "golang/strings",
       "func": "trim_suffix",
       "file": "https://pkg.go.dev/strings#TrimSuffix",
-      "description": "StringsTrimSuffix is an autogenerated function. func TrimSuffix(s, suffix string) string TrimSuffix returns s without the provided trailing suffix string. If s doesn't end with suffix, s is returned unchanged.",
+      "description": "StringsTrimSuffix is an autogenerated function. func TrimSuffix(s string, suffix string) string TrimSuffix returns s without the provided trailing suffix string. If s doesn't end with suffix, s is returned unchanged.",
       "signature": "func(s str, suffix str) str"
     },
     "history": {
@@ -3909,14 +4011,6 @@
       "file": "os/family.go",
       "description": "Family returns the distro family.",
       "signature": "func() str"
-    },
-    "os.file_exists": {
-      "name": "FileExistsFunc",
-      "package": "os",
-      "func": "file_exists",
-      "file": "os/file_exists.go",
-      "description": "FileExistsFunc is a function that returns of a local file exists or not. If the state changes, a new string will be sent. Please note that this is different from the related functions in the deploy package.",
-      "signature": "func(filename str) bool"
     },
     "os.is_family_archlinux": {
       "name": "IsFamilyArchLinux",

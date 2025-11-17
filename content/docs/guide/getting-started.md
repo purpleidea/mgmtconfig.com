@@ -9,7 +9,9 @@ title: "Getting Started"
 	* On Fedora: `sudo dnf install libvirt-devel augeas-devel PackageKit`
 	* On Debian: `sudo apt install libvirt-dev libaugeas-dev packagekit`
 * Download the latest version from: https://github.com/purpleidea/mgmt/releases/
-* After downloading the binary, give it executable permissions (`chmod +x`) and either run it from there or move it to a directory contained in your $PATH and execute as with any other software.
+* After downloading the binary, give it executable permissions (`chmod +x`) and
+either run it from there or move it to a directory contained in your $PATH and
+execute as with any other software.
 
 # Running `mgmt`
 

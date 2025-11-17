@@ -12,6 +12,8 @@ title: "Getting Started"
 * After downloading the binary, give it executable permissions (`chmod +x`) and
 either run it from there or move it to a directory contained in your $PATH and
 execute as with any other software.
+* Alternatively, you can install the `mgmt` package from the appropriate
+[rolling release repository](https://dl.fedoraproject.org/pub/alt/purpleidea/mgmt/repo/master/).
 
 # Running `mgmt`
 

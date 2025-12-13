@@ -36,3 +36,10 @@ You can type `^C` to shutdown `mgmt`.
 
 [^1]: Please [contact us](/contact/) if you are a customer interested in aarch64
 (arm64) builds.
+
+# Workarounds:
+
+* On Ubuntu: After following the "Debian" instructions above, you may also need
+to run: `sudo ln -s /lib/x86_64-linux-gnu/libxml2.so.16 /lib/x86_64-linux-gnu/libxml2.so.2`.
+This is due to (AIUI) Ubuntu weird API decisions in some releases. If you have a
+better workaround, please send a patch.

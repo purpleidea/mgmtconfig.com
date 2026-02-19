@@ -18,4 +18,8 @@ title: "User Guide"
 
 * ### [Classes](classes/)
 
+* ### [Functions](functions/)
+
+* ### [Deploys](deploys/)
+
 More sections coming soon...

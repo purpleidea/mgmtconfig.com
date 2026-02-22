@@ -247,7 +247,7 @@ check your code, run the following:
 
 `mgmt run --tmp-prefix lang --only-unify hello0.mcl`
 
-You will likely seen the engine print something along the lines of:
+You will likely see the engine print something along the lines of:
 
 `09:41:23 cli: lang: type unification succeeded in 365.892µs`.
 

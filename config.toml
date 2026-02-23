@@ -111,6 +111,11 @@ theme = "hugo-serif-theme"
 		url = "/contact/"
 		weight = 2
 
+	[[menu.footer]]
+		name = "Github"
+		url = "https://github.com/purpleidea/mgmt/"
+		weight = 3
+
 # Github pages stuff...
 [caches]
 	[caches.images]

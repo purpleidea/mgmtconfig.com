@@ -4,11 +4,17 @@
     <div class="call-phone"><strong>Phone: </strong> {{ .site.Data.contact.phone }} </div>
 {{ end }}
     <div class="call-email"><strong>Email: </strong>
-
       <a href="mailto:{{ .site.Data.contact.email }}">
         {{ .site.Data.contact.email }}
       </a>
     </div>
+{{ if .site.Data.contact.chat }}
+    <div class="call-chat"><strong>Chat: </strong>
+      <a href="{{ .site.Data.contact.chat_url }}">
+        {{ .site.Data.contact.chat }}
+      </a>
+    </div>
+{{ end }}
   </div>
   <div class="call-box-bottom">
 {{ if eq .Name "Contact" }}

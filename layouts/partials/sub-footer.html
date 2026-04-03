@@ -7,8 +7,10 @@
 {{ if .Site.Data.contact.phone }}
             <li><strong>Phone: </strong><span>{{ .Site.Data.contact.phone }}</span></li>
 {{ end }}
-            <li><strong>Email: </strong><a style="color: {{ .Site.Params.subfooter_text_colour }};" href="mailto:{{ .Site.Data.contact.email }}">
-                {{ .Site.Data.contact.email }}</a></li>
+            <li><strong>Email: </strong><a style="color: {{ .Site.Params.subfooter_text_colour }};" href="mailto:{{ .Site.Data.contact.email }}">{{ .Site.Data.contact.email }}</a></li>
+{{ if .Site.Data.contact.chat }}
+            <li><strong>Chat: </strong><a style="color: {{ .Site.Params.subfooter_text_colour }};" href="{{ .Site.Data.contact.chat_url }}">{{ .Site.Data.contact.chat }}</a></li>
+{{ end }}
           </ul>
 	  <a style="color: {{ .Site.Params.subfooter_text_colour }};" class="zerostatic" href="{{ .Site.BaseURL }}">{{ .Site.Params.shortURL }}</a>
         </div>

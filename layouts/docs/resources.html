@@ -14,7 +14,7 @@
 		<div class="container-left">
 			<ul>
 {{ range $resourceName, $resourceData := $resources}}
-				<li><a href="#{{ $resourceData.kind | urlize }}"> <span style="color: rgb(8, 8, 168);">{{ $resourceData.kind}}</span></a></li>
+				<li class="sidebar"><a href="#{{ $resourceData.kind | urlize }}"> <span style="color: rgb(8, 8, 168);">{{ $resourceData.kind}}</span></a></li>
 {{ end }}
 			</ul>
 		</div>

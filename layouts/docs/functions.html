@@ -9,12 +9,42 @@
 	<!-- Load the functions and version from /data/docs.json -->
 	{{- $functions := .Site.Data.docs.functions -}}
 	{{- $version := .Site.Data.docs.version -}}
+	{{- $prefixes := newScratch -}}
+	{{- range $fn, $fd := $functions -}}
+	{{-   $prefix := index ( split $fn "." ) 0 -}}
+	{{-   if index $prefixes.Values $prefix -}}
+	{{-     $prefixes.Delete $prefix -}}
+	{{-     $prefixes.Set $prefix "multiple" -}}
+	{{-   else -}}
+	{{-     $prefixes.Set $prefix "single" -}}
+	{{-   end -}}
+	{{- end -}}
 
 		<!-- Index column -->
 		<div class="container-left">
 			<ul>
-{{- range $functionName, $functionData := $functions }}
-				<li><a href="#{{ $functionName | urlize }}"> <span style="color: rgb(8, 8, 168);">{{ $functionName }}</span></a></li>
+{{  $prev_prefix := "none" -}}
+{{- $in_details := false -}}
+{{- range $functionName, $functionData := $functions -}}
+{{-   $prefix := index ( split $functionName "." ) 0 -}}
+<!--  if $prefix != $prev_prefix and $prefixes[$prefix] == "multiple" -->
+{{-   if not (eq $prefix $prev_prefix) -}}
+{{-     if $in_details }}
+				</details>
+{{        $in_details = false -}}
+{{-     end -}}
+{{-     if eq ($prefixes.Get $prefix) "multiple" }}
+				<details>
+					<summary> {{ $prefix }} </summary>
+{{        $in_details = true -}}
+{{-     end -}}
+{{-   end }}
+				<li class="sidebar"><a href="#{{ $functionName | urlize }}"> <span style="color: rgb(8, 8, 168);">{{ $functionName }}</span></a></li>
+{{    $prev_prefix = $prefix -}}
+{{- end -}}
+{{- if $in_details }}
+				</details>
+{{    $in_details = false -}}
 {{- end }}
 			</ul>
 		</div>

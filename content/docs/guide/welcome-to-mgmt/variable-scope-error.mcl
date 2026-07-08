@@ -1,0 +1,15 @@
+import "os"
+$release = os.release()
+if $release->id == "fedora" {
+    $ssh_service = "sshd"
+}
+if $release->id == "debian" {
+    $ssh_service = "ssh"
+}
+
+# An error: '$ssh_service' variable does not exist in this scope
+svc $ssh_service {
+    startup => "enabled",
+    state => "running",
+}
+

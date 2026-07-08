@@ -1,0 +1,15 @@
+import "os"
+
+$release = os.release()
+
+$ssh_service = if $release->id == "fedora" {
+	"sshd"
+} else {
+	# assume all other distros call it "ssh"
+	"ssh"
+}
+
+svc $ssh_service {
+	startup => "enabled",
+	state => "running",
+}

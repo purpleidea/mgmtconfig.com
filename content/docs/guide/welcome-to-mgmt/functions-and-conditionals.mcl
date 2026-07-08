@@ -1,0 +1,17 @@
+import "os"
+
+$release = os.release()
+
+if $release->id == "fedora" {
+  svc "sshd" {
+    startup => "enabled",
+    state => "running",
+  }
+} 
+
+if $release->id == "debian" or $release->id == "ubuntu" {
+  svc "ssh" {
+    startup => "enabled",
+    state => "running",
+  }
+}

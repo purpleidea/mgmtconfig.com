@@ -1,0 +1,4 @@
+svc "sshd" {
+  startup => "enabled",
+  state => "running",
+}

@@ -1,3 +1,4 @@
+#baseURL = "https://experiments.semicomplete.com/mgmt-docs/public/"
 baseURL = "https://mgmtconfig.com/"
 languageCode = "en-ca"
 title = "Mgmt Config"
@@ -44,6 +45,12 @@ theme = "hugo-serif-theme"
 	#white_offset = "#106be0"
 	white_offset = "#f4f5fb"
 	grey = "#605e5e"
+
+[markup.highlight]
+	style = "catppuccin-latte"
+
+[markup.goldmark.parser.attribute]
+	block = true
 
 
 [params.logo]

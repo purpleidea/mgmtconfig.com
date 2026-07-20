@@ -1,0 +1,16 @@
+import "os"
+
+$release = os.release()
+
+$ssh_service = func() {
+  if $release->id == "fedora" {
+    "sshd"
+  } else {
+    "ssh"
+  }
+}
+
+
+print "ssh" {
+  msg => $ssh_service(),
+}

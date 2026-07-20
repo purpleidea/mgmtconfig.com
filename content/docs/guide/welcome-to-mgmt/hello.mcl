@@ -1,0 +1,4 @@
+file "/tmp/hello.txt" {
+  content => "Greetings from mgmt!\n",
+  state => "exists",
+}

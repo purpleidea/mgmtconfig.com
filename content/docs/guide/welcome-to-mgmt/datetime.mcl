@@ -1,0 +1,8 @@
+import "fmt"
+import "datetime"
+
+$now = datetime.now()
+
+print "time check" {
+  msg => fmt.printf("The current time is %s", datetime.format($now, "2006-01-02 15:04:05")),
+}

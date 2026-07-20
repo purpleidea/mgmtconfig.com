@@ -1,0 +1,32 @@
+# Make the os.file_exists() function available
+import "os"
+
+$home = "/home"
+$user = "dev"
+
+# If this user creates a ~/.zshrc, then
+# go ahead and set their shell to zsh
+$shell = if os.file_exists("${home}/${user}/.zshrc") {
+	"zsh"
+} else {
+	"bash"
+}
+
+user [$user] {
+	state => "exists",
+	homedir => "${home}/${user}/",
+	
+	# The user's shell now depends on the value of $shell
+	# which depends on the presence of a .zshrc file
+	shell => "/bin/${shell}",
+}
+
+# Ensure the user's shell is installed
+# This assumes the shell executable is the same as the package name.
+pkg [$shell] {
+	state => "installed",
+	
+	# Ensure the package is applied 
+	# before we try to modify the user's shell.
+	Before => User[$user],
+}

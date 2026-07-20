@@ -6,6 +6,8 @@ title: "User Guide"
 
 * ### [Getting Started](getting-started/)
 
+* ### [Welcome to mgmt](welcome-to-mgmt/)
+
 * ### [Design and Theory](design-and-theory/)
 
 * ### [First Steps](first-steps/)

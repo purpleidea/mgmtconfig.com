@@ -1,0 +1,7 @@
+pkg "tmux" {
+  state => "installed",
+}
+
+pkg "cowsay" {
+  state => "installed",
+}

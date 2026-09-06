@@ -39,9 +39,7 @@ Examples in this document were tested on Fedora 44, so for best results, we
 recommend having a fresh Fedora installation available. It is OK if you do not
 have one, though, and most of the examples should still be useful.
 
-## Table of Contents
-
-{{< toc >}}
+{{< toc heading="Table of Contents" >}}
 
 ## Configuration with Resources
 

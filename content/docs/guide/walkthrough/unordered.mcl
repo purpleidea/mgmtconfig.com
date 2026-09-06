@@ -1,0 +1,15 @@
+svc "nginx" {
+	state => "running",
+	startup => "enabled",
+}
+
+file "/etc/nginx/nginx.conf" {
+	content => "# this is my nginx config\n",
+
+	Depend => Pkg["nginx"],
+	Notify => Svc["nginx"],
+}
+
+pkg "nginx" {
+	state => "installed",
+}

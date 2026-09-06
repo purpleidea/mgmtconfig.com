@@ -5,23 +5,22 @@ In this section, you can find details on various topics related to our software.
 
 ## For mgmt users:
 
-* ### [Resources reference](resources/)
+* ### [Resources reference](/docs/resources/)
 
 API documentation for every resource in `mgmt`.
 
-* ### [Functions reference](functions/)
+* ### [Functions reference](/docs/functions/)
 
 API documentation for every function in `mgmt`.
 
-* ### [User guide](guide/)
+* ### [User guide](/docs/guide/)
 
 User guide to get you started and proficient in `mgmt`.
-
 
 ## For mgmt developers:
 
 * ### [Source code](https://github.com/purpleidea/mgmt/tree/master/)
 
-* ### [Contributing Documentation](guide/contributing-docs/)
+* ### [Contributing documentation](/docs/contributing/docs/)
 
 Contributors are welcome!

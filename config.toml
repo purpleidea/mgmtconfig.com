@@ -1,4 +1,3 @@
-#baseURL = "https://experiments.semicomplete.com/mgmt-docs/public/"
 baseURL = "https://mgmtconfig.com/"
 languageCode = "en-ca"
 title = "Mgmt Config"
@@ -51,7 +50,6 @@ theme = "hugo-serif-theme"
 
 [markup.goldmark.parser.attribute]
 	block = true
-
 
 [params.logo]
 	mobile = "images/logo_default_symbol.svg"	# TODO: do we need to optimize here?

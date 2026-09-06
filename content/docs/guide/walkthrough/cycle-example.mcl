@@ -1,3 +1,4 @@
-file "/tmp/hello.txt" { } file "/tmp/world.txt" { }
+file "/tmp/hello.txt" {}
+file "/tmp/world.txt" {}
 File["/tmp/hello.txt"] -> File["/tmp/world.txt"]
 File["/tmp/world.txt"] -> File["/tmp/hello.txt"]
